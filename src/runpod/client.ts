@@ -1,5 +1,5 @@
 require('dotenv').config(); // Load environment variables from .env file
-import axios, { AxiosRequestConfig, AxiosResponse } from '../../../aigoods/node_modules/axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import {inferenceRequestData} from './config';
 
 class RunpodClient {

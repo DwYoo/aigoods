@@ -1,5 +1,5 @@
 require('dotenv').config(); // Load environment variables from .env file
-import {RunpodClient} from './src/client';
+import {RunpodClient} from './runpod/client';
 
 const runpodClient:RunpodClient = new RunpodClient(process.env.INFER_ENDPOINT, process.env.TRAIN_ENDPOINT, process.env.API_KEY);
 
