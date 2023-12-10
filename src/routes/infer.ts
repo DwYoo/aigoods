@@ -1,5 +1,5 @@
 import { Router } from "express";
-import TrainController from "../controllers/controller";
+import TrainController from "../controllers/inferController";
 
 class InferRoutes {
   router = Router();
@@ -10,9 +10,9 @@ class InferRoutes {
   }
 
   intializeRoutes() {
-    this.router.post("/users/:user_id/train-images", this.controller.addImagesAndTrain);
+    this.router.post("/users/:user_id/gen-images", this.controller.infer);
 
-    this.router.get("/users/:user_id/train-images", this.controller.getTrainImages);
+    this.router.get("/users/:user_id/gen-images", this.controller.getGenImageSet);
 
   }
 }

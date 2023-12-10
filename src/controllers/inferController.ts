@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-export default class TrainController {
+export default class InferController {
 
-  async addImagesAndTrain(req: Request, res: Response) {
+  async infer(req: Request, res: Response) {
     try {
       res.status(200).json({
         message: "findAll OK"
@@ -14,7 +14,7 @@ export default class TrainController {
     }
   }
 
-  async getTrainImages(req: Request, res: Response) {
+  async getGenImageSet(req: Request, res: Response) {
     try {
       res.status(200).json({
         message: "findOne OK",
