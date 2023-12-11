@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  refresh_token_expires_in   Int?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String   
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+enum UserType {
+  User
+  Admin
+}
+
+model User {
+  id             String           @id @default(uuid())
+  name           String?
+  email          String?          @unique
+  image          String?
+  user_type      UserType?        // UserType에 대한 정의가 필요합니다.
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+  TrainImageSets TrainImageSet[]
+  Sessions       Session[]
+  Accounts       Account[]
+}
+
+model TrainImageSet {
+  id         Int          @id @default(autoincrement())
+  user_id    String
+  folderPath String
+  zipPath    String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  user       User         @relation(fields: [user_id], references: [id])
+  TrainImage TrainImage[]
+  Lora       Lora?  
+}
+
+model TrainImage {
+  id           Int            @id @default(autoincrement())
+  set_id       Int
+  filePath     String
+  trainImageSet TrainImageSet @relation(fields: [set_id], references: [id])
+}
+
+model Lora {
+  id             Int            @id @default(autoincrement())
+  trainImageSetId Int           @unique
+  path           String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  trainImageSet  TrainImageSet  @relation(fields: [trainImageSetId], references: [id])
+  GenImages      GenImage[]
+}
+
+model GenImage {
+  id         Int      @id @default(autoincrement())
+  lora_id    Int
+  imagePath  String
+  createdAt  DateTime @default(now())
+  lora       Lora     @relation(fields: [lora_id], references: [id])
+}
