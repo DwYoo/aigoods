@@ -9,13 +9,15 @@ const accessId = String(process.env.S3_PUBLIC_KEY)
 const secretKey = String(process.env.S3_SECRET_KEY)
 const bucketName = "pets-mas"
 
-const s3 = new S3Client({
+const s3Client = new S3Client({
     credentials: {
         accessKeyId: accessId,
         secretAccessKey: secretKey,
     },
     region: bucketRegion,
     }
-    );
+);
+
+export {s3Client}
 
 

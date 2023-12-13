@@ -14,6 +14,7 @@ export default class InferController {
       runpodClient.infer(user_id, webhookUrl)
   
       res.status(200).json({
+        
         message: "Infer OK"
       });
     } catch (err) {
