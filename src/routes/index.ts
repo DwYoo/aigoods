@@ -1,14 +1,23 @@
-import { Application } from "express";
-import inferRoutes from "./infer";
-import trainRoutes from "./train";
+import { Router } from "express";
+import multer from 'multer';
 
-export default class Routes {
-  constructor(app: Application) {
-    this.initializeRoutes(app);
-  }
+import InferController from "../controllers/inferController";
+import TrainController from "../controllers/trainController";
 
-  private initializeRoutes(app: Application): void {
-    app.use("/api", inferRoutes);
-    app.use("/api", trainRoutes);
-  }
-}
+const storage:multer.StorageEngine = multer.memoryStorage()
+const upload: multer.Multer = multer({ storage: storage})
+
+const router = Router();
+const inferController = new InferController();
+const trainController = new TrainController();
+
+router.get("/users/:user_id/train-images", trainController.getTrainImageSet)
+
+router.post("/users/:user_id/train-images", upload.array('image', 9), trainController.postImageSetAndTrain)
+
+router.get("/users/:user_id/gen-images", inferController.getGenImageSet);
+
+router.post("/users/:user_id/gen-images", inferController.infer);
+
+
+export default router;

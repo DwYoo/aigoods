@@ -185,7 +185,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/ubuntu/aigoods/prisma/generated/client",
+      "value": "/home/dongwoo/github.com/DwYoo/aigoods/prisma/generated/client",
       "fromEnvVar": null
     },
     "config": {
@@ -212,7 +212,7 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
+  "postinstall": true,
   "inlineDatasources": {
     "db": {
       "url": {
