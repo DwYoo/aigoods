@@ -24,7 +24,7 @@ class RunpodClient {
 
     // }
 
-    async infer(outputPath:string, webhookUrl:string): Promise<string> {
+    async infer(outputPath:string, webhookUrl:string): Promise<InferResponse> {
         return this.sendInferRequest('run', outputPath, webhookUrl);
     }
 
@@ -32,7 +32,7 @@ class RunpodClient {
         return this.sendInferRequest('runsync', outputPath);
     }
 
-    private async sendInferRequest(urlSuffix: string, outputPath:string, webhookUrl: string|null = null): Promise<string> {
+    private async sendInferRequest(urlSuffix: string, outputPath:string, webhookUrl: string|null = null): Promise<any> {
 
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
@@ -61,11 +61,11 @@ class RunpodClient {
     }
 
     async checkInferStatus(jobId: string): Promise<void> {
-        const url = `${this.inferEndpoint}/${jobId}`;
+        const url = `${this.inferEndpoint}status/${jobId}`;
       
         try {
           while (true) {
-            const response = await axios.get<JobStatusResponse>(url);
+            const response = await axios.get<any>(url);
       
             if (response.data.status === 'COMPLETED') {
               console.log('Job completed:', response.data);
@@ -93,6 +93,11 @@ interface InferenceRequestData {
     },
     webhook?: any
   }
+
+interface InferResponse {
+    id: string;
+    status: string;
+}
 
 interface JobStatusResponse {
     id: string;
