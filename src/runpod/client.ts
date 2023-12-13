@@ -5,12 +5,12 @@ import {inferenceRequestData} from './config';
 
 class RunpodClient {
     baseEndpoint: string = "https://api.runpod.ai/v2/";
-    inferEndpoint?: string;
-    trainEndpoint?: string;
+    inferEndpoint: string;
+    trainEndpoint: string;
     apiKey?: string;
     inferRequestData: InferenceRequestData = inferenceRequestData;
     
-    constructor(inferEndpoint?:string, trainEndpoint?:string, apiKey?:string) {
+    constructor(inferEndpoint:string, trainEndpoint:string, apiKey?:string) {
         this.inferEndpoint = inferEndpoint;
         this.trainEndpoint = trainEndpoint;
         this.apiKey = apiKey;        
@@ -36,6 +36,9 @@ class RunpodClient {
 
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
+        if (webhookUrl !== null) {
+            requestData["webhook"] = webhookUrl
+        }
 
         const requestConfig: AxiosRequestConfig = {
             method: 'post',
@@ -45,7 +48,7 @@ class RunpodClient {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${this.apiKey}`,
             },
-            data: requestData,
+            data: JSON.stringify(requestData),
         };
 
         try {
@@ -56,6 +59,30 @@ class RunpodClient {
             throw error;
         }
     }
+
+    async checkInferStatus(jobId: string): Promise<void> {
+        const url = `${this.inferEndpoint}/${jobId}`;
+      
+        try {
+          while (true) {
+            const response = await axios.get<JobStatusResponse>(url);
+      
+            if (response.data.status === 'COMPLETED') {
+              console.log('Job completed:', response.data);
+              break;
+            } else if (response.data.status === 'IN_QUEUE') {
+              console.log('Job in queue...');
+            } else {
+              console.log('Job status:', response.data.status);
+            }
+      
+            // Wait for a short period before making another request
+            await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      };
 }
 
 interface InferenceRequestData {
@@ -63,8 +90,17 @@ interface InferenceRequestData {
       output_path: string;
       prompt: any; // 이 부분은 실제 구조에 맞게 정의 필요
       // 다른 필드들...
-    }
+    },
+    webhook?: any
   }
 
+interface JobStatusResponse {
+    id: string;
+    status: string;
+    delayTime?: number;
+    executionTime?: number;
+    output?: Array<{ image: string; seed: number }>;
+}
   
+
 export {RunpodClient};

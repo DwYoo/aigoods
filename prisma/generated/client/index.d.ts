@@ -1365,15 +1365,15 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    TrainImageSets: number
-    Sessions: number
-    Accounts: number
+    trainImageSets: number
+    sessions: number
+    accounts: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    TrainImageSets?: boolean | UserCountOutputTypeCountTrainImageSetsArgs
-    Sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    Accounts?: boolean | UserCountOutputTypeCountAccountsArgs
+    trainImageSets?: boolean | UserCountOutputTypeCountTrainImageSetsArgs
+    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
+    accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   }
 
   // Custom InputTypes
@@ -1419,11 +1419,11 @@ export namespace Prisma {
    */
 
   export type TrainImageSetCountOutputType = {
-    TrainImage: number
+    trainImages: number
   }
 
   export type TrainImageSetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    TrainImage?: boolean | TrainImageSetCountOutputTypeCountTrainImageArgs
+    trainImages?: boolean | TrainImageSetCountOutputTypeCountTrainImagesArgs
   }
 
   // Custom InputTypes
@@ -1442,7 +1442,7 @@ export namespace Prisma {
   /**
    * TrainImageSetCountOutputType without action
    */
-  export type TrainImageSetCountOutputTypeCountTrainImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TrainImageSetCountOutputTypeCountTrainImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TrainImageWhereInput
   }
 
@@ -1453,11 +1453,11 @@ export namespace Prisma {
    */
 
   export type LoraCountOutputType = {
-    GenImages: number
+    genImages: number
   }
 
   export type LoraCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    GenImages?: boolean | LoraCountOutputTypeCountGenImagesArgs
+    genImages?: boolean | LoraCountOutputTypeCountGenImagesArgs
   }
 
   // Custom InputTypes
@@ -1499,13 +1499,13 @@ export namespace Prisma {
   }
 
   export type AccountAvgAggregateOutputType = {
-    expires_at: number | null
-    refresh_token_expires_in: number | null
+    expiresAt: number | null
+    refreshTokenExpiresIn: number | null
   }
 
   export type AccountSumAggregateOutputType = {
-    expires_at: number | null
-    refresh_token_expires_in: number | null
+    expiresAt: number | null
+    refreshTokenExpiresIn: number | null
   }
 
   export type AccountMinAggregateOutputType = {
@@ -1514,14 +1514,14 @@ export namespace Prisma {
     type: string | null
     provider: string | null
     providerAccountId: string | null
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
+    refreshToken: string | null
+    accessToken: string | null
+    expiresAt: number | null
+    tokenType: string | null
     scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
+    idToken: string | null
+    sessionState: string | null
+    refreshTokenExpiresIn: number | null
   }
 
   export type AccountMaxAggregateOutputType = {
@@ -1530,14 +1530,14 @@ export namespace Prisma {
     type: string | null
     provider: string | null
     providerAccountId: string | null
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
+    refreshToken: string | null
+    accessToken: string | null
+    expiresAt: number | null
+    tokenType: string | null
     scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
+    idToken: string | null
+    sessionState: string | null
+    refreshTokenExpiresIn: number | null
   }
 
   export type AccountCountAggregateOutputType = {
@@ -1546,26 +1546,26 @@ export namespace Prisma {
     type: number
     provider: number
     providerAccountId: number
-    refresh_token: number
-    access_token: number
-    expires_at: number
-    token_type: number
+    refreshToken: number
+    accessToken: number
+    expiresAt: number
+    tokenType: number
     scope: number
-    id_token: number
-    session_state: number
-    refresh_token_expires_in: number
+    idToken: number
+    sessionState: number
+    refreshTokenExpiresIn: number
     _all: number
   }
 
 
   export type AccountAvgAggregateInputType = {
-    expires_at?: true
-    refresh_token_expires_in?: true
+    expiresAt?: true
+    refreshTokenExpiresIn?: true
   }
 
   export type AccountSumAggregateInputType = {
-    expires_at?: true
-    refresh_token_expires_in?: true
+    expiresAt?: true
+    refreshTokenExpiresIn?: true
   }
 
   export type AccountMinAggregateInputType = {
@@ -1574,14 +1574,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
+    refreshToken?: true
+    accessToken?: true
+    expiresAt?: true
+    tokenType?: true
     scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
+    idToken?: true
+    sessionState?: true
+    refreshTokenExpiresIn?: true
   }
 
   export type AccountMaxAggregateInputType = {
@@ -1590,14 +1590,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
+    refreshToken?: true
+    accessToken?: true
+    expiresAt?: true
+    tokenType?: true
     scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
+    idToken?: true
+    sessionState?: true
+    refreshTokenExpiresIn?: true
   }
 
   export type AccountCountAggregateInputType = {
@@ -1606,14 +1606,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
-    access_token?: true
-    expires_at?: true
-    token_type?: true
+    refreshToken?: true
+    accessToken?: true
+    expiresAt?: true
+    tokenType?: true
     scope?: true
-    id_token?: true
-    session_state?: true
-    refresh_token_expires_in?: true
+    idToken?: true
+    sessionState?: true
+    refreshTokenExpiresIn?: true
     _all?: true
   }
 
@@ -1709,14 +1709,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token: string | null
-    access_token: string | null
-    expires_at: number | null
-    token_type: string | null
+    refreshToken: string | null
+    accessToken: string | null
+    expiresAt: number | null
+    tokenType: string | null
     scope: string | null
-    id_token: string | null
-    session_state: string | null
-    refresh_token_expires_in: number | null
+    idToken: string | null
+    sessionState: string | null
+    refreshTokenExpiresIn: number | null
     _count: AccountCountAggregateOutputType | null
     _avg: AccountAvgAggregateOutputType | null
     _sum: AccountSumAggregateOutputType | null
@@ -1744,14 +1744,14 @@ export namespace Prisma {
     type?: boolean
     provider?: boolean
     providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
+    refreshToken?: boolean
+    accessToken?: boolean
+    expiresAt?: boolean
+    tokenType?: boolean
     scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
+    idToken?: boolean
+    sessionState?: boolean
+    refreshTokenExpiresIn?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
@@ -1761,14 +1761,14 @@ export namespace Prisma {
     type?: boolean
     provider?: boolean
     providerAccountId?: boolean
-    refresh_token?: boolean
-    access_token?: boolean
-    expires_at?: boolean
-    token_type?: boolean
+    refreshToken?: boolean
+    accessToken?: boolean
+    expiresAt?: boolean
+    tokenType?: boolean
     scope?: boolean
-    id_token?: boolean
-    session_state?: boolean
-    refresh_token_expires_in?: boolean
+    idToken?: boolean
+    sessionState?: boolean
+    refreshTokenExpiresIn?: boolean
   }
 
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1787,14 +1787,14 @@ export namespace Prisma {
       type: string
       provider: string
       providerAccountId: string
-      refresh_token: string | null
-      access_token: string | null
-      expires_at: number | null
-      token_type: string | null
+      refreshToken: string | null
+      accessToken: string | null
+      expiresAt: number | null
+      tokenType: string | null
       scope: string | null
-      id_token: string | null
-      session_state: string | null
-      refresh_token_expires_in: number | null
+      idToken: string | null
+      sessionState: string | null
+      refreshTokenExpiresIn: number | null
     }, ExtArgs["result"]["account"]>
     composites: {}
   }
@@ -2195,14 +2195,14 @@ export namespace Prisma {
     readonly type: FieldRef<"Account", 'String'>
     readonly provider: FieldRef<"Account", 'String'>
     readonly providerAccountId: FieldRef<"Account", 'String'>
-    readonly refresh_token: FieldRef<"Account", 'String'>
-    readonly access_token: FieldRef<"Account", 'String'>
-    readonly expires_at: FieldRef<"Account", 'Int'>
-    readonly token_type: FieldRef<"Account", 'String'>
+    readonly refreshToken: FieldRef<"Account", 'String'>
+    readonly accessToken: FieldRef<"Account", 'String'>
+    readonly expiresAt: FieldRef<"Account", 'Int'>
+    readonly tokenType: FieldRef<"Account", 'String'>
     readonly scope: FieldRef<"Account", 'String'>
-    readonly id_token: FieldRef<"Account", 'String'>
-    readonly session_state: FieldRef<"Account", 'String'>
-    readonly refresh_token_expires_in: FieldRef<"Account", 'Int'>
+    readonly idToken: FieldRef<"Account", 'String'>
+    readonly sessionState: FieldRef<"Account", 'String'>
+    readonly refreshTokenExpiresIn: FieldRef<"Account", 'Int'>
   }
     
 
@@ -3452,9 +3452,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     image: string | null
-    user_type: $Enums.UserType | null
-    created_at: Date | null
-    updated_at: Date | null
+    userType: $Enums.UserType | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -3462,9 +3462,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     image: string | null
-    user_type: $Enums.UserType | null
-    created_at: Date | null
-    updated_at: Date | null
+    userType: $Enums.UserType | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -3472,9 +3472,9 @@ export namespace Prisma {
     name: number
     email: number
     image: number
-    user_type: number
-    created_at: number
-    updated_at: number
+    userType: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -3484,9 +3484,9 @@ export namespace Prisma {
     name?: true
     email?: true
     image?: true
-    user_type?: true
-    created_at?: true
-    updated_at?: true
+    userType?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -3494,9 +3494,9 @@ export namespace Prisma {
     name?: true
     email?: true
     image?: true
-    user_type?: true
-    created_at?: true
-    updated_at?: true
+    userType?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -3504,9 +3504,9 @@ export namespace Prisma {
     name?: true
     email?: true
     image?: true
-    user_type?: true
-    created_at?: true
-    updated_at?: true
+    userType?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -3587,9 +3587,9 @@ export namespace Prisma {
     name: string | null
     email: string | null
     image: string | null
-    user_type: $Enums.UserType | null
-    created_at: Date
-    updated_at: Date
+    userType: $Enums.UserType | null
+    createdAt: Date
+    updatedAt: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -3614,12 +3614,12 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     image?: boolean
-    user_type?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-    TrainImageSets?: boolean | User$TrainImageSetsArgs<ExtArgs>
-    Sessions?: boolean | User$SessionsArgs<ExtArgs>
-    Accounts?: boolean | User$AccountsArgs<ExtArgs>
+    userType?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    trainImageSets?: boolean | User$trainImageSetsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3628,15 +3628,15 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     image?: boolean
-    user_type?: boolean
-    created_at?: boolean
-    updated_at?: boolean
+    userType?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    TrainImageSets?: boolean | User$TrainImageSetsArgs<ExtArgs>
-    Sessions?: boolean | User$SessionsArgs<ExtArgs>
-    Accounts?: boolean | User$AccountsArgs<ExtArgs>
+    trainImageSets?: boolean | User$trainImageSetsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
+    accounts?: boolean | User$accountsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3644,18 +3644,18 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      TrainImageSets: Prisma.$TrainImageSetPayload<ExtArgs>[]
-      Sessions: Prisma.$SessionPayload<ExtArgs>[]
-      Accounts: Prisma.$AccountPayload<ExtArgs>[]
+      trainImageSets: Prisma.$TrainImageSetPayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
+      accounts: Prisma.$AccountPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
       email: string | null
       image: string | null
-      user_type: $Enums.UserType | null
-      created_at: Date
-      updated_at: Date
+      userType: $Enums.UserType | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -4021,11 +4021,11 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    TrainImageSets<T extends User$TrainImageSetsArgs<ExtArgs> = {}>(args?: Subset<T, User$TrainImageSetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImageSetPayload<ExtArgs>, T, 'findMany'> | Null>;
+    trainImageSets<T extends User$trainImageSetsArgs<ExtArgs> = {}>(args?: Subset<T, User$trainImageSetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImageSetPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    Sessions<T extends User$SessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$SessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findMany'> | Null>;
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    Accounts<T extends User$AccountsArgs<ExtArgs> = {}>(args?: Subset<T, User$AccountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
+    accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4059,9 +4059,9 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly image: FieldRef<"User", 'String'>
-    readonly user_type: FieldRef<"User", 'UserType'>
-    readonly created_at: FieldRef<"User", 'DateTime'>
-    readonly updated_at: FieldRef<"User", 'DateTime'>
+    readonly userType: FieldRef<"User", 'UserType'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -4374,9 +4374,9 @@ export namespace Prisma {
 
 
   /**
-   * User.TrainImageSets
+   * User.trainImageSets
    */
-  export type User$TrainImageSetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$trainImageSetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the TrainImageSet
      */
@@ -4395,9 +4395,9 @@ export namespace Prisma {
 
 
   /**
-   * User.Sessions
+   * User.sessions
    */
-  export type User$SessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Session
      */
@@ -4416,9 +4416,9 @@ export namespace Prisma {
 
 
   /**
-   * User.Accounts
+   * User.accounts
    */
-  export type User$AccountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$accountsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Account
      */
@@ -4474,7 +4474,7 @@ export namespace Prisma {
 
   export type TrainImageSetMinAggregateOutputType = {
     id: number | null
-    user_id: string | null
+    userId: string | null
     folderPath: string | null
     zipPath: string | null
     createdAt: Date | null
@@ -4483,7 +4483,7 @@ export namespace Prisma {
 
   export type TrainImageSetMaxAggregateOutputType = {
     id: number | null
-    user_id: string | null
+    userId: string | null
     folderPath: string | null
     zipPath: string | null
     createdAt: Date | null
@@ -4492,7 +4492,7 @@ export namespace Prisma {
 
   export type TrainImageSetCountAggregateOutputType = {
     id: number
-    user_id: number
+    userId: number
     folderPath: number
     zipPath: number
     createdAt: number
@@ -4511,7 +4511,7 @@ export namespace Prisma {
 
   export type TrainImageSetMinAggregateInputType = {
     id?: true
-    user_id?: true
+    userId?: true
     folderPath?: true
     zipPath?: true
     createdAt?: true
@@ -4520,7 +4520,7 @@ export namespace Prisma {
 
   export type TrainImageSetMaxAggregateInputType = {
     id?: true
-    user_id?: true
+    userId?: true
     folderPath?: true
     zipPath?: true
     createdAt?: true
@@ -4529,7 +4529,7 @@ export namespace Prisma {
 
   export type TrainImageSetCountAggregateInputType = {
     id?: true
-    user_id?: true
+    userId?: true
     folderPath?: true
     zipPath?: true
     createdAt?: true
@@ -4625,7 +4625,7 @@ export namespace Prisma {
 
   export type TrainImageSetGroupByOutputType = {
     id: number
-    user_id: string
+    userId: string
     folderPath: string
     zipPath: string
     createdAt: Date
@@ -4653,20 +4653,20 @@ export namespace Prisma {
 
   export type TrainImageSetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    user_id?: boolean
+    userId?: boolean
     folderPath?: boolean
     zipPath?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    TrainImage?: boolean | TrainImageSet$TrainImageArgs<ExtArgs>
-    Lora?: boolean | TrainImageSet$LoraArgs<ExtArgs>
+    trainImages?: boolean | TrainImageSet$trainImagesArgs<ExtArgs>
+    lora?: boolean | TrainImageSet$loraArgs<ExtArgs>
     _count?: boolean | TrainImageSetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trainImageSet"]>
 
   export type TrainImageSetSelectScalar = {
     id?: boolean
-    user_id?: boolean
+    userId?: boolean
     folderPath?: boolean
     zipPath?: boolean
     createdAt?: boolean
@@ -4675,8 +4675,8 @@ export namespace Prisma {
 
   export type TrainImageSetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    TrainImage?: boolean | TrainImageSet$TrainImageArgs<ExtArgs>
-    Lora?: boolean | TrainImageSet$LoraArgs<ExtArgs>
+    trainImages?: boolean | TrainImageSet$trainImagesArgs<ExtArgs>
+    lora?: boolean | TrainImageSet$loraArgs<ExtArgs>
     _count?: boolean | TrainImageSetCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4685,12 +4685,12 @@ export namespace Prisma {
     name: "TrainImageSet"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      TrainImage: Prisma.$TrainImagePayload<ExtArgs>[]
-      Lora: Prisma.$LoraPayload<ExtArgs> | null
+      trainImages: Prisma.$TrainImagePayload<ExtArgs>[]
+      lora: Prisma.$LoraPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      user_id: string
+      userId: string
       folderPath: string
       zipPath: string
       createdAt: Date
@@ -5062,9 +5062,9 @@ export namespace Prisma {
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    TrainImage<T extends TrainImageSet$TrainImageArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$TrainImageArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImagePayload<ExtArgs>, T, 'findMany'> | Null>;
+    trainImages<T extends TrainImageSet$trainImagesArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$trainImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    Lora<T extends TrainImageSet$LoraArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$LoraArgs<ExtArgs>>): Prisma__LoraClient<$Result.GetResult<Prisma.$LoraPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    lora<T extends TrainImageSet$loraArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$loraArgs<ExtArgs>>): Prisma__LoraClient<$Result.GetResult<Prisma.$LoraPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5095,7 +5095,7 @@ export namespace Prisma {
    */ 
   interface TrainImageSetFieldRefs {
     readonly id: FieldRef<"TrainImageSet", 'Int'>
-    readonly user_id: FieldRef<"TrainImageSet", 'String'>
+    readonly userId: FieldRef<"TrainImageSet", 'String'>
     readonly folderPath: FieldRef<"TrainImageSet", 'String'>
     readonly zipPath: FieldRef<"TrainImageSet", 'String'>
     readonly createdAt: FieldRef<"TrainImageSet", 'DateTime'>
@@ -5412,9 +5412,9 @@ export namespace Prisma {
 
 
   /**
-   * TrainImageSet.TrainImage
+   * TrainImageSet.trainImages
    */
-  export type TrainImageSet$TrainImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TrainImageSet$trainImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the TrainImage
      */
@@ -5433,9 +5433,9 @@ export namespace Prisma {
 
 
   /**
-   * TrainImageSet.Lora
+   * TrainImageSet.lora
    */
-  export type TrainImageSet$LoraArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TrainImageSet$loraArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Lora
      */
@@ -5478,29 +5478,29 @@ export namespace Prisma {
 
   export type TrainImageAvgAggregateOutputType = {
     id: number | null
-    set_id: number | null
+    setId: number | null
   }
 
   export type TrainImageSumAggregateOutputType = {
     id: number | null
-    set_id: number | null
+    setId: number | null
   }
 
   export type TrainImageMinAggregateOutputType = {
     id: number | null
-    set_id: number | null
+    setId: number | null
     filePath: string | null
   }
 
   export type TrainImageMaxAggregateOutputType = {
     id: number | null
-    set_id: number | null
+    setId: number | null
     filePath: string | null
   }
 
   export type TrainImageCountAggregateOutputType = {
     id: number
-    set_id: number
+    setId: number
     filePath: number
     _all: number
   }
@@ -5508,29 +5508,29 @@ export namespace Prisma {
 
   export type TrainImageAvgAggregateInputType = {
     id?: true
-    set_id?: true
+    setId?: true
   }
 
   export type TrainImageSumAggregateInputType = {
     id?: true
-    set_id?: true
+    setId?: true
   }
 
   export type TrainImageMinAggregateInputType = {
     id?: true
-    set_id?: true
+    setId?: true
     filePath?: true
   }
 
   export type TrainImageMaxAggregateInputType = {
     id?: true
-    set_id?: true
+    setId?: true
     filePath?: true
   }
 
   export type TrainImageCountAggregateInputType = {
     id?: true
-    set_id?: true
+    setId?: true
     filePath?: true
     _all?: true
   }
@@ -5623,7 +5623,7 @@ export namespace Prisma {
 
   export type TrainImageGroupByOutputType = {
     id: number
-    set_id: number
+    setId: number
     filePath: string
     _count: TrainImageCountAggregateOutputType | null
     _avg: TrainImageAvgAggregateOutputType | null
@@ -5648,14 +5648,14 @@ export namespace Prisma {
 
   export type TrainImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    set_id?: boolean
+    setId?: boolean
     filePath?: boolean
     trainImageSet?: boolean | TrainImageSetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trainImage"]>
 
   export type TrainImageSelectScalar = {
     id?: boolean
-    set_id?: boolean
+    setId?: boolean
     filePath?: boolean
   }
 
@@ -5671,7 +5671,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      set_id: number
+      setId: number
       filePath: string
     }, ExtArgs["result"]["trainImage"]>
     composites: {}
@@ -6069,7 +6069,7 @@ export namespace Prisma {
    */ 
   interface TrainImageFieldRefs {
     readonly id: FieldRef<"TrainImage", 'Int'>
-    readonly set_id: FieldRef<"TrainImage", 'Int'>
+    readonly setId: FieldRef<"TrainImage", 'Int'>
     readonly filePath: FieldRef<"TrainImage", 'String'>
   }
     
@@ -6601,7 +6601,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     trainImageSet?: boolean | TrainImageSetDefaultArgs<ExtArgs>
-    GenImages?: boolean | Lora$GenImagesArgs<ExtArgs>
+    genImages?: boolean | Lora$genImagesArgs<ExtArgs>
     _count?: boolean | LoraCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lora"]>
 
@@ -6615,7 +6615,7 @@ export namespace Prisma {
 
   export type LoraInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     trainImageSet?: boolean | TrainImageSetDefaultArgs<ExtArgs>
-    GenImages?: boolean | Lora$GenImagesArgs<ExtArgs>
+    genImages?: boolean | Lora$genImagesArgs<ExtArgs>
     _count?: boolean | LoraCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -6624,7 +6624,7 @@ export namespace Prisma {
     name: "Lora"
     objects: {
       trainImageSet: Prisma.$TrainImageSetPayload<ExtArgs>
-      GenImages: Prisma.$GenImagePayload<ExtArgs>[]
+      genImages: Prisma.$GenImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6999,7 +6999,7 @@ export namespace Prisma {
 
     trainImageSet<T extends TrainImageSetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSetDefaultArgs<ExtArgs>>): Prisma__TrainImageSetClient<$Result.GetResult<Prisma.$TrainImageSetPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    GenImages<T extends Lora$GenImagesArgs<ExtArgs> = {}>(args?: Subset<T, Lora$GenImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenImagePayload<ExtArgs>, T, 'findMany'> | Null>;
+    genImages<T extends Lora$genImagesArgs<ExtArgs> = {}>(args?: Subset<T, Lora$genImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenImagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -7346,9 +7346,9 @@ export namespace Prisma {
 
 
   /**
-   * Lora.GenImages
+   * Lora.genImages
    */
-  export type Lora$GenImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Lora$genImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the GenImage
      */
@@ -7396,32 +7396,32 @@ export namespace Prisma {
 
   export type GenImageAvgAggregateOutputType = {
     id: number | null
-    lora_id: number | null
+    loraId: number | null
   }
 
   export type GenImageSumAggregateOutputType = {
     id: number | null
-    lora_id: number | null
+    loraId: number | null
   }
 
   export type GenImageMinAggregateOutputType = {
     id: number | null
-    lora_id: number | null
-    imagePath: string | null
+    loraId: number | null
+    filePath: string | null
     createdAt: Date | null
   }
 
   export type GenImageMaxAggregateOutputType = {
     id: number | null
-    lora_id: number | null
-    imagePath: string | null
+    loraId: number | null
+    filePath: string | null
     createdAt: Date | null
   }
 
   export type GenImageCountAggregateOutputType = {
     id: number
-    lora_id: number
-    imagePath: number
+    loraId: number
+    filePath: number
     createdAt: number
     _all: number
   }
@@ -7429,32 +7429,32 @@ export namespace Prisma {
 
   export type GenImageAvgAggregateInputType = {
     id?: true
-    lora_id?: true
+    loraId?: true
   }
 
   export type GenImageSumAggregateInputType = {
     id?: true
-    lora_id?: true
+    loraId?: true
   }
 
   export type GenImageMinAggregateInputType = {
     id?: true
-    lora_id?: true
-    imagePath?: true
+    loraId?: true
+    filePath?: true
     createdAt?: true
   }
 
   export type GenImageMaxAggregateInputType = {
     id?: true
-    lora_id?: true
-    imagePath?: true
+    loraId?: true
+    filePath?: true
     createdAt?: true
   }
 
   export type GenImageCountAggregateInputType = {
     id?: true
-    lora_id?: true
-    imagePath?: true
+    loraId?: true
+    filePath?: true
     createdAt?: true
     _all?: true
   }
@@ -7547,8 +7547,8 @@ export namespace Prisma {
 
   export type GenImageGroupByOutputType = {
     id: number
-    lora_id: number
-    imagePath: string
+    loraId: number
+    filePath: string
     createdAt: Date
     _count: GenImageCountAggregateOutputType | null
     _avg: GenImageAvgAggregateOutputType | null
@@ -7573,16 +7573,16 @@ export namespace Prisma {
 
   export type GenImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    lora_id?: boolean
-    imagePath?: boolean
+    loraId?: boolean
+    filePath?: boolean
     createdAt?: boolean
     lora?: boolean | LoraDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["genImage"]>
 
   export type GenImageSelectScalar = {
     id?: boolean
-    lora_id?: boolean
-    imagePath?: boolean
+    loraId?: boolean
+    filePath?: boolean
     createdAt?: boolean
   }
 
@@ -7598,8 +7598,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      lora_id: number
-      imagePath: string
+      loraId: number
+      filePath: string
       createdAt: Date
     }, ExtArgs["result"]["genImage"]>
     composites: {}
@@ -7997,8 +7997,8 @@ export namespace Prisma {
    */ 
   interface GenImageFieldRefs {
     readonly id: FieldRef<"GenImage", 'Int'>
-    readonly lora_id: FieldRef<"GenImage", 'Int'>
-    readonly imagePath: FieldRef<"GenImage", 'String'>
+    readonly loraId: FieldRef<"GenImage", 'Int'>
+    readonly filePath: FieldRef<"GenImage", 'String'>
     readonly createdAt: FieldRef<"GenImage", 'DateTime'>
   }
     
@@ -8347,14 +8347,14 @@ export namespace Prisma {
     type: 'type',
     provider: 'provider',
     providerAccountId: 'providerAccountId',
-    refresh_token: 'refresh_token',
-    access_token: 'access_token',
-    expires_at: 'expires_at',
-    token_type: 'token_type',
+    refreshToken: 'refreshToken',
+    accessToken: 'accessToken',
+    expiresAt: 'expiresAt',
+    tokenType: 'tokenType',
     scope: 'scope',
-    id_token: 'id_token',
-    session_state: 'session_state',
-    refresh_token_expires_in: 'refresh_token_expires_in'
+    idToken: 'idToken',
+    sessionState: 'sessionState',
+    refreshTokenExpiresIn: 'refreshTokenExpiresIn'
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -8375,9 +8375,9 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     image: 'image',
-    user_type: 'user_type',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
+    userType: 'userType',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8385,7 +8385,7 @@ export namespace Prisma {
 
   export const TrainImageSetScalarFieldEnum: {
     id: 'id',
-    user_id: 'user_id',
+    userId: 'userId',
     folderPath: 'folderPath',
     zipPath: 'zipPath',
     createdAt: 'createdAt',
@@ -8397,7 +8397,7 @@ export namespace Prisma {
 
   export const TrainImageScalarFieldEnum: {
     id: 'id',
-    set_id: 'set_id',
+    setId: 'setId',
     filePath: 'filePath'
   };
 
@@ -8417,8 +8417,8 @@ export namespace Prisma {
 
   export const GenImageScalarFieldEnum: {
     id: 'id',
-    lora_id: 'lora_id',
-    imagePath: 'imagePath',
+    loraId: 'loraId',
+    filePath: 'filePath',
     createdAt: 'createdAt'
   };
 
@@ -8493,14 +8493,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
+    refreshToken?: StringNullableFilter<"Account"> | string | null
+    accessToken?: StringNullableFilter<"Account"> | string | null
+    expiresAt?: IntNullableFilter<"Account"> | number | null
+    tokenType?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    idToken?: StringNullableFilter<"Account"> | string | null
+    sessionState?: StringNullableFilter<"Account"> | string | null
+    refreshTokenExpiresIn?: IntNullableFilter<"Account"> | number | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -8510,14 +8510,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
-    access_token?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
+    refreshToken?: SortOrderInput | SortOrder
+    accessToken?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    tokenType?: SortOrderInput | SortOrder
     scope?: SortOrderInput | SortOrder
-    id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
-    refresh_token_expires_in?: SortOrderInput | SortOrder
+    idToken?: SortOrderInput | SortOrder
+    sessionState?: SortOrderInput | SortOrder
+    refreshTokenExpiresIn?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -8531,14 +8531,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
+    refreshToken?: StringNullableFilter<"Account"> | string | null
+    accessToken?: StringNullableFilter<"Account"> | string | null
+    expiresAt?: IntNullableFilter<"Account"> | number | null
+    tokenType?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    idToken?: StringNullableFilter<"Account"> | string | null
+    sessionState?: StringNullableFilter<"Account"> | string | null
+    refreshTokenExpiresIn?: IntNullableFilter<"Account"> | number | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "provider_providerAccountId">
 
@@ -8548,14 +8548,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
-    access_token?: SortOrderInput | SortOrder
-    expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
+    refreshToken?: SortOrderInput | SortOrder
+    accessToken?: SortOrderInput | SortOrder
+    expiresAt?: SortOrderInput | SortOrder
+    tokenType?: SortOrderInput | SortOrder
     scope?: SortOrderInput | SortOrder
-    id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
-    refresh_token_expires_in?: SortOrderInput | SortOrder
+    idToken?: SortOrderInput | SortOrder
+    sessionState?: SortOrderInput | SortOrder
+    refreshTokenExpiresIn?: SortOrderInput | SortOrder
     _count?: AccountCountOrderByAggregateInput
     _avg?: AccountAvgOrderByAggregateInput
     _max?: AccountMaxOrderByAggregateInput
@@ -8572,14 +8572,14 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Account"> | string
     provider?: StringWithAggregatesFilter<"Account"> | string
     providerAccountId?: StringWithAggregatesFilter<"Account"> | string
-    refresh_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    access_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    expires_at?: IntNullableWithAggregatesFilter<"Account"> | number | null
-    token_type?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    refreshToken?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    accessToken?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    expiresAt?: IntNullableWithAggregatesFilter<"Account"> | number | null
+    tokenType?: StringNullableWithAggregatesFilter<"Account"> | string | null
     scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    id_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableWithAggregatesFilter<"Account"> | number | null
+    idToken?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    sessionState?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    refreshTokenExpiresIn?: IntNullableWithAggregatesFilter<"Account"> | number | null
   }
 
   export type SessionWhereInput = {
@@ -8640,12 +8640,12 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
-    user_type?: EnumUserTypeNullableFilter<"User"> | $Enums.UserType | null
-    created_at?: DateTimeFilter<"User"> | Date | string
-    updated_at?: DateTimeFilter<"User"> | Date | string
-    TrainImageSets?: TrainImageSetListRelationFilter
-    Sessions?: SessionListRelationFilter
-    Accounts?: AccountListRelationFilter
+    userType?: EnumUserTypeNullableFilter<"User"> | $Enums.UserType | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    trainImageSets?: TrainImageSetListRelationFilter
+    sessions?: SessionListRelationFilter
+    accounts?: AccountListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8653,12 +8653,12 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
-    user_type?: SortOrderInput | SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    TrainImageSets?: TrainImageSetOrderByRelationAggregateInput
-    Sessions?: SessionOrderByRelationAggregateInput
-    Accounts?: AccountOrderByRelationAggregateInput
+    userType?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    trainImageSets?: TrainImageSetOrderByRelationAggregateInput
+    sessions?: SessionOrderByRelationAggregateInput
+    accounts?: AccountOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8669,12 +8669,12 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     image?: StringNullableFilter<"User"> | string | null
-    user_type?: EnumUserTypeNullableFilter<"User"> | $Enums.UserType | null
-    created_at?: DateTimeFilter<"User"> | Date | string
-    updated_at?: DateTimeFilter<"User"> | Date | string
-    TrainImageSets?: TrainImageSetListRelationFilter
-    Sessions?: SessionListRelationFilter
-    Accounts?: AccountListRelationFilter
+    userType?: EnumUserTypeNullableFilter<"User"> | $Enums.UserType | null
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
+    trainImageSets?: TrainImageSetListRelationFilter
+    sessions?: SessionListRelationFilter
+    accounts?: AccountListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8682,9 +8682,9 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
-    user_type?: SortOrderInput | SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
+    userType?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -8698,9 +8698,9 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_type?: EnumUserTypeNullableWithAggregatesFilter<"User"> | $Enums.UserType | null
-    created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    userType?: EnumUserTypeNullableWithAggregatesFilter<"User"> | $Enums.UserType | null
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type TrainImageSetWhereInput = {
@@ -8708,26 +8708,26 @@ export namespace Prisma {
     OR?: TrainImageSetWhereInput[]
     NOT?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
     id?: IntFilter<"TrainImageSet"> | number
-    user_id?: StringFilter<"TrainImageSet"> | string
+    userId?: StringFilter<"TrainImageSet"> | string
     folderPath?: StringFilter<"TrainImageSet"> | string
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    TrainImage?: TrainImageListRelationFilter
-    Lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
+    trainImages?: TrainImageListRelationFilter
+    lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
   }
 
   export type TrainImageSetOrderByWithRelationInput = {
     id?: SortOrder
-    user_id?: SortOrder
+    userId?: SortOrder
     folderPath?: SortOrder
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    TrainImage?: TrainImageOrderByRelationAggregateInput
-    Lora?: LoraOrderByWithRelationInput
+    trainImages?: TrainImageOrderByRelationAggregateInput
+    lora?: LoraOrderByWithRelationInput
   }
 
   export type TrainImageSetWhereUniqueInput = Prisma.AtLeast<{
@@ -8735,19 +8735,19 @@ export namespace Prisma {
     AND?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
     OR?: TrainImageSetWhereInput[]
     NOT?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
-    user_id?: StringFilter<"TrainImageSet"> | string
+    userId?: StringFilter<"TrainImageSet"> | string
     folderPath?: StringFilter<"TrainImageSet"> | string
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-    TrainImage?: TrainImageListRelationFilter
-    Lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
+    trainImages?: TrainImageListRelationFilter
+    lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
   }, "id">
 
   export type TrainImageSetOrderByWithAggregationInput = {
     id?: SortOrder
-    user_id?: SortOrder
+    userId?: SortOrder
     folderPath?: SortOrder
     zipPath?: SortOrder
     createdAt?: SortOrder
@@ -8764,7 +8764,7 @@ export namespace Prisma {
     OR?: TrainImageSetScalarWhereWithAggregatesInput[]
     NOT?: TrainImageSetScalarWhereWithAggregatesInput | TrainImageSetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"TrainImageSet"> | number
-    user_id?: StringWithAggregatesFilter<"TrainImageSet"> | string
+    userId?: StringWithAggregatesFilter<"TrainImageSet"> | string
     folderPath?: StringWithAggregatesFilter<"TrainImageSet"> | string
     zipPath?: StringWithAggregatesFilter<"TrainImageSet"> | string
     createdAt?: DateTimeWithAggregatesFilter<"TrainImageSet"> | Date | string
@@ -8776,14 +8776,14 @@ export namespace Prisma {
     OR?: TrainImageWhereInput[]
     NOT?: TrainImageWhereInput | TrainImageWhereInput[]
     id?: IntFilter<"TrainImage"> | number
-    set_id?: IntFilter<"TrainImage"> | number
+    setId?: IntFilter<"TrainImage"> | number
     filePath?: StringFilter<"TrainImage"> | string
     trainImageSet?: XOR<TrainImageSetRelationFilter, TrainImageSetWhereInput>
   }
 
   export type TrainImageOrderByWithRelationInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
     filePath?: SortOrder
     trainImageSet?: TrainImageSetOrderByWithRelationInput
   }
@@ -8793,14 +8793,14 @@ export namespace Prisma {
     AND?: TrainImageWhereInput | TrainImageWhereInput[]
     OR?: TrainImageWhereInput[]
     NOT?: TrainImageWhereInput | TrainImageWhereInput[]
-    set_id?: IntFilter<"TrainImage"> | number
+    setId?: IntFilter<"TrainImage"> | number
     filePath?: StringFilter<"TrainImage"> | string
     trainImageSet?: XOR<TrainImageSetRelationFilter, TrainImageSetWhereInput>
   }, "id">
 
   export type TrainImageOrderByWithAggregationInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
     filePath?: SortOrder
     _count?: TrainImageCountOrderByAggregateInput
     _avg?: TrainImageAvgOrderByAggregateInput
@@ -8814,7 +8814,7 @@ export namespace Prisma {
     OR?: TrainImageScalarWhereWithAggregatesInput[]
     NOT?: TrainImageScalarWhereWithAggregatesInput | TrainImageScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"TrainImage"> | number
-    set_id?: IntWithAggregatesFilter<"TrainImage"> | number
+    setId?: IntWithAggregatesFilter<"TrainImage"> | number
     filePath?: StringWithAggregatesFilter<"TrainImage"> | string
   }
 
@@ -8828,7 +8828,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Lora"> | Date | string
     updatedAt?: DateTimeFilter<"Lora"> | Date | string
     trainImageSet?: XOR<TrainImageSetRelationFilter, TrainImageSetWhereInput>
-    GenImages?: GenImageListRelationFilter
+    genImages?: GenImageListRelationFilter
   }
 
   export type LoraOrderByWithRelationInput = {
@@ -8838,7 +8838,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     trainImageSet?: TrainImageSetOrderByWithRelationInput
-    GenImages?: GenImageOrderByRelationAggregateInput
+    genImages?: GenImageOrderByRelationAggregateInput
   }
 
   export type LoraWhereUniqueInput = Prisma.AtLeast<{
@@ -8851,7 +8851,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Lora"> | Date | string
     updatedAt?: DateTimeFilter<"Lora"> | Date | string
     trainImageSet?: XOR<TrainImageSetRelationFilter, TrainImageSetWhereInput>
-    GenImages?: GenImageListRelationFilter
+    genImages?: GenImageListRelationFilter
   }, "id" | "trainImageSetId">
 
   export type LoraOrderByWithAggregationInput = {
@@ -8883,16 +8883,16 @@ export namespace Prisma {
     OR?: GenImageWhereInput[]
     NOT?: GenImageWhereInput | GenImageWhereInput[]
     id?: IntFilter<"GenImage"> | number
-    lora_id?: IntFilter<"GenImage"> | number
-    imagePath?: StringFilter<"GenImage"> | string
+    loraId?: IntFilter<"GenImage"> | number
+    filePath?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
     lora?: XOR<LoraRelationFilter, LoraWhereInput>
   }
 
   export type GenImageOrderByWithRelationInput = {
     id?: SortOrder
-    lora_id?: SortOrder
-    imagePath?: SortOrder
+    loraId?: SortOrder
+    filePath?: SortOrder
     createdAt?: SortOrder
     lora?: LoraOrderByWithRelationInput
   }
@@ -8902,16 +8902,16 @@ export namespace Prisma {
     AND?: GenImageWhereInput | GenImageWhereInput[]
     OR?: GenImageWhereInput[]
     NOT?: GenImageWhereInput | GenImageWhereInput[]
-    lora_id?: IntFilter<"GenImage"> | number
-    imagePath?: StringFilter<"GenImage"> | string
+    loraId?: IntFilter<"GenImage"> | number
+    filePath?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
     lora?: XOR<LoraRelationFilter, LoraWhereInput>
   }, "id">
 
   export type GenImageOrderByWithAggregationInput = {
     id?: SortOrder
-    lora_id?: SortOrder
-    imagePath?: SortOrder
+    loraId?: SortOrder
+    filePath?: SortOrder
     createdAt?: SortOrder
     _count?: GenImageCountOrderByAggregateInput
     _avg?: GenImageAvgOrderByAggregateInput
@@ -8925,8 +8925,8 @@ export namespace Prisma {
     OR?: GenImageScalarWhereWithAggregatesInput[]
     NOT?: GenImageScalarWhereWithAggregatesInput | GenImageScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"GenImage"> | number
-    lora_id?: IntWithAggregatesFilter<"GenImage"> | number
-    imagePath?: StringWithAggregatesFilter<"GenImage"> | string
+    loraId?: IntWithAggregatesFilter<"GenImage"> | number
+    filePath?: StringWithAggregatesFilter<"GenImage"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GenImage"> | Date | string
   }
 
@@ -8935,14 +8935,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
     user: UserCreateNestedOneWithoutAccountsInput
   }
 
@@ -8952,14 +8952,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
   }
 
   export type AccountUpdateInput = {
@@ -8967,14 +8967,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
     user?: UserUpdateOneRequiredWithoutAccountsNestedInput
   }
 
@@ -8984,14 +8984,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountCreateManyInput = {
@@ -9000,14 +9000,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
   }
 
   export type AccountUpdateManyMutationInput = {
@@ -9015,14 +9015,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateManyInput = {
@@ -9031,14 +9031,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type SessionCreateInput = {
@@ -9094,12 +9094,12 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
-    Sessions?: SessionCreateNestedManyWithoutUserInput
-    Accounts?: AccountCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9107,12 +9107,12 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
-    Sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9120,12 +9120,12 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
-    Sessions?: SessionUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9133,12 +9133,12 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
-    Sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9146,9 +9146,9 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -9156,9 +9156,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -9166,9 +9166,9 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TrainImageSetCreateInput = {
@@ -9177,19 +9177,19 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
-    TrainImage?: TrainImageCreateNestedManyWithoutTrainImageSetInput
-    Lora?: LoraCreateNestedOneWithoutTrainImageSetInput
+    trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
+    lora?: LoraCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateInput = {
     id?: number
-    user_id: string
+    userId: string
     folderPath: string
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    TrainImage?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
-    Lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
+    trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
+    lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUpdateInput = {
@@ -9198,24 +9198,24 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
-    TrainImage?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
-    Lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     folderPath?: StringFieldUpdateOperationsInput | string
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImage?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
-    Lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetCreateManyInput = {
     id?: number
-    user_id: string
+    userId: string
     folderPath: string
     zipPath: string
     createdAt?: Date | string
@@ -9231,7 +9231,7 @@ export namespace Prisma {
 
   export type TrainImageSetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     folderPath?: StringFieldUpdateOperationsInput | string
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9240,29 +9240,29 @@ export namespace Prisma {
 
   export type TrainImageCreateInput = {
     filePath: string
-    trainImageSet: TrainImageSetCreateNestedOneWithoutTrainImageInput
+    trainImageSet: TrainImageSetCreateNestedOneWithoutTrainImagesInput
   }
 
   export type TrainImageUncheckedCreateInput = {
     id?: number
-    set_id: number
+    setId: number
     filePath: string
   }
 
   export type TrainImageUpdateInput = {
     filePath?: StringFieldUpdateOperationsInput | string
-    trainImageSet?: TrainImageSetUpdateOneRequiredWithoutTrainImageNestedInput
+    trainImageSet?: TrainImageSetUpdateOneRequiredWithoutTrainImagesNestedInput
   }
 
   export type TrainImageUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    set_id?: IntFieldUpdateOperationsInput | number
+    setId?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
   }
 
   export type TrainImageCreateManyInput = {
     id?: number
-    set_id: number
+    setId: number
     filePath: string
   }
 
@@ -9272,7 +9272,7 @@ export namespace Prisma {
 
   export type TrainImageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    set_id?: IntFieldUpdateOperationsInput | number
+    setId?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
   }
 
@@ -9281,7 +9281,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     trainImageSet: TrainImageSetCreateNestedOneWithoutLoraInput
-    GenImages?: GenImageCreateNestedManyWithoutLoraInput
+    genImages?: GenImageCreateNestedManyWithoutLoraInput
   }
 
   export type LoraUncheckedCreateInput = {
@@ -9290,7 +9290,7 @@ export namespace Prisma {
     path: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    GenImages?: GenImageUncheckedCreateNestedManyWithoutLoraInput
+    genImages?: GenImageUncheckedCreateNestedManyWithoutLoraInput
   }
 
   export type LoraUpdateInput = {
@@ -9298,7 +9298,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     trainImageSet?: TrainImageSetUpdateOneRequiredWithoutLoraNestedInput
-    GenImages?: GenImageUpdateManyWithoutLoraNestedInput
+    genImages?: GenImageUpdateManyWithoutLoraNestedInput
   }
 
   export type LoraUncheckedUpdateInput = {
@@ -9307,7 +9307,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    GenImages?: GenImageUncheckedUpdateManyWithoutLoraNestedInput
+    genImages?: GenImageUncheckedUpdateManyWithoutLoraNestedInput
   }
 
   export type LoraCreateManyInput = {
@@ -9333,47 +9333,47 @@ export namespace Prisma {
   }
 
   export type GenImageCreateInput = {
-    imagePath: string
+    filePath: string
     createdAt?: Date | string
     lora: LoraCreateNestedOneWithoutGenImagesInput
   }
 
   export type GenImageUncheckedCreateInput = {
     id?: number
-    lora_id: number
-    imagePath: string
+    loraId: number
+    filePath: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateInput = {
-    imagePath?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lora?: LoraUpdateOneRequiredWithoutGenImagesNestedInput
   }
 
   export type GenImageUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    lora_id?: IntFieldUpdateOperationsInput | number
-    imagePath?: StringFieldUpdateOperationsInput | string
+    loraId?: IntFieldUpdateOperationsInput | number
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageCreateManyInput = {
     id?: number
-    lora_id: number
-    imagePath: string
+    loraId: number
+    filePath: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateManyMutationInput = {
-    imagePath?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    lora_id?: IntFieldUpdateOperationsInput | number
-    imagePath?: StringFieldUpdateOperationsInput | string
+    loraId?: IntFieldUpdateOperationsInput | number
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9437,19 +9437,19 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
+    refreshToken?: SortOrder
+    accessToken?: SortOrder
+    expiresAt?: SortOrder
+    tokenType?: SortOrder
     scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    idToken?: SortOrder
+    sessionState?: SortOrder
+    refreshTokenExpiresIn?: SortOrder
   }
 
   export type AccountAvgOrderByAggregateInput = {
-    expires_at?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    expiresAt?: SortOrder
+    refreshTokenExpiresIn?: SortOrder
   }
 
   export type AccountMaxOrderByAggregateInput = {
@@ -9458,14 +9458,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
+    refreshToken?: SortOrder
+    accessToken?: SortOrder
+    expiresAt?: SortOrder
+    tokenType?: SortOrder
     scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    idToken?: SortOrder
+    sessionState?: SortOrder
+    refreshTokenExpiresIn?: SortOrder
   }
 
   export type AccountMinOrderByAggregateInput = {
@@ -9474,19 +9474,19 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
-    access_token?: SortOrder
-    expires_at?: SortOrder
-    token_type?: SortOrder
+    refreshToken?: SortOrder
+    accessToken?: SortOrder
+    expiresAt?: SortOrder
+    tokenType?: SortOrder
     scope?: SortOrder
-    id_token?: SortOrder
-    session_state?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    idToken?: SortOrder
+    sessionState?: SortOrder
+    refreshTokenExpiresIn?: SortOrder
   }
 
   export type AccountSumOrderByAggregateInput = {
-    expires_at?: SortOrder
-    refresh_token_expires_in?: SortOrder
+    expiresAt?: SortOrder
+    refreshTokenExpiresIn?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9627,9 +9627,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
-    user_type?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
+    userType?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -9637,9 +9637,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
-    user_type?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
+    userType?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -9647,9 +9647,9 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     image?: SortOrder
-    user_type?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
+    userType?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type EnumUserTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9690,7 +9690,7 @@ export namespace Prisma {
 
   export type TrainImageSetCountOrderByAggregateInput = {
     id?: SortOrder
-    user_id?: SortOrder
+    userId?: SortOrder
     folderPath?: SortOrder
     zipPath?: SortOrder
     createdAt?: SortOrder
@@ -9703,7 +9703,7 @@ export namespace Prisma {
 
   export type TrainImageSetMaxOrderByAggregateInput = {
     id?: SortOrder
-    user_id?: SortOrder
+    userId?: SortOrder
     folderPath?: SortOrder
     zipPath?: SortOrder
     createdAt?: SortOrder
@@ -9712,7 +9712,7 @@ export namespace Prisma {
 
   export type TrainImageSetMinOrderByAggregateInput = {
     id?: SortOrder
-    user_id?: SortOrder
+    userId?: SortOrder
     folderPath?: SortOrder
     zipPath?: SortOrder
     createdAt?: SortOrder
@@ -9746,30 +9746,30 @@ export namespace Prisma {
 
   export type TrainImageCountOrderByAggregateInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
     filePath?: SortOrder
   }
 
   export type TrainImageAvgOrderByAggregateInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
   }
 
   export type TrainImageMaxOrderByAggregateInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
     filePath?: SortOrder
   }
 
   export type TrainImageMinOrderByAggregateInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
     filePath?: SortOrder
   }
 
   export type TrainImageSumOrderByAggregateInput = {
     id?: SortOrder
-    set_id?: SortOrder
+    setId?: SortOrder
   }
 
   export type GenImageListRelationFilter = {
@@ -9823,33 +9823,33 @@ export namespace Prisma {
 
   export type GenImageCountOrderByAggregateInput = {
     id?: SortOrder
-    lora_id?: SortOrder
-    imagePath?: SortOrder
+    loraId?: SortOrder
+    filePath?: SortOrder
     createdAt?: SortOrder
   }
 
   export type GenImageAvgOrderByAggregateInput = {
     id?: SortOrder
-    lora_id?: SortOrder
+    loraId?: SortOrder
   }
 
   export type GenImageMaxOrderByAggregateInput = {
     id?: SortOrder
-    lora_id?: SortOrder
-    imagePath?: SortOrder
+    loraId?: SortOrder
+    filePath?: SortOrder
     createdAt?: SortOrder
   }
 
   export type GenImageMinOrderByAggregateInput = {
     id?: SortOrder
-    lora_id?: SortOrder
-    imagePath?: SortOrder
+    loraId?: SortOrder
+    filePath?: SortOrder
     createdAt?: SortOrder
   }
 
   export type GenImageSumOrderByAggregateInput = {
     id?: SortOrder
-    lora_id?: SortOrder
+    loraId?: SortOrder
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -10126,18 +10126,18 @@ export namespace Prisma {
     update?: XOR<XOR<LoraUpdateToOneWithWhereWithoutTrainImageSetInput, LoraUpdateWithoutTrainImageSetInput>, LoraUncheckedUpdateWithoutTrainImageSetInput>
   }
 
-  export type TrainImageSetCreateNestedOneWithoutTrainImageInput = {
-    create?: XOR<TrainImageSetCreateWithoutTrainImageInput, TrainImageSetUncheckedCreateWithoutTrainImageInput>
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutTrainImageInput
+  export type TrainImageSetCreateNestedOneWithoutTrainImagesInput = {
+    create?: XOR<TrainImageSetCreateWithoutTrainImagesInput, TrainImageSetUncheckedCreateWithoutTrainImagesInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutTrainImagesInput
     connect?: TrainImageSetWhereUniqueInput
   }
 
-  export type TrainImageSetUpdateOneRequiredWithoutTrainImageNestedInput = {
-    create?: XOR<TrainImageSetCreateWithoutTrainImageInput, TrainImageSetUncheckedCreateWithoutTrainImageInput>
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutTrainImageInput
-    upsert?: TrainImageSetUpsertWithoutTrainImageInput
+  export type TrainImageSetUpdateOneRequiredWithoutTrainImagesNestedInput = {
+    create?: XOR<TrainImageSetCreateWithoutTrainImagesInput, TrainImageSetUncheckedCreateWithoutTrainImagesInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutTrainImagesInput
+    upsert?: TrainImageSetUpsertWithoutTrainImagesInput
     connect?: TrainImageSetWhereUniqueInput
-    update?: XOR<XOR<TrainImageSetUpdateToOneWithWhereWithoutTrainImageInput, TrainImageSetUpdateWithoutTrainImageInput>, TrainImageSetUncheckedUpdateWithoutTrainImageInput>
+    update?: XOR<XOR<TrainImageSetUpdateToOneWithWhereWithoutTrainImagesInput, TrainImageSetUpdateWithoutTrainImagesInput>, TrainImageSetUncheckedUpdateWithoutTrainImagesInput>
   }
 
   export type TrainImageSetCreateNestedOneWithoutLoraInput = {
@@ -10395,11 +10395,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
-    Sessions?: SessionCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -10407,11 +10407,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
-    Sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -10435,11 +10435,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
-    Sessions?: SessionUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -10447,11 +10447,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
-    Sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
@@ -10459,11 +10459,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
-    Accounts?: AccountCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -10471,11 +10471,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    TrainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
-    Accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    trainImageSets?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -10499,11 +10499,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -10511,11 +10511,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainImageSets?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TrainImageSetCreateWithoutUserInput = {
@@ -10523,8 +10523,8 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    TrainImage?: TrainImageCreateNestedManyWithoutTrainImageSetInput
-    Lora?: LoraCreateNestedOneWithoutTrainImageSetInput
+    trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
+    lora?: LoraCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateWithoutUserInput = {
@@ -10533,8 +10533,8 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    TrainImage?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
-    Lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
+    trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
+    lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetCreateOrConnectWithoutUserInput = {
@@ -10574,14 +10574,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
   }
 
   export type AccountUncheckedCreateWithoutUserInput = {
@@ -10589,14 +10589,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
   }
 
   export type AccountCreateOrConnectWithoutUserInput = {
@@ -10630,7 +10630,7 @@ export namespace Prisma {
     OR?: TrainImageSetScalarWhereInput[]
     NOT?: TrainImageSetScalarWhereInput | TrainImageSetScalarWhereInput[]
     id?: IntFilter<"TrainImageSet"> | number
-    user_id?: StringFilter<"TrainImageSet"> | string
+    userId?: StringFilter<"TrainImageSet"> | string
     folderPath?: StringFilter<"TrainImageSet"> | string
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
@@ -10688,14 +10688,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
-    access_token?: StringNullableFilter<"Account"> | string | null
-    expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
+    refreshToken?: StringNullableFilter<"Account"> | string | null
+    accessToken?: StringNullableFilter<"Account"> | string | null
+    expiresAt?: IntNullableFilter<"Account"> | number | null
+    tokenType?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
-    id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
-    refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    idToken?: StringNullableFilter<"Account"> | string | null
+    sessionState?: StringNullableFilter<"Account"> | string | null
+    refreshTokenExpiresIn?: IntNullableFilter<"Account"> | number | null
   }
 
   export type UserCreateWithoutTrainImageSetsInput = {
@@ -10703,11 +10703,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    Sessions?: SessionCreateNestedManyWithoutUserInput
-    Accounts?: AccountCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTrainImageSetsInput = {
@@ -10715,11 +10715,11 @@ export namespace Prisma {
     name?: string | null
     email?: string | null
     image?: string | null
-    user_type?: $Enums.UserType | null
-    created_at?: Date | string
-    updated_at?: Date | string
-    Sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    Accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    userType?: $Enums.UserType | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTrainImageSetsInput = {
@@ -10750,7 +10750,7 @@ export namespace Prisma {
     path: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    GenImages?: GenImageCreateNestedManyWithoutLoraInput
+    genImages?: GenImageCreateNestedManyWithoutLoraInput
   }
 
   export type LoraUncheckedCreateWithoutTrainImageSetInput = {
@@ -10758,7 +10758,7 @@ export namespace Prisma {
     path: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    GenImages?: GenImageUncheckedCreateNestedManyWithoutLoraInput
+    genImages?: GenImageUncheckedCreateNestedManyWithoutLoraInput
   }
 
   export type LoraCreateOrConnectWithoutTrainImageSetInput = {
@@ -10782,11 +10782,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Sessions?: SessionUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTrainImageSetsInput = {
@@ -10794,11 +10794,11 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    user_type?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    Accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    userType?: NullableEnumUserTypeFieldUpdateOperationsInput | $Enums.UserType | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TrainImageUpsertWithWhereUniqueWithoutTrainImageSetInput = {
@@ -10822,7 +10822,7 @@ export namespace Prisma {
     OR?: TrainImageScalarWhereInput[]
     NOT?: TrainImageScalarWhereInput | TrainImageScalarWhereInput[]
     id?: IntFilter<"TrainImage"> | number
-    set_id?: IntFilter<"TrainImage"> | number
+    setId?: IntFilter<"TrainImage"> | number
     filePath?: StringFilter<"TrainImage"> | string
   }
 
@@ -10841,7 +10841,7 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    GenImages?: GenImageUpdateManyWithoutLoraNestedInput
+    genImages?: GenImageUpdateManyWithoutLoraNestedInput
   }
 
   export type LoraUncheckedUpdateWithoutTrainImageSetInput = {
@@ -10849,61 +10849,61 @@ export namespace Prisma {
     path?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    GenImages?: GenImageUncheckedUpdateManyWithoutLoraNestedInput
+    genImages?: GenImageUncheckedUpdateManyWithoutLoraNestedInput
   }
 
-  export type TrainImageSetCreateWithoutTrainImageInput = {
+  export type TrainImageSetCreateWithoutTrainImagesInput = {
     folderPath: string
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
-    Lora?: LoraCreateNestedOneWithoutTrainImageSetInput
+    lora?: LoraCreateNestedOneWithoutTrainImageSetInput
   }
 
-  export type TrainImageSetUncheckedCreateWithoutTrainImageInput = {
+  export type TrainImageSetUncheckedCreateWithoutTrainImagesInput = {
     id?: number
-    user_id: string
+    userId: string
     folderPath: string
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
+    lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
 
-  export type TrainImageSetCreateOrConnectWithoutTrainImageInput = {
+  export type TrainImageSetCreateOrConnectWithoutTrainImagesInput = {
     where: TrainImageSetWhereUniqueInput
-    create: XOR<TrainImageSetCreateWithoutTrainImageInput, TrainImageSetUncheckedCreateWithoutTrainImageInput>
+    create: XOR<TrainImageSetCreateWithoutTrainImagesInput, TrainImageSetUncheckedCreateWithoutTrainImagesInput>
   }
 
-  export type TrainImageSetUpsertWithoutTrainImageInput = {
-    update: XOR<TrainImageSetUpdateWithoutTrainImageInput, TrainImageSetUncheckedUpdateWithoutTrainImageInput>
-    create: XOR<TrainImageSetCreateWithoutTrainImageInput, TrainImageSetUncheckedCreateWithoutTrainImageInput>
+  export type TrainImageSetUpsertWithoutTrainImagesInput = {
+    update: XOR<TrainImageSetUpdateWithoutTrainImagesInput, TrainImageSetUncheckedUpdateWithoutTrainImagesInput>
+    create: XOR<TrainImageSetCreateWithoutTrainImagesInput, TrainImageSetUncheckedCreateWithoutTrainImagesInput>
     where?: TrainImageSetWhereInput
   }
 
-  export type TrainImageSetUpdateToOneWithWhereWithoutTrainImageInput = {
+  export type TrainImageSetUpdateToOneWithWhereWithoutTrainImagesInput = {
     where?: TrainImageSetWhereInput
-    data: XOR<TrainImageSetUpdateWithoutTrainImageInput, TrainImageSetUncheckedUpdateWithoutTrainImageInput>
+    data: XOR<TrainImageSetUpdateWithoutTrainImagesInput, TrainImageSetUncheckedUpdateWithoutTrainImagesInput>
   }
 
-  export type TrainImageSetUpdateWithoutTrainImageInput = {
+  export type TrainImageSetUpdateWithoutTrainImagesInput = {
     folderPath?: StringFieldUpdateOperationsInput | string
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
-    Lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
+    lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
 
-  export type TrainImageSetUncheckedUpdateWithoutTrainImageInput = {
+  export type TrainImageSetUncheckedUpdateWithoutTrainImagesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     folderPath?: StringFieldUpdateOperationsInput | string
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
+    lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetCreateWithoutLoraInput = {
@@ -10912,17 +10912,17 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
-    TrainImage?: TrainImageCreateNestedManyWithoutTrainImageSetInput
+    trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateWithoutLoraInput = {
     id?: number
-    user_id: string
+    userId: string
     folderPath: string
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    TrainImage?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
+    trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
   }
 
   export type TrainImageSetCreateOrConnectWithoutLoraInput = {
@@ -10931,13 +10931,13 @@ export namespace Prisma {
   }
 
   export type GenImageCreateWithoutLoraInput = {
-    imagePath: string
+    filePath: string
     createdAt?: Date | string
   }
 
   export type GenImageUncheckedCreateWithoutLoraInput = {
     id?: number
-    imagePath: string
+    filePath: string
     createdAt?: Date | string
   }
 
@@ -10968,17 +10968,17 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
-    TrainImage?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateWithoutLoraInput = {
     id?: IntFieldUpdateOperationsInput | number
-    user_id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     folderPath?: StringFieldUpdateOperationsInput | string
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImage?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
   }
 
   export type GenImageUpsertWithWhereUniqueWithoutLoraInput = {
@@ -11002,8 +11002,8 @@ export namespace Prisma {
     OR?: GenImageScalarWhereInput[]
     NOT?: GenImageScalarWhereInput | GenImageScalarWhereInput[]
     id?: IntFilter<"GenImage"> | number
-    lora_id?: IntFilter<"GenImage"> | number
-    imagePath?: StringFilter<"GenImage"> | string
+    loraId?: IntFilter<"GenImage"> | number
+    filePath?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
   }
 
@@ -11072,14 +11072,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
-    access_token?: string | null
-    expires_at?: number | null
-    token_type?: string | null
+    refreshToken?: string | null
+    accessToken?: string | null
+    expiresAt?: number | null
+    tokenType?: string | null
     scope?: string | null
-    id_token?: string | null
-    session_state?: string | null
-    refresh_token_expires_in?: number | null
+    idToken?: string | null
+    sessionState?: string | null
+    refreshTokenExpiresIn?: number | null
   }
 
   export type TrainImageSetUpdateWithoutUserInput = {
@@ -11087,8 +11087,8 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImage?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
-    Lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateWithoutUserInput = {
@@ -11097,8 +11097,8 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    TrainImage?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
-    Lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
+    trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateManyWithoutUserInput = {
@@ -11132,14 +11132,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateWithoutUserInput = {
@@ -11147,14 +11147,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type AccountUncheckedUpdateManyWithoutUserInput = {
@@ -11162,14 +11162,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    access_token?: NullableStringFieldUpdateOperationsInput | string | null
-    expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshToken?: NullableStringFieldUpdateOperationsInput | string | null
+    accessToken?: NullableStringFieldUpdateOperationsInput | string | null
+    expiresAt?: NullableIntFieldUpdateOperationsInput | number | null
+    tokenType?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
-    id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    idToken?: NullableStringFieldUpdateOperationsInput | string | null
+    sessionState?: NullableStringFieldUpdateOperationsInput | string | null
+    refreshTokenExpiresIn?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TrainImageCreateManyTrainImageSetInput = {
@@ -11193,24 +11193,24 @@ export namespace Prisma {
 
   export type GenImageCreateManyLoraInput = {
     id?: number
-    imagePath: string
+    filePath: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateWithoutLoraInput = {
-    imagePath?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageUncheckedUpdateWithoutLoraInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imagePath?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageUncheckedUpdateManyWithoutLoraInput = {
     id?: IntFieldUpdateOperationsInput | number
-    imagePath?: StringFieldUpdateOperationsInput | string
+    filePath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

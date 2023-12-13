@@ -113,14 +113,14 @@ exports.Prisma.AccountScalarFieldEnum = {
   type: 'type',
   provider: 'provider',
   providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
-  access_token: 'access_token',
-  expires_at: 'expires_at',
-  token_type: 'token_type',
+  refreshToken: 'refreshToken',
+  accessToken: 'accessToken',
+  expiresAt: 'expiresAt',
+  tokenType: 'tokenType',
   scope: 'scope',
-  id_token: 'id_token',
-  session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
+  idToken: 'idToken',
+  sessionState: 'sessionState',
+  refreshTokenExpiresIn: 'refreshTokenExpiresIn'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -135,14 +135,14 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   image: 'image',
-  user_type: 'user_type',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
+  userType: 'userType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TrainImageSetScalarFieldEnum = {
   id: 'id',
-  user_id: 'user_id',
+  userId: 'userId',
   folderPath: 'folderPath',
   zipPath: 'zipPath',
   createdAt: 'createdAt',
@@ -151,7 +151,7 @@ exports.Prisma.TrainImageSetScalarFieldEnum = {
 
 exports.Prisma.TrainImageScalarFieldEnum = {
   id: 'id',
-  set_id: 'set_id',
+  setId: 'setId',
   filePath: 'filePath'
 };
 
@@ -165,8 +165,8 @@ exports.Prisma.LoraScalarFieldEnum = {
 
 exports.Prisma.GenImageScalarFieldEnum = {
   id: 'id',
-  lora_id: 'lora_id',
-  imagePath: 'imagePath',
+  loraId: 'loraId',
+  filePath: 'filePath',
   createdAt: 'createdAt'
 };
 

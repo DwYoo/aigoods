@@ -1,10 +1,10 @@
 require('dotenv').config(); // Load environment variables from .env file
   
 export let inferenceRequestData= {
-  "input": {
-    "output_path": "",
-    "prompt": {
-        "3": {
+    "input": {
+        "output_path": "",
+        "prompt": {
+            "3": {
             "inputs": {
                 "seed": 797061021937642,
                 "steps": 20,
@@ -13,99 +13,99 @@ export let inferenceRequestData= {
                 "scheduler": "normal",
                 "denoise": 1,
                 "model": [
-                    "11",
-                    0
+                "11",
+                0
                 ],
                 "positive": [
-                    "6",
-                    0
+                "6",
+                0
                 ],
                 "negative": [
-                    "7",
-                    0
+                "7",
+                0
                 ],
                 "latent_image": [
-                    "5",
-                    0
+                "5",
+                0
                 ]
             },
             "class_type": "KSampler"
-        },
-        "4": {
+            },
+            "4": {
             "inputs": {
                 "ckpt_name": "sd_xl_base_1.0.safetensors"
             },
             "class_type": "CheckpointLoaderSimple"
-        },
-        "5": {
+            },
+            "5": {
             "inputs": {
                 "width": 512,
                 "height": 512,
                 "batch_size": 2
             },
             "class_type": "EmptyLatentImage"
-        },
-        "6": {
+            },
+            "6": {
             "inputs": {
-                "text": "A photo of zwc pet",
+                "text": "A photo of zwc cat",
                 "clip": [
-                    "11",
-                    1
+                "11",
+                1
                 ]
             },
             "class_type": "CLIPTextEncode"
-        },
-        "7": {
+            },
+            "7": {
             "inputs": {
                 "text": "text, watermark",
                 "clip": [
-                    "11",
-                    1
+                "11",
+                1
                 ]
             },
             "class_type": "CLIPTextEncode"
-        },
-        "8": {
+            },
+            "8": {
             "inputs": {
                 "samples": [
-                    "3",
-                    0
+                "3",
+                0
                 ],
                 "vae": [
-                    "4",
-                    2
+                "4",
+                2
                 ]
             },
             "class_type": "VAEDecode"
-        },
-        "11": {
+            },
+            "11": {
             "inputs": {
-                "lora_name": "", //path to lora
+                "lora_name": "test/models/example.safetensors",
                 "strength_model": 1,
                 "strength_clip": 1,
                 "model": [
-                    "4",
-                    0
+                "4",
+                0
                 ],
                 "clip": [
-                    "4",
-                    1
+                "4",
+                1
                 ]
             },
             "class_type": "S3Bucket_Load_LoRA"
-        },
-        "13": {
+            },
+            "13": {
             "inputs": {
                 "filename_prefix": "ComfyUI",
                 "images": [
-                    "8",
-                    0
+                "8",
+                0
                 ]
             },
             "class_type": "SaveImage"
+            }
         }
     }
-    },
 };
 
 export let trainRequestData={
@@ -133,10 +133,5 @@ export let trainRequestData={
           "network_alpha": 1,
           "network_dim": 32
       }
-  },
-  "bucket_creds": {
-    "endpointUrl": process.env.S3_ENDPOINT,
-    "accessId":  process.env.S3_PUBLIC_KEY,
-    "accessSecret": process.env.S3_SECRET_KEY
-}
+  }
 }

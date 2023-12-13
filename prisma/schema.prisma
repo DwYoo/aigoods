@@ -17,15 +17,15 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
+  refreshToken      String? @db.Text
+  accessToken       String? @db.Text
+  expiresAt         Int?
+  tokenType         String?
   scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-  refresh_token_expires_in   Int?
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  idToken           String? @db.Text
+  sessionState      String?
+  refreshTokenExpiresIn   Int?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@index([userId])
@@ -47,51 +47,51 @@ enum UserType {
 }
 
 model User {
-  id             String           @id @default(uuid())
+  id             String         @id @default(uuid())
   name           String?
-  email          String?          @unique
+  email          String?        @unique
   image          String?
-  user_type      UserType?        // UserType에 대한 정의가 필요합니다.
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @updatedAt
-  TrainImageSets TrainImageSet[]
-  Sessions       Session[]
-  Accounts       Account[]
+  userType       UserType?      // UserType에 대한 정의
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  trainImageSets TrainImageSet[]
+  sessions       Session[]
+  accounts       Account[]
 }
 
 model TrainImageSet {
   id         Int          @id @default(autoincrement())
-  user_id    String
+  userId     String
   folderPath String
   zipPath    String
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
-  user       User         @relation(fields: [user_id], references: [id])
-  TrainImage TrainImage[]
-  Lora       Lora?  
+  user       User         @relation(fields: [userId], references: [id])
+  trainImages TrainImage[]
+  lora       Lora?  
 }
 
 model TrainImage {
   id           Int            @id @default(autoincrement())
-  set_id       Int
+  setId        Int
   filePath     String
-  trainImageSet TrainImageSet @relation(fields: [set_id], references: [id])
+  trainImageSet TrainImageSet @relation(fields: [setId], references: [id])
 }
 
 model Lora {
-  id             Int            @id @default(autoincrement())
-  trainImageSetId Int           @unique
-  path           String
-  createdAt      DateTime       @default(now())
-  updatedAt      DateTime       @updatedAt
-  trainImageSet  TrainImageSet  @relation(fields: [trainImageSetId], references: [id])
-  GenImages      GenImage[]
+  id              Int            @id @default(autoincrement())
+  trainImageSetId Int            @unique
+  path            String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  trainImageSet   TrainImageSet  @relation(fields: [trainImageSetId], references: [id])
+  genImages       GenImage[]
 }
 
 model GenImage {
   id         Int      @id @default(autoincrement())
-  lora_id    Int
-  imagePath  String
+  loraId     Int
+  filePath   String
   createdAt  DateTime @default(now())
-  lora       Lora     @relation(fields: [lora_id], references: [id])
+  lora       Lora     @relation(fields: [loraId], references: [id])
 }
