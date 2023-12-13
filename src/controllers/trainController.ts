@@ -32,36 +32,37 @@ export default class TrainController {
       await s3Client.send(new PutObjectCommand(uploadParams));
     
       // Save the image name to the database. Any other req.body data can be saved here too but we don't need any other image data.
-      const post = await prisma.posts.create({
-        data: {
-          imageName,
-          caption,
-        }
-      })
+    //   const post = await prisma.posts.create({
+    //     data: {
+    //       imageName,
+    //       caption,
+    //     }
+    //   })
     
-      res.send(post)
-    })
-      res.status(200).json({
-        message: "findAll OK"
-      });
-    } catch (err) {
-      res.status(500).json({
-        message: "Internal Server Error!"
-      });
+    //   res.send(post)
+    // })
+    //   res.status(200).json({
+    //     message: "findAll OK"
+    //   });
+    // } catch (err) {
+    //   res.status(500).json({
+    //     message: "Internal Server Error!"
+    //   });
+    // }
     }
+  }
   
-
   async getTrainImageSet(req: Request, res: Response) {
     const posts = await prisma.posts.findMany({ orderBy: [{ created: 'desc' }] }) // Get all posts from the database
 
     for (let post of posts) { // For each post, generate a signed URL and save it to the post object
       post.imageUrl = await getSignedUrl(
         s3Client,
-        GetObjectCommand({
+        new GetObjectCommand({
           Bucket: String(process.env.S3_BUCKET_NAME),
-          Key: imageName
+          Key: post.imagePath
         }),
-        { expiresIn: 60 }// 60 seconds
+        { expiresIn: 180 }// 60 seconds
       )
     }
   
