@@ -116,7 +116,7 @@ export let trainRequestData={
           "token_word": "zwc", //
           "class_word": "pet",
           "training_repeats": 40,
-          "project_name": "", //
+          "project_name": "ms_zwc_pet", //
           "max_train_steps": 1000,
           "learning_rate": 0.0001,
           "save_every_n_steps": 400,

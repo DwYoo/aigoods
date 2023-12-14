@@ -35,7 +35,7 @@ export default class InferController {
 
       const response = await runpodClient.infer(
         lora.path, 
-        `${userId}/gen_images`,
+        `pets-mas/users/${userId}/gen_images`,
          `http://api.pets-mas.com/webhook/infer/${userId}`
          )
   
@@ -77,7 +77,7 @@ export default class InferController {
         return acc;
       }, {});
   
-      res.status(200).send(res.send(imageUrlsMap));
+      res.status(200).send(imageUrlsMap);
     } catch (err) {
       console.error(err);
       res.status(500).json({

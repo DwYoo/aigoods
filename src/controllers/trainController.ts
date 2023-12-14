@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 import multer from 'multer';
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 import { PrismaClient, TrainImage } from '../../prisma/generated/client'
-import * as Archiver from 'archiver';
-import * as stream from 'stream';
+import Archiver from 'archiver';
+import stream from 'stream';
 
 import { RunpodClient } from "../runpod/client";
-import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
+import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3"; 
 import {s3Client} from "../s3/client"
 
 
@@ -38,14 +38,12 @@ export default class TrainController {
       for (const file of files) {
         archive.append(file.buffer, { name: file.originalname });
       }
-  
-      // ZIP 파일 마무리
       await archive.finalize();
 
       const trainImageSet = await prisma.trainImageSet.create({
         data: {
           userId: userId,
-          folderPath: `${userId}/train`, // 필요한 경우 적절한 폴더 경로 설정
+          folderPath: `pets-mas/users/${userId}/train`, // 필요한 경우 적절한 폴더 경로 설정
           zipPath: zipPath     // 필요한 경우 적절한 ZIP 파일 경로 설정
         }
       });
@@ -56,7 +54,7 @@ export default class TrainController {
         const uploadParams = {
           Bucket: String(process.env.S3_BUCKET_NAME),
           Body: file.buffer,
-          Key: `${userId}/train/${fileName}`,
+          Key: `pets-mas/users/${userId}/train/${fileName}`,
           ContentType: file.mimetype
         };
 
@@ -67,14 +65,14 @@ export default class TrainController {
         await prisma.trainImage.create({
           data: {
             setId: trainImageSet.id,
-            filePath: `${userId}/train/${fileName}`
+            filePath: `pets-mas/users/${userId}/train/${fileName}`
           }
         });
       }
 
       runpodClient.train(
         zipPath, 
-        outputPath,
+        `pets-mas/users/${userId}/lora`,
          `http://api.pets-mas.com/webhook/train/${userId}`
          )
 

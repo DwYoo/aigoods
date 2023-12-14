@@ -129,14 +129,6 @@ interface InferResponse {
     id: string;
     status: string;
 }
-
-interface JobStatusResponse {
-    id: string;
-    status: string;
-    delayTime?: number;
-    executionTime?: number;
-    output?: Array<{ image: string; seed: number }>;
-}
   
 
 export {RunpodClient};
