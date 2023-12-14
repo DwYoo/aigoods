@@ -4,9 +4,10 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
 import { RunpodClient } from "../runpod/client";
 import {PrismaClient } from '../../prisma/generated/client'
+import {s3Client} from "../s3/client"
+
 
 const prisma:PrismaClient = new PrismaClient()
-import {s3Client} from "../s3/client"
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 require('dotenv').config();
@@ -62,12 +63,13 @@ export default class InferController {
           }
         }
       });
+      console.log(genImages)
   
       // gen_image에 대한 URL 생성
       const imageUrls = await Promise.all(genImages.map(image =>
         getSignedUrl(s3Client, new GetObjectCommand({
           Bucket: String(process.env.S3_BUCKET_NAME),
-          Key: image.filePath
+          Key: `pets-mas/${image.filePath}`
         }), { expiresIn: 180 })
       ));
   
