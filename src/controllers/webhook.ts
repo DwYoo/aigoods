@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import axios from 'axios';
 
-import {PrismaClient } from '../../prisma/generated/client'
+import {PrismaClient } from '../../prisma/generated/client';
 
-const prisma:PrismaClient = new PrismaClient()
+const prisma:PrismaClient = new PrismaClient();
 
 class WebhookController {
     public async handleTrainComplete(req: Request, res: Response): Promise<void> {
