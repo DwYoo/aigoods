@@ -4479,6 +4479,7 @@ export namespace Prisma {
     zipPath: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    petClass: string | null
   }
 
   export type TrainImageSetMaxAggregateOutputType = {
@@ -4488,6 +4489,7 @@ export namespace Prisma {
     zipPath: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    petClass: string | null
   }
 
   export type TrainImageSetCountAggregateOutputType = {
@@ -4497,6 +4499,7 @@ export namespace Prisma {
     zipPath: number
     createdAt: number
     updatedAt: number
+    petClass: number
     _all: number
   }
 
@@ -4516,6 +4519,7 @@ export namespace Prisma {
     zipPath?: true
     createdAt?: true
     updatedAt?: true
+    petClass?: true
   }
 
   export type TrainImageSetMaxAggregateInputType = {
@@ -4525,6 +4529,7 @@ export namespace Prisma {
     zipPath?: true
     createdAt?: true
     updatedAt?: true
+    petClass?: true
   }
 
   export type TrainImageSetCountAggregateInputType = {
@@ -4534,6 +4539,7 @@ export namespace Prisma {
     zipPath?: true
     createdAt?: true
     updatedAt?: true
+    petClass?: true
     _all?: true
   }
 
@@ -4630,6 +4636,7 @@ export namespace Prisma {
     zipPath: string
     createdAt: Date
     updatedAt: Date
+    petClass: string
     _count: TrainImageSetCountAggregateOutputType | null
     _avg: TrainImageSetAvgAggregateOutputType | null
     _sum: TrainImageSetSumAggregateOutputType | null
@@ -4658,6 +4665,7 @@ export namespace Prisma {
     zipPath?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    petClass?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     trainImages?: boolean | TrainImageSet$trainImagesArgs<ExtArgs>
     lora?: boolean | TrainImageSet$loraArgs<ExtArgs>
@@ -4671,6 +4679,7 @@ export namespace Prisma {
     zipPath?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    petClass?: boolean
   }
 
   export type TrainImageSetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4695,6 +4704,7 @@ export namespace Prisma {
       zipPath: string
       createdAt: Date
       updatedAt: Date
+      petClass: string
     }, ExtArgs["result"]["trainImageSet"]>
     composites: {}
   }
@@ -5100,6 +5110,7 @@ export namespace Prisma {
     readonly zipPath: FieldRef<"TrainImageSet", 'String'>
     readonly createdAt: FieldRef<"TrainImageSet", 'DateTime'>
     readonly updatedAt: FieldRef<"TrainImageSet", 'DateTime'>
+    readonly petClass: FieldRef<"TrainImageSet", 'String'>
   }
     
 
@@ -8389,7 +8400,8 @@ export namespace Prisma {
     folderPath: 'folderPath',
     zipPath: 'zipPath',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    petClass: 'petClass'
   };
 
   export type TrainImageSetScalarFieldEnum = (typeof TrainImageSetScalarFieldEnum)[keyof typeof TrainImageSetScalarFieldEnum]
@@ -8713,6 +8725,7 @@ export namespace Prisma {
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
+    petClass?: StringFilter<"TrainImageSet"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
@@ -8725,6 +8738,7 @@ export namespace Prisma {
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    petClass?: SortOrder
     user?: UserOrderByWithRelationInput
     trainImages?: TrainImageOrderByRelationAggregateInput
     lora?: LoraOrderByWithRelationInput
@@ -8740,6 +8754,7 @@ export namespace Prisma {
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
+    petClass?: StringFilter<"TrainImageSet"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
@@ -8752,6 +8767,7 @@ export namespace Prisma {
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    petClass?: SortOrder
     _count?: TrainImageSetCountOrderByAggregateInput
     _avg?: TrainImageSetAvgOrderByAggregateInput
     _max?: TrainImageSetMaxOrderByAggregateInput
@@ -8769,6 +8785,7 @@ export namespace Prisma {
     zipPath?: StringWithAggregatesFilter<"TrainImageSet"> | string
     createdAt?: DateTimeWithAggregatesFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"TrainImageSet"> | Date | string
+    petClass?: StringWithAggregatesFilter<"TrainImageSet"> | string
   }
 
   export type TrainImageWhereInput = {
@@ -9176,6 +9193,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
     trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
     lora?: LoraCreateNestedOneWithoutTrainImageSetInput
@@ -9188,6 +9206,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
     lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
@@ -9197,6 +9216,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
     trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
     lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
@@ -9209,6 +9229,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
     lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
@@ -9220,6 +9241,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
   }
 
   export type TrainImageSetUpdateManyMutationInput = {
@@ -9227,6 +9249,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
   }
 
   export type TrainImageSetUncheckedUpdateManyInput = {
@@ -9236,6 +9259,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
   }
 
   export type TrainImageCreateInput = {
@@ -9695,6 +9719,7 @@ export namespace Prisma {
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    petClass?: SortOrder
   }
 
   export type TrainImageSetAvgOrderByAggregateInput = {
@@ -9708,6 +9733,7 @@ export namespace Prisma {
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    petClass?: SortOrder
   }
 
   export type TrainImageSetMinOrderByAggregateInput = {
@@ -9717,6 +9743,7 @@ export namespace Prisma {
     zipPath?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    petClass?: SortOrder
   }
 
   export type TrainImageSetSumOrderByAggregateInput = {
@@ -10523,6 +10550,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
     lora?: LoraCreateNestedOneWithoutTrainImageSetInput
   }
@@ -10533,6 +10561,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
     lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
@@ -10635,6 +10664,7 @@ export namespace Prisma {
     zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
+    petClass?: StringFilter<"TrainImageSet"> | string
   }
 
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -10857,6 +10887,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
     lora?: LoraCreateNestedOneWithoutTrainImageSetInput
   }
@@ -10868,6 +10899,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     lora?: LoraUncheckedCreateNestedOneWithoutTrainImageSetInput
   }
 
@@ -10892,6 +10924,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
     lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
@@ -10903,6 +10936,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
 
@@ -10911,6 +10945,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     user: UserCreateNestedOneWithoutTrainImageSetsInput
     trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
   }
@@ -10922,6 +10957,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
     trainImages?: TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput
   }
 
@@ -10967,6 +11003,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutTrainImageSetsNestedInput
     trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
   }
@@ -10978,6 +11015,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
   }
 
@@ -11059,6 +11097,7 @@ export namespace Prisma {
     zipPath: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    petClass: string
   }
 
   export type SessionCreateManyUserInput = {
@@ -11087,6 +11126,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
     lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
@@ -11097,6 +11137,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
     trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
     lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
@@ -11107,6 +11148,7 @@ export namespace Prisma {
     zipPath?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUpdateWithoutUserInput = {

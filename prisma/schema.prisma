@@ -67,6 +67,7 @@ model TrainImageSet {
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
   user       User         @relation(fields: [userId], references: [id])
+  petClass   String
   trainImages TrainImage[]
   lora       Lora?  
 }
@@ -77,6 +78,7 @@ model TrainImage {
   filePath     String
   trainImageSet TrainImageSet @relation(fields: [setId], references: [id])
 }
+
 
 model Lora {
   id              Int            @id @default(autoincrement())

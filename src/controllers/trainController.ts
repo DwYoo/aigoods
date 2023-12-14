@@ -1,13 +1,10 @@
 import { Request, Response } from "express";
 import multer from 'multer';
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
-import { PrismaClient, TrainImage } from '../../prisma/generated/client'
-import Archiver from 'archiver';
-import stream from 'stream';
+import {PrismaClient, TrainImage } from '../../prisma/generated/client'
+
 
 import { RunpodClient } from "../runpod/client";
-import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3"; 
-import {s3Client} from "../s3/client"
+import {s3Client, uploadTrainImageSet, uploadZip, generateSignedUrls} from "../s3/client"
 
 
 require('dotenv').config();
@@ -24,53 +21,17 @@ export default class TrainController {
     try {
       const userId:string = req.params.user_id;
       const files: Express.Multer.File[] = req.files as Express.Multer.File[];
-      const caption = req.body.caption;
+      const petClass:string = req.body.class;
       console.log("req body", req.body);
-      console.log("req.file", req.file);
+      console.log("req file", req.files);
 
-      const zipFileName = `${Date.now()}_images.zip`;
-      const zipPath = `${userId}/train/${zipFileName}`;
+      const zipPath = await uploadZip(files, userId);
 
-      const zipStream = new stream.PassThrough();
-      const archive = Archiver('zip', { zlib: { level: 9 } });
-      archive.pipe(zipStream);
-  
-      for (const file of files) {
-        archive.append(file.buffer, { name: file.originalname });
-      }
-      await archive.finalize();
-
-      const trainImageSet = await prisma.trainImageSet.create({
-        data: {
-          userId: userId,
-          folderPath: `pets-mas/users/${userId}/train`, // 필요한 경우 적절한 폴더 경로 설정
-          zipPath: zipPath     // 필요한 경우 적절한 ZIP 파일 경로 설정
-        }
-      });
-      
-      for (const file of files) {
-        const fileName = `${Date.now()}_${file.originalname}`;
-
-        const uploadParams = {
-          Bucket: String(process.env.S3_BUCKET_NAME),
-          Body: file.buffer,
-          Key: `pets-mas/users/${userId}/train/${fileName}`,
-          ContentType: file.mimetype
-        };
-
-        // S3에 파일 업로드
-        await s3Client.send(new PutObjectCommand(uploadParams));
-
-        // TrainImage 생성
-        await prisma.trainImage.create({
-          data: {
-            setId: trainImageSet.id,
-            filePath: `pets-mas/users/${userId}/train/${fileName}`
-          }
-        });
-      }
+      await uploadTrainImageSet(files, userId, petClass, zipPath);
 
       runpodClient.train(
+        `lora_${Date.now()}`,
+        petClass,
         zipPath, 
         `pets-mas/users/${userId}/lora`,
          `http://api.pets-mas.com/webhook/train/${userId}`
@@ -82,7 +43,7 @@ export default class TrainController {
       res.status(500).send("Error processing request");
     }
 }
-  
+
   async getTrainImageSet(req: Request, res: Response) {
     const userId: string = req.params.user_id;
     const imageSet = await prisma.trainImageSet.findFirst({
@@ -94,14 +55,7 @@ export default class TrainController {
       return res.send({}); // imageSet이 없는 경우, 빈 객체 반환
     }
   
-    const imageUrls = await Promise.all(
-      imageSet.trainImages.map(image =>
-        getSignedUrl(s3Client, new GetObjectCommand({
-          Bucket: String(process.env.S3_BUCKET_NAME),
-          Key: image.filePath
-        }), { expiresIn: 180 })
-      )
-    );
+    const imageUrls = await generateSignedUrls(imageSet.trainImages);
   
     const imageUrlsMap = imageSet.trainImages.reduce<{ [key: number]: string }>((acc, image, index) => {
       acc[image.id] = imageUrls[index];

@@ -5,7 +5,7 @@ const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDP
 
 
 async function test() {
-    const response: any = await runpodClient.train("test/datasets/ms.zip", "test/output", "http://api.pets-mas.com:3000/webhook/train")  
+    const response: any = await runpodClient.train("testuser", "cat", "test/datasets/ms.zip", "test/models", "http://api.pets-mas.com:3000/webhook/train/test")  
     console.log(response)
     return response
 }

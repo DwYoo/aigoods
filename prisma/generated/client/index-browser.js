@@ -146,7 +146,8 @@ exports.Prisma.TrainImageSetScalarFieldEnum = {
   folderPath: 'folderPath',
   zipPath: 'zipPath',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  petClass: 'petClass'
 };
 
 exports.Prisma.TrainImageScalarFieldEnum = {

@@ -16,14 +16,16 @@ const webhookController = new WebhookController();
 
 router.get("/users/:user_id/train-images", trainController.getTrainImageSet)
 
-router.post("/users/:user_id/train-images", upload.array('image', 9), trainController.postImageSetAndTrain)
+router.post("/users/:user_id/train-images", upload.array('images', 9), trainController.postImageSetAndTrain)
 
 router.get("/users/:user_id/gen-images", inferController.getGenImages);
 
 router.post("/users/:user_id/gen-images", inferController.infer);
 
 router.post("/webhook/train/:user_id", webhookController.handleTrainComplete);
+
 router.post("/webhook/infer/:user_id", webhookController.handleInferComplete);
+
 router.get("/test", function(req, res, next) {
     res.status(200).json({
       "message" : "hello from server"

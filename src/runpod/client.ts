@@ -4,7 +4,6 @@ import R from 'ramda';
 import {inferenceRequestData, trainRequestData} from './config';
 
 class RunpodClient {
-    baseEndpoint: string = "https://api.runpod.ai/v2/";
     inferEndpoint: string;
     trainEndpoint: string;
     apiKey?: string;
@@ -17,18 +16,21 @@ class RunpodClient {
         this.apiKey = apiKey;        
     }
 
-    async train(zipPath: string, outputPath: string, webhookUrl:string): Promise<string> {
-      return this.sendTrainRequest('run', zipPath, outputPath, webhookUrl)
+    async train(projectName: string, petClass:string, zipPath: string, outputPath: string, webhookUrl:string): Promise<string> {
+      return this.sendTrainRequest('run', projectName, petClass, zipPath, outputPath, webhookUrl)
     }
 
-    async trainsync(zipPath: string, outputPath: string): Promise<string> {
-      return this.sendTrainRequest('runsync', zipPath, outputPath)
+    async trainsync(projectName: string, petClass:string, zipPath: string, outputPath: string): Promise<string> {
+      return this.sendTrainRequest('runsync', projectName, petClass, zipPath, outputPath)
     }
 
-    private async sendTrainRequest(urlSuffix:string, zipPath:string, outputPath:string, webhookUrl: string|null = null) : Promise<string> {
+    private async sendTrainRequest(urlSuffix:string, projectName:string, petClass:string, zipPath:string, outputPath:string, webhookUrl: string|null = null) : Promise<string> {
       let requestData = R.clone(this.trainRequestData)
       requestData["input"]["zipfile_path"] = zipPath
       requestData["input"]["output_path"] = outputPath
+      requestData["input"]["train"]["project_name"] = projectName
+      requestData["input"]["train"]["class_word"] = petClass
+
       if (webhookUrl != null) {
         requestData["webhook"] = webhookUrl
       }
@@ -51,7 +53,7 @@ class RunpodClient {
       }
     }
 
-    async infer(loraPath: string, outputPath:string, webhookUrl:string): Promise<InferResponse> {
+    async infer(loraPath: string, outputPath:string, webhookUrl:string): Promise<any> {
         return this.sendInferRequest('run', loraPath, outputPath, webhookUrl);
     }
 
@@ -60,7 +62,6 @@ class RunpodClient {
     }
 
     private async sendInferRequest(urlSuffix: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<any> {
-
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
@@ -88,9 +89,8 @@ class RunpodClient {
         }
     }
 
-    async checkInferStatus(jobId: string): Promise<void> {
+    async checkJobStatus(jobId: string): Promise<void> {
         const url = `${this.inferEndpoint}status/${jobId}`;
-
         const requestConfig:  AxiosRequestConfig = {
           method: 'get',
           url: url,
@@ -98,10 +98,8 @@ class RunpodClient {
               Authorization: `Bearer ${this.apiKey}`,
           },
       };
-      
         try {
             const response:AxiosResponse = await axios.request(requestConfig);
-      
             if (response.data.status === 'COMPLETED') {
               console.log('Job completed:', response.data);
             } else if (response.data.status === 'IN_QUEUE') {
@@ -124,11 +122,6 @@ interface InferenceRequestData {
     },
     webhook?: any
   }
-
-interface InferResponse {
-    id: string;
-    status: string;
-}
   
 
 export {RunpodClient};
