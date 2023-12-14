@@ -66,6 +66,7 @@ class RunpodClient {
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
         requestData["input"]["prompt"]["6"]["text"] = new InferPrompt(petClass).text
+        requestData["input"]["prompt"]["3"]["seed"] = Date.now()
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }

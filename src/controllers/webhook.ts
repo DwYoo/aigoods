@@ -16,10 +16,7 @@ class WebhookController {
       } catch (error) {
           console.log(error)
         }
-      const zipfilePath: string = req.body.input.zipfile_path
       const loraPath : string = req.body.output.model_path;
-
-      console.log(`zipfilePath: ${zipfilePath}, loraPath: ${loraPath}`)
 
       let trainImageSet = await prisma.trainImageSet.findFirst({
         where: {userId: userId},
