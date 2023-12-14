@@ -8,7 +8,7 @@ interface InferResponse {
     status: string;
 }
 async function test() {
-    const response: InferResponse = await runpodClient.infer("test/models/example.safetensors", "test/output", "http://api.pets-mas.com:3000/webhook/infer/test")  
+    const response: InferResponse = await runpodClient.infer("cat", "test/models/example.safetensors", "test/output", "http://api.pets-mas.com:3000/webhook/infer/test")  
 
     return response
 }

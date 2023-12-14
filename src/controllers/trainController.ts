@@ -23,21 +23,26 @@ export default class TrainController {
       const files: Express.Multer.File[] = req.files as Express.Multer.File[];
       const petClass:string = req.body.class;
       console.log("req body", req.body);
-      console.log("req file", req.files);
+      console.log("req files", req.files);
 
       const zipPath = await uploadZip(files, userId);
+      console.log(`petClass: ${petClass}, zipPath: ${zipPath}`)
 
       await uploadTrainImageSet(files, userId, petClass, zipPath);
 
-      runpodClient.train(
+      const response = await runpodClient.train(
         `lora_${Date.now()}`,
         petClass,
         zipPath, 
-        `pets-mas/users/${userId}/lora`,
-         `http://api.pets-mas.com/webhook/train/${userId}`
-         )
+        `users/${userId}/lora`,
+        `http://api.pets-mas.com:3000/webhook/train/${userId}`
+        )
 
-      res.status(200).send("Train Image uploaded, training in process...");
+
+      res.status(200).json({
+        message: "Train images uploaded, training in process.",
+        runpodResponse: response
+      });
     } catch (error) {
       console.error(error);
       res.status(500).send("Error processing request");

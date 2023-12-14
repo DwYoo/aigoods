@@ -1,7 +1,7 @@
 require('dotenv').config(); // Load environment variables from .env file
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import R from 'ramda';
-import {inferenceRequestData, trainRequestData} from './config';
+import {inferenceRequestData, trainRequestData, InferPrompt} from './config';
 
 class RunpodClient {
     inferEndpoint: string;
@@ -53,18 +53,19 @@ class RunpodClient {
       }
     }
 
-    async infer(loraPath: string, outputPath:string, webhookUrl:string): Promise<any> {
-        return this.sendInferRequest('run', loraPath, outputPath, webhookUrl);
+    async infer(petClass: string, loraPath: string, outputPath:string, webhookUrl:string): Promise<any> {
+        return this.sendInferRequest('run', petClass, loraPath, outputPath, webhookUrl);
     }
 
-    async infersync(loraPath: string, outputPath:string): Promise<string> {
-        return this.sendInferRequest('runsync', loraPath, outputPath);
+    async infersync(petClass: string, loraPath: string, outputPath:string): Promise<string> {
+        return this.sendInferRequest('runsync',petClass, loraPath, outputPath);
     }
 
-    private async sendInferRequest(urlSuffix: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<any> {
+    private async sendInferRequest(urlSuffix: string,petClass: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<any> {
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
+        requestData["input"]["prompt"]["6"]["text"] = new InferPrompt(petClass).text
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }
@@ -89,14 +90,21 @@ class RunpodClient {
         }
     }
 
-    async checkJobStatus(jobId: string): Promise<void> {
-        const url = `${this.inferEndpoint}status/${jobId}`;
-        const requestConfig:  AxiosRequestConfig = {
-          method: 'get',
-          url: url,
-          headers: {
-              Authorization: `Bearer ${this.apiKey}`,
-          },
+    async checkJobStatus(jobId: string, jobType:string): Promise<void> {
+      let url;
+      if (jobType === 'infer') {
+        url = `${this.inferEndpoint}status/${jobId}`;
+      } else if (jobType === 'train') {
+        url = `${this.trainEndpoint}status/${jobId}`;
+      } else {
+        throw Error("jobType must be either infer or train")
+      }
+      const requestConfig:  AxiosRequestConfig = {
+        method: 'get',
+        url: url,
+        headers: {
+            Authorization: `Bearer ${this.apiKey}`,
+        },
       };
         try {
             const response:AxiosResponse = await axios.request(requestConfig);

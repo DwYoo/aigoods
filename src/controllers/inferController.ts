@@ -3,16 +3,15 @@ import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
 import { RunpodClient } from "../runpod/client";
-import { PrismaClient, TrainImage } from '../../prisma/generated/client'
+import {PrismaClient } from '../../prisma/generated/client'
+
+const prisma:PrismaClient = new PrismaClient()
 import {s3Client} from "../s3/client"
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 require('dotenv').config();
 
-const prisma:PrismaClient = new PrismaClient()
-
 export default class InferController {
-
   async infer(req: Request, res: Response) {
     try {
       const userId:string = req.params.user_id;
@@ -22,8 +21,8 @@ export default class InferController {
             userId: userId
           }
         },
-        orderBy: {
-          createdAt: 'desc'
+        include: {
+          trainImageSet: true // 이 부분을 추가합니다.
         }
       });
   
@@ -34,9 +33,10 @@ export default class InferController {
       }
 
       const response = await runpodClient.infer(
+        lora.trainImageSet.petClass,
         lora.path, 
-        `pets-mas/users/${userId}/gen_images`,
-         `http://api.pets-mas.com/webhook/infer/${userId}`
+        `users/${userId}/gen_images`,
+         `http://api.pets-mas.com:3000/webhook/infer/${userId}`
          )
   
       res.status(200).json({

@@ -2,20 +2,21 @@ import {S3Client, PutObjectCommand, GetObjectCommand} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
 import Archiver from 'archiver';
-import stream from 'stream';
+import fs from 'fs';
 
-import {PrismaClient, TrainImage } from '../../prisma/generated/client'
+import {TrainImage } from '../../prisma/generated/client'
+import {PrismaClient } from '../../prisma/generated/client'
+
+const prisma:PrismaClient = new PrismaClient()
 
 require('dotenv').config(); // Load environment variables from .env file
 
 // When no region or credentials are provided, the SDK will use the
 // region and credentials from the local AWS config.
-const prisma:PrismaClient = new PrismaClient()
 
 const bucketRegion = String(process.env.S3_REGION)
 const accessId = String(process.env.S3_PUBLIC_KEY)
 const secretKey = String(process.env.S3_SECRET_KEY)
-const bucketName = "pets-mas"
 
 const s3Client = new S3Client({
     credentials: {
@@ -34,13 +35,15 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
         }
       });
 
+      const folderPath:string = zipPath.replace("_images.zip", "")
+
       if (!trainImageSet) {
         trainImageSet = await prisma.trainImageSet.create({
           data: {
             userId: userId,
-            folderPath: `pets-mas/users/${userId}/train`,
+            folderPath: folderPath,
             petClass: petClass,
-            zipPath: zipPath // 초기값 설정
+            zipPath: zipPath 
           }
         });
       } else {
@@ -49,25 +52,29 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
             id: trainImageSet.id
           },
           data: {
-            folderPath: `pets-mas/users/${userId}/train`,
-            zipPath: '' // 업데이트할 값 설정
+            folderPath: folderPath,
+            zipPath: zipPath 
           }
         });
       }
 
     for (const file of files) {
-      const fileName = `${Date.now()}_${file.originalname}`;
-      const filePath = `pets-mas/users/${userId}/train/${fileName}`;
+      const fileName = file.originalname;
+      const filePath = `${folderPath}/${fileName}`;
+      console.log(`fileName: ${fileName}`)
 
       const uploadParams = {
-        Bucket: bucketName,
+        Bucket: String(process.env.S3_BUCKET_NAME),
         Body: file.buffer,
-        Key: filePath,
+        Key: `pets-mas/${filePath}`,
         ContentType: file.mimetype
       };
 
       // S3에 파일 업로드
-      await s3Client.send(new PutObjectCommand(uploadParams));
+      const response = await s3Client.send(new PutObjectCommand(uploadParams));
+      console.log('Uploaded train image set to S3:', trainImageSet)
+      console.log(response)
+
 
       // TrainImage 생성
       await prisma.trainImage.create({
@@ -80,28 +87,54 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
   }
 
   async function uploadZip(files: Express.Multer.File[], userId: string): Promise<string> {
-    const zipFileName = `${Date.now()}_images.zip`;
-    const zipPath = `pets-mas/users/${userId}/train/${zipFileName}`;
+    try {
+      const zipFileName = `${Date.now()}_images.zip`;
+      const localZipPath = `/tmp/${zipFileName}`;  // 임시 로컬 파일 경로
+      const s3ZipPath = `pets-mas/users/${userId}/train/${zipFileName}`;
+      const output = fs.createWriteStream(localZipPath);
+      const archive = Archiver('zip', { zlib: { level: 9 } });
+      
+      archive.pipe(output);
 
-    const zipStream = new stream.PassThrough();
-    const archive = Archiver('zip', { zlib: { level: 9 } });
-    archive.pipe(zipStream);
+      files.forEach(file => {
+          archive.append(file.buffer, { name: file.originalname });
+      });
 
-    for (const file of files) {
-      archive.append(file.buffer, { name: file.originalname });
+      await archive.finalize();
+
+      // 로컬에서 ZIP 파일 생성 완료 대기
+      await new Promise<void>((resolve, reject) => {
+          output.on('close', resolve);
+          output.on('error', reject);
+      });
+
+      // S3에 ZIP 파일 업로드
+      const fileStream = fs.createReadStream(localZipPath);
+      const uploadParams = {
+          Bucket: String(process.env.S3_BUCKET_NAME),
+          Key: s3ZipPath,
+          Body: fileStream
+      };
+      
+      await s3Client.send(new PutObjectCommand(uploadParams));
+
+      // 로컬의 임시 ZIP 파일 삭제 (옵션)
+      fs.unlinkSync(localZipPath);
+
+      console.log("Zip file uploaded to S3 successfully");
+      return s3ZipPath.replace("pets-mas/","");
+
+    } catch (error) {
+      console.error(`Error while creating or uploading zip file: ${error}`);
+      throw error;  
     }
-    await archive.finalize();
+}
 
-    // S3에 ZIP 파일 업로드
-    const uploadParams = {
-      Bucket: bucketName,
-      Body: zipStream,
-      Key: zipPath
-    };
-    await s3Client.send(new PutObjectCommand(uploadParams));
+async function deleteTrainImageSet(userId: string) {
 
-    return zipPath;
-  }
+
+}
+
 
 async function generateSignedUrls(trainImages: TrainImage[]) {
 return await Promise.all(
