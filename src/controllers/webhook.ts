@@ -22,16 +22,14 @@ class WebhookController {
       console.log(`zipfilePath: ${zipfilePath}, loraPath: ${loraPath}`)
 
       let trainImageSet = await prisma.trainImageSet.findFirst({
-        where: {
-          zipPath: zipfilePath,
-        },
+        where: {userId: userId},
         include: {
           lora: true // Lora 객체를 포함하여 가져옵니다.
         }
       });
     
       if (!trainImageSet) {
-        throw Error(`No TrainImageSet found for user: ${userId}`)
+        throw Error(`No TrainImageSet found for userId: ${userId}`)
       }
       let lora;
       if (trainImageSet.lora) {

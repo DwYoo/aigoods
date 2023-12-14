@@ -8746,19 +8746,19 @@ export namespace Prisma {
 
   export type TrainImageSetWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    folderPath?: string
+    zipPath?: string
     AND?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
     OR?: TrainImageSetWhereInput[]
     NOT?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
     userId?: StringFilter<"TrainImageSet"> | string
-    folderPath?: StringFilter<"TrainImageSet"> | string
-    zipPath?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     petClass?: StringFilter<"TrainImageSet"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
-  }, "id">
+  }, "id" | "folderPath" | "zipPath">
 
   export type TrainImageSetOrderByWithAggregationInput = {
     id?: SortOrder

@@ -3,7 +3,7 @@ require('dotenv').config(); // Load environment variables from .env file
 export class InferPrompt {
     text:string;
     constructor(petClass:string) {
-        this.text = `artistic photo of zwc ${petClass} wearing Santa costume, small cute santa hat, Christmas tree, Christmas style, Christmas concept, (Christmas:1.3), presents, (zwc cat:1.4), (midnight:1.5), (fancy:1.5), twinkle, colorful background, fancy wallpaper, a professional photo, 4k`
+        this.text = `artistic photo of 1 zwc ${petClass}wearing Santa costume, small cute santa hat, Christmas tree, Christmas style, Christmas concept, (Christmas:1.2), presents, (zwc cat:1.3), (midnight:1.5), (fancy:1.5), twinkle, colorful background, fancy wallpaper, professional photo, 4k, profile`
     }
 }
 
@@ -46,8 +46,8 @@ export let inferenceRequestData= {
             },
             "5": {
                 "inputs": {
-                "width": 1024,
-                "height": 1024,
+                "width": 768,
+                "height": 768,
                 "batch_size": 3
                 },
                 "class_type": "EmptyLatentImage"
@@ -64,7 +64,7 @@ export let inferenceRequestData= {
             },
             "7": {
                 "inputs": {
-                "text": "text, watermark, low quality, day, bad body, monotone background, white wall, white background, bad hat",
+                "text": "text, watermark, low quality, day, bad body, monotone background, white wall, white background, bad hat, bad costume, 2, double hat",
                 "clip": [
                     "11",
                     1
@@ -120,25 +120,25 @@ export let trainRequestData={
       "zipfile_path": "", //이미지 zipfile경로
       "output_path": "", 
       "train": {
-        "token_word": "zwc",
-        "class_word": "pet",
-        "training_repeats": 40,
-        "project_name": "zwc_pet",
-        "max_train_steps": 1500,
-        "learning_rate": 0.0001,
-        "save_every_n_steps": 2000,
-        "optimizer_type": "adafactor",
-        "lr_scheduler": "constant_with_warmup",
-        "lr_warmup_steps": 50,
-        "train_text_encoder": false,
-        "train_batch_size": 1,
-        "resolution": 1024,
+        "class_word": "cat",
         "full_bf16": true,
+        "learning_rate": 0.0004,
+        "lr_scheduler": "cosine",
+        "lr_warmup_steps": 0,
+        "max_train_steps": 800,
         "mixed_precision": "bf16",
-        "save_precision": "bf16",
-        "save_model_as": "safetensors",
         "network_alpha": 1,
-        "network_dim": 16
+        "network_dim": 16,
+        "optimizer_type": "adafactor",
+        "project_name": "ms_zwc_cat_768_v1",
+        "resolution": 768,
+        "save_every_n_steps": 2000,
+        "save_model_as": "safetensors",
+        "save_precision": "bf16",
+        "token_word": "zwc",
+        "train_batch_size": 3,
+        "train_text_encoder": false,
+        "training_repeats": 40
       },
   }
 }

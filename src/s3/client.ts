@@ -38,6 +38,7 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
       const folderPath:string = zipPath.replace("_images.zip", "")
 
       if (!trainImageSet) {
+        console.log("Creating trainImageSet")
         trainImageSet = await prisma.trainImageSet.create({
           data: {
             userId: userId,
@@ -47,7 +48,8 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
           }
         });
       } else {
-        await prisma.trainImageSet.update({
+        console.log("updating trainImageSet")
+        trainImageSet = await prisma.trainImageSet.update({
           where: {
             id: trainImageSet.id
           },
@@ -61,7 +63,6 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
     for (const file of files) {
       const fileName = file.originalname;
       const filePath = `${folderPath}/${fileName}`;
-      console.log(`fileName: ${fileName}`)
 
       const uploadParams = {
         Bucket: String(process.env.S3_BUCKET_NAME),
@@ -72,10 +73,6 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
 
       // S3에 파일 업로드
       const response = await s3Client.send(new PutObjectCommand(uploadParams));
-      console.log('Uploaded train image set to S3:', trainImageSet)
-      console.log(response)
-
-
       // TrainImage 생성
       await prisma.trainImage.create({
         data: {
@@ -84,6 +81,8 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
         }
       });
     }
+    console.log('Uploaded train image set to S3:', trainImageSet)
+
   }
 
   async function uploadZip(files: Express.Multer.File[], userId: string): Promise<string> {
