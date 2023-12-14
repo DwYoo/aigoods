@@ -2,14 +2,17 @@ import { Request, Response } from "express";
 import multer from 'multer';
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 import { PrismaClient, TrainImage } from '../../prisma/generated/client'
+import * as Archiver from 'archiver';
+import * as stream from 'stream';
 
-
-import {ListBucketsCommand, GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
+import { RunpodClient } from "../runpod/client";
+import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 import {s3Client} from "../s3/client"
 
 
 require('dotenv').config();
 
+const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 const prisma:PrismaClient = new PrismaClient()
 
 const storage:any = multer.memoryStorage()
@@ -25,16 +28,30 @@ export default class TrainController {
       console.log("req body", req.body);
       console.log("req.file", req.file);
 
+      const zipFileName = `${Date.now()}_images.zip`;
+      const zipPath = `${userId}/train/${zipFileName}`;
+
+      const zipStream = new stream.PassThrough();
+      const archive = Archiver('zip', { zlib: { level: 9 } });
+      archive.pipe(zipStream);
+  
+      for (const file of files) {
+        archive.append(file.buffer, { name: file.originalname });
+      }
+  
+      // ZIP 파일 마무리
+      await archive.finalize();
+
       const trainImageSet = await prisma.trainImageSet.create({
         data: {
           userId: userId,
           folderPath: `${userId}/train`, // 필요한 경우 적절한 폴더 경로 설정
-          zipPath: ''     // 필요한 경우 적절한 ZIP 파일 경로 설정
+          zipPath: zipPath     // 필요한 경우 적절한 ZIP 파일 경로 설정
         }
       });
       
       for (const file of files) {
-        const fileName = `train_${Date.now()}_${file.originalname}`;
+        const fileName = `${Date.now()}_${file.originalname}`;
 
         const uploadParams = {
           Bucket: String(process.env.S3_BUCKET_NAME),
@@ -50,10 +67,17 @@ export default class TrainController {
         await prisma.trainImage.create({
           data: {
             setId: trainImageSet.id,
-            filePath: fileName
+            filePath: `${userId}/train/${fileName}`
           }
         });
       }
+
+      runpodClient.train(
+        zipPath, 
+        outputPath,
+         `http://api.pets-mas.com/webhook/train/${userId}`
+         )
+
       res.status(200).send("Train Image uploaded, training in process...");
     } catch (error) {
       console.error(error);

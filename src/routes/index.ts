@@ -22,8 +22,12 @@ router.get("/users/:user_id/gen-images", inferController.getGenImages);
 
 router.post("/users/:user_id/gen-images", inferController.infer);
 
-router.post("/webhook/train", webhookController.handleTrainComplete);
-router.post("/webhook/infer", webhookController.handleInferComplete);
-
+router.post("/webhook/train/:user_id", webhookController.handleTrainComplete);
+router.post("/webhook/infer/:user_id", webhookController.handleInferComplete);
+router.get("/test", function(req, res, next) {
+    res.status(200).json({
+      "message" : "hello from server"
+        });
+  });
 
 export default router;
