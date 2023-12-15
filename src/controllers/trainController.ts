@@ -14,25 +14,35 @@ export default class TrainController {
 
   async postImageSetAndTrain(req: Request, res: Response) {
     try {
+      console.log("Recieved request")
       const userId:string = req.params.user_id;
       const files: Express.Multer.File[] = req.files as Express.Multer.File[];
       const petClass:string = req.body.class;
+      const petName:string = req.body.name;
       console.log("req body", req.body);
       console.log("req files", req.files);
 
       const zipPath = await uploadZip(files, userId);
       console.log(`petClass: ${petClass}, zipPath: ${zipPath}`)
 
-      await uploadTrainImageSet(files, userId, petClass, zipPath);
+      await uploadTrainImageSet(files, userId, petClass, petName, zipPath);
 
       const response = await runpodClient.train(
         `lora_${Date.now()}`,
         petClass,
         zipPath, 
         `users/${userId}/lora`,
-        `http://api.pets-mas.com:3000/webhook/train/${userId}`
+        `${process.env.BASE_ENDPOINT}/webhook/train/${userId}`
         )
-
+      
+      await prisma.user.update({
+          where: {
+            id: userId
+          },
+          data: {
+            userStatus: 1,
+          }
+        })
 
       res.status(200).json({
         message: "Train images uploaded, training in process.",

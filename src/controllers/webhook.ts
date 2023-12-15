@@ -58,9 +58,26 @@ class WebhookController {
   
       if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
         console.error('Infer operation did not complete successfully');
+        await prisma.user.update({
+          where: {
+            id: userId
+          },
+          data: {
+            userStatus: 3,
+          }
+        })
         res.status(500).send('Infer operation failed');
         return;
       }
+
+      await prisma.user.update({
+        where: {
+          id: userId
+        },
+        data: {
+          userStatus: 2,
+        }
+      })
   
       const imageUrls: string[] = req.body.output.message;
   

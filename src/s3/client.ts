@@ -9,10 +9,7 @@ import {PrismaClient } from '../../prisma/generated/client'
 
 const prisma:PrismaClient = new PrismaClient()
 
-require('dotenv').config(); // Load environment variables from .env file
-
-// When no region or credentials are provided, the SDK will use the
-// region and credentials from the local AWS config.
+require('dotenv').config(); 
 
 const bucketRegion = String(process.env.S3_REGION)
 const accessId = String(process.env.S3_PUBLIC_KEY)
@@ -27,7 +24,7 @@ const s3Client = new S3Client({
     }
 );
 
-async function uploadTrainImageSet(files: Express.Multer.File[], userId: string, petClass:string, zipPath:string): Promise<void> {
+async function uploadTrainImageSet(files: Express.Multer.File[], userId: string, petClass:string, petName:string, zipPath:string): Promise<void> {
 
     let trainImageSet = await prisma.trainImageSet.findFirst({
         where: {
@@ -44,6 +41,7 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
             userId: userId,
             folderPath: folderPath,
             petClass: petClass,
+            petName: petName,
             zipPath: zipPath 
           }
         });

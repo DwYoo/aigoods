@@ -113,14 +113,14 @@ exports.Prisma.AccountScalarFieldEnum = {
   type: 'type',
   provider: 'provider',
   providerAccountId: 'providerAccountId',
-  refreshToken: 'refreshToken',
-  accessToken: 'accessToken',
-  expiresAt: 'expiresAt',
-  tokenType: 'tokenType',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  expires_at: 'expires_at',
+  token_type: 'token_type',
   scope: 'scope',
-  idToken: 'idToken',
-  sessionState: 'sessionState',
-  refreshTokenExpiresIn: 'refreshTokenExpiresIn'
+  id_token: 'id_token',
+  session_state: 'session_state',
+  refresh_token_expires_in: 'refresh_token_expires_in'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -134,8 +134,10 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  emailVerified: 'emailVerified',
   image: 'image',
   userType: 'userType',
+  userStatus: 'userStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -147,7 +149,8 @@ exports.Prisma.TrainImageSetScalarFieldEnum = {
   zipPath: 'zipPath',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  petClass: 'petClass'
+  petClass: 'petClass',
+  petName: 'petName'
 };
 
 exports.Prisma.TrainImageScalarFieldEnum = {
@@ -171,6 +174,12 @@ exports.Prisma.GenImageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.VerificationTokenScalarFieldEnum = {
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -192,7 +201,8 @@ exports.Prisma.ModelName = {
   TrainImageSet: 'TrainImageSet',
   TrainImage: 'TrainImage',
   Lora: 'Lora',
-  GenImage: 'GenImage'
+  GenImage: 'GenImage',
+  VerificationToken: 'VerificationToken'
 };
 
 /**

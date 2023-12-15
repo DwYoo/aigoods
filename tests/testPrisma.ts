@@ -4,8 +4,8 @@ import { uploadTrainImageSet } from '../src/s3/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    // const users = await prisma.user.findMany();
-    // console.log('All users:', users);
+    const users = await prisma.user.findMany();
+    console.log('All users:', users);
 
     // 새 사용자 생성
     // const newUser = await prisma.user.create({
@@ -17,9 +17,9 @@ async function main() {
     // });
     // console.log('Created new user:', newUser);
     // await deleteAllGenImages()
-    const trainImageSet = await findtrainImageSet('users/990a8a81-ad57-404f-af5a-41a289650611/train/1702588405834_images.zip')
+    // const trainImageSet = await findtrainImageSet('users/990a8a81-ad57-404f-af5a-41a289650611/train/1702588405834_images.zip')
     // const trainImageSet = await prisma.trainImageSet.findMany()
-    console.log(trainImageSet)
+    // console.log(trainImageSet)
   }
 async function deleteAllGenImages() {
     try {

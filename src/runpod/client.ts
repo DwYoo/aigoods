@@ -72,6 +72,8 @@ class RunpodClient {
             requestData["webhook"] = webhookUrl
         }
 
+        console.log(JSON.stringify(requestData))
+
         const requestConfig: AxiosRequestConfig = {
             method: 'post',
             maxBodyLength: Infinity,

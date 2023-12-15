@@ -37,8 +37,17 @@ export default class InferController {
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
-         `http://api.pets-mas.com:3000/webhook/infer/${userId}`
+         `${process.env.BASE_ENDPOINT}/webhook/infer/${userId}`
          )
+        
+      await prisma.user.update({
+        where: {
+          id: userId
+        },
+        data: {
+          userStatus: 1,
+        }
+      })
   
       res.status(200).json({
         message: "Successfully sent request to runpod",

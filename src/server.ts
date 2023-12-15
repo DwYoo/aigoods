@@ -1,15 +1,21 @@
 import express from 'express';
-import router from './routes/index';
+import https from 'https';
+import fs from 'fs';
+import router from './routes/index'; // 라우터 경로에 따라 조정하세요.
+require('dotenv').config(); 
 
-// Express 애플리케이션 생성
+
 const app = express();
-app.use(express.json());
-// catch 404 and forward to error handler
 
-// 라우터를 사용하여 경로를 설정
+app.use(express.json());
+
 app.use('/', router);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http:///api.pets-mas.com:${PORT}`);
+const options = {
+  key: fs.readFileSync(String(process.env.KEY_PATH)), 
+  cert: fs.readFileSync(String(process.env.CERT_PATH)) 
+};
+
+https.createServer(options, app).listen(3000, () => {
+  console.log(`Server is running on https://api.pets-mas.com:443`);
 });
