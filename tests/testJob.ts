@@ -3,5 +3,5 @@ import {RunpodClient} from '../src/runpod/client';
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 
-runpodClient.checkJobStatus("ef126eb1-f739-4011-a7a6-332ead5f3f09-e1", 'infer')
+runpodClient.checkJobStatus("00bd78db-4644-4303-a55d-26579c90d2b8-e1", 'train')
 .then((response) => console.log(response))
