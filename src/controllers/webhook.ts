@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import axios from 'axios';
 
 import {PrismaClient } from '../../prisma/generated/client';
+import { sendMail } from "../utils/sendMail";
 
 const prisma:PrismaClient = new PrismaClient();
 

@@ -85,12 +85,13 @@ export default class InferController {
       ));
   
       // 이미지 ID와 URL을 매핑
-      const imageUrlsMap = genImages.reduce<{ [key: number]: string }>((acc, image, index) => {
-        acc[image.id] = imageUrls[index];
+      const imageUrlsMap = genImages.reduce<{ [key: string]: string }>((acc, image, index) => {
+        acc[String(image.id)] = imageUrls[index];
         return acc;
       }, {});
+      console.log(`response: ${JSON.stringify(imageUrlsMap)}`)
   
-      res.status(200).send(imageUrlsMap);
+      res.status(200).json(JSON.stringify(imageUrlsMap));
     } catch (err) {
       console.error(err);
       res.status(500).json({
