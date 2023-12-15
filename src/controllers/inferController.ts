@@ -6,11 +6,11 @@ import { RunpodClient } from "../runpod/client";
 import {PrismaClient } from '../../prisma/generated/client'
 import {s3Client} from "../s3/client"
 
+require('dotenv').config();
 
 const prisma:PrismaClient = new PrismaClient()
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
-require('dotenv').config();
 
 export default class InferController {
   async infer(req: Request, res: Response) {

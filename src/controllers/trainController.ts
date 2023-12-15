@@ -2,18 +2,13 @@ import { Request, Response } from "express";
 import multer from 'multer';
 import {PrismaClient, TrainImage } from '../../prisma/generated/client'
 
-
 import { RunpodClient } from "../runpod/client";
 import {s3Client, uploadTrainImageSet, uploadZip, generateSignedUrls} from "../s3/client"
-
 
 require('dotenv').config();
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
-const prisma:PrismaClient = new PrismaClient()
-
-const storage:any = multer.memoryStorage()
-const upload: any = multer({ storage: storage})
+const prisma:PrismaClient = new PrismaClient();
 
 export default class TrainController {
 
@@ -61,7 +56,6 @@ export default class TrainController {
     }
   
     const imageUrls = await generateSignedUrls(imageSet.trainImages);
-  
     const imageUrlsMap = imageSet.trainImages.reduce<{ [key: number]: string }>((acc, image, index) => {
       acc[image.id] = imageUrls[index];
       return acc;

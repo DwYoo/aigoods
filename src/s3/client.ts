@@ -129,11 +129,6 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
     }
 }
 
-async function deleteTrainImageSet(userId: string) {
-
-
-}
-
 
 async function generateSignedUrls(trainImages: TrainImage[]) {
 return await Promise.all(

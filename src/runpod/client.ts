@@ -1,7 +1,8 @@
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config();
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import R from 'ramda';
-import {inferenceRequestData, trainRequestData, InferPrompt} from './config';
+import {inferenceRequestData, trainRequestData, } from './config';
+import {InferPrompt} from './prompts'
 
 class RunpodClient {
     inferEndpoint: string;
@@ -65,7 +66,7 @@ class RunpodClient {
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
-        requestData["input"]["prompt"]["6"]["text"] = new InferPrompt(petClass).text
+        requestData["input"]["prompt"]["6"]["text"] = new InferPrompt(petClass).default
         requestData["input"]["prompt"]["3"]["seed"] = Date.now()
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
@@ -126,7 +127,7 @@ class RunpodClient {
 interface InferenceRequestData {
     input: {
       output_path: string;
-      prompt: any; // 이 부분은 실제 구조에 맞게 정의 필요
+      prompt: any; 
       // 다른 필드들...
     },
     webhook?: any
