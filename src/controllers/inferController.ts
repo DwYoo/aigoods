@@ -48,6 +48,8 @@ export default class InferController {
           userStatus: 1,
         }
       })
+
+      console.log(response)
   
       res.status(200).json({
         message: "Successfully sent request to runpod",

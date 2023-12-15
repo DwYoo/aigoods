@@ -44,6 +44,8 @@ export default class TrainController {
           }
         })
 
+        console.log(response)
+
       res.status(200).json({
         message: "Train images uploaded, training in process.",
         runpodResponse: response

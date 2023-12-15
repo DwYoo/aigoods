@@ -1,12 +1,5 @@
 require('dotenv').config(); // Load environment variables from .env file
 
-export class InferPrompt {
-    text:string;
-    constructor(petClass:string) {
-        this.text = `artistic photo of 1 zwc ${petClass}wearing Santa costume, small cute santa hat, Christmas tree, Christmas style, Christmas concept, (Christmas:1.2), presents, (zwc cat:1.3), (midnight:1.5), (fancy:1.5), twinkle, colorful background, fancy wallpaper, professional photo, 4k, profile`
-    }
-}
-
 export let inferenceRequestData= {
     "input": {
         "output_path": "",
@@ -14,7 +7,7 @@ export let inferenceRequestData= {
             "3": {
                 "inputs": {
                 "seed": 157691551724910,
-                "steps": 30,
+                "steps": 20,
                 "cfg": 8,
                 "sampler_name": "euler",
                 "scheduler": "normal",
