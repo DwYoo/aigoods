@@ -112,8 +112,11 @@ class WebhookController {
           });
 
         const userEmail:string = String(user.email);
+
+        console.log(user)
         if (userEmail) {
-          sendMail(userEmail, "크리스마스 선물이 도착했어요!", "링크")
+          await sendMail(userEmail, "크리스마스 선물이 도착했어요!", "링크")
+
         }
 
         }

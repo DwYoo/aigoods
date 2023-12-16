@@ -1,12 +1,14 @@
 import express from 'express';
 import https from 'https';
 import fs from 'fs';
+import cors from 'cors';
 import router from './routes/index';
 require('dotenv').config();
 
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use('/', router);
 

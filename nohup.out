@@ -70,3 +70,449 @@ response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/
 > start
 > ts-node src/server.ts
 
+
+> start
+> ts-node src/server.ts
+
+
+> start
+> ts-node src/server.ts
+
+(node:25397) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=12d92f6adbbc308859d2e696fca3b3f653c2fdb25c83b7d227e6e18fe3ae6da9&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=ec8e9a7e2766889f73615d663fee8c526db1bb53103d0bb2ae2d40c68ea96b85&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=388de219896b26a7393ebf9cb134d0fc5532cf9b0a424adff4b8102d8ab1d4e8&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=12d92f6adbbc308859d2e696fca3b3f653c2fdb25c83b7d227e6e18fe3ae6da9&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=ec8e9a7e2766889f73615d663fee8c526db1bb53103d0bb2ae2d40c68ea96b85&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=388de219896b26a7393ebf9cb134d0fc5532cf9b0a424adff4b8102d8ab1d4e8&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=12d92f6adbbc308859d2e696fca3b3f653c2fdb25c83b7d227e6e18fe3ae6da9&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=ec8e9a7e2766889f73615d663fee8c526db1bb53103d0bb2ae2d40c68ea96b85&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T035857Z&X-Amz-Expires=180&X-Amz-Signature=388de219896b26a7393ebf9cb134d0fc5532cf9b0a424adff4b8102d8ab1d4e8&X-Amz-SignedHeaders=host&x-id=GetObject"}
+
+> start
+> ts-node src/server.ts
+
+(node:26497) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=c66006f4c43490a9ef8888b9886ca4136bde8632e4622ace224d5937640167a7&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=a8465f4726954c64afd772f3d9d80619101a26d5a975b263e77d6c93757ceb72&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=f3fd93fa4705a89d9ca55e667d83acf602e2167e8df1ab6bd3e28cec68bc0d17&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=c66006f4c43490a9ef8888b9886ca4136bde8632e4622ace224d5937640167a7&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=a8465f4726954c64afd772f3d9d80619101a26d5a975b263e77d6c93757ceb72&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=f3fd93fa4705a89d9ca55e667d83acf602e2167e8df1ab6bd3e28cec68bc0d17&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=c66006f4c43490a9ef8888b9886ca4136bde8632e4622ace224d5937640167a7&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=a8465f4726954c64afd772f3d9d80619101a26d5a975b263e77d6c93757ceb72&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040826Z&X-Amz-Expires=604800&X-Amz-Signature=f3fd93fa4705a89d9ca55e667d83acf602e2167e8df1ab6bd3e28cec68bc0d17&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=f0a2164d773e369a5a69fd0df2921e22ccd852ef15f6accdf286cb165bacb963&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=bdbb95a931e32fd846bf87b2124aa22b238465a6773ae6f7e6e14ac92d6141cc&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=87952ec4d5559368b912f49d4f0611f8117a12f87b4a13a2ba8563a249320faf&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=f0a2164d773e369a5a69fd0df2921e22ccd852ef15f6accdf286cb165bacb963&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=bdbb95a931e32fd846bf87b2124aa22b238465a6773ae6f7e6e14ac92d6141cc&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040929Z&X-Amz-Expires=604800&X-Amz-Signature=87952ec4d5559368b912f49d4f0611f8117a12f87b4a13a2ba8563a249320faf&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=96cebde52ec59ad0ad3b080cca478dc2302eb6e01837b174b1015289b6805ca9&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=eaeda1a6d227d7947afa3e1f13562987cfb5cb39d157f81ea7c2999a6e6b6310&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=c404ba6387a04ea33c3135e68524c83309f2aad4c52aa203bdba7131c2731525&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=96cebde52ec59ad0ad3b080cca478dc2302eb6e01837b174b1015289b6805ca9&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=eaeda1a6d227d7947afa3e1f13562987cfb5cb39d157f81ea7c2999a6e6b6310&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T040955Z&X-Amz-Expires=604800&X-Amz-Signature=c404ba6387a04ea33c3135e68524c83309f2aad4c52aa203bdba7131c2731525&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=ff9499961de3ee08ffa4dd09f1d3afac1ee306c229baa3e76351fdbb05103364&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=ef9dc5d9e955d44c3ef674de8ebd35d45e1b3bf7f7be0b1a231392a64dfe3bc3&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=806748a260a0b91694003bca19abc4192f71f5b99de90d829a38f755e7cf3533&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=ff9499961de3ee08ffa4dd09f1d3afac1ee306c229baa3e76351fdbb05103364&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=ef9dc5d9e955d44c3ef674de8ebd35d45e1b3bf7f7be0b1a231392a64dfe3bc3&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041032Z&X-Amz-Expires=604800&X-Amz-Signature=806748a260a0b91694003bca19abc4192f71f5b99de90d829a38f755e7cf3533&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=4b3693e454e1f96a3104c8bd937281b87c39fbbe737ad593cbde9c23834591e5&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=c6402fd4b4b3d42cd9a818f356a483ba93d774de6cfa01f4a603dcbc579f0228&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=0ad42a05b3069fe7d47a4c42c62aaccef1b3cef96448c1981320a2ef2d4b9d56&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=4b3693e454e1f96a3104c8bd937281b87c39fbbe737ad593cbde9c23834591e5&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=c6402fd4b4b3d42cd9a818f356a483ba93d774de6cfa01f4a603dcbc579f0228&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041140Z&X-Amz-Expires=604800&X-Amz-Signature=0ad42a05b3069fe7d47a4c42c62aaccef1b3cef96448c1981320a2ef2d4b9d56&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=c5142dc8245d3eb9a0564539d70e28274f1ba6064b620b2d4b6c66bef846edbe&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=cac3b99522be6cbcbfd882fcc89e5d3e1b6afada70eecf504303f51a57c9f2ff&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=784cd7a181cefee0b3fc07ca5a38388c1ca880693175731617fd56893f04be47&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=c5142dc8245d3eb9a0564539d70e28274f1ba6064b620b2d4b6c66bef846edbe&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=cac3b99522be6cbcbfd882fcc89e5d3e1b6afada70eecf504303f51a57c9f2ff&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=784cd7a181cefee0b3fc07ca5a38388c1ca880693175731617fd56893f04be47&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=c5142dc8245d3eb9a0564539d70e28274f1ba6064b620b2d4b6c66bef846edbe&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=cac3b99522be6cbcbfd882fcc89e5d3e1b6afada70eecf504303f51a57c9f2ff&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T041201Z&X-Amz-Expires=604800&X-Amz-Signature=784cd7a181cefee0b3fc07ca5a38388c1ca880693175731617fd56893f04be47&X-Amz-SignedHeaders=host&x-id=GetObject"}
+
+> start
+> ts-node src/server.ts
+
+
+> start
+> ts-node src/server.ts
+
+(node:28232) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000
+
+> start
+> ts-node src/server.ts
+
+(node:28745) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1872:16)
+    at listenInCluster (node:net:1920:12)
+    at Server.listen (node:net:2008:7)
+    at Object.<anonymous> (/home/ubuntu/github.com/DwYoo/aigoods/src/server.ts:22:13)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module.m._compile (/home/ubuntu/github.com/DwYoo/aigoods/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10)
+    at Object.require.extensions.<computed> [as .ts] (/home/ubuntu/github.com/DwYoo/aigoods/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1207:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1023:12) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+> start
+> ts-node src/server.ts
+
+(node:29100) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000
+node:internal/modules/cjs/loader:1147
+  throw err;
+  ^
+
+Error: Cannot find module './server.ts'
+Require stack:
+- /home/ubuntu/github.com/DwYoo/aigoods/imaginaryUncacheableRequireResolveScript
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1144:15)
+    at Function.resolve (node:internal/modules/helpers:187:19)
+    at requireResolveNonCached (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:549:16)
+    at getProjectSearchDir (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:519:40)
+    at phase3 (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:267:27)
+    at bootstrap (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:47:30)
+    at main (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:33:12)
+    at Object.<anonymous> (/home/ubuntu/.nvm/versions/node/v21.4.0/lib/node_modules/ts-node/dist/bin.js:579:5)
+    at Module._compile (node:internal/modules/cjs/loader:1376:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1435:10) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ubuntu/github.com/DwYoo/aigoods/imaginaryUncacheableRequireResolveScript'
+  ]
+}
+
+Node.js v21.4.0
+(node:29533) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000
+(node:30022) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Server is running on https://api.pets-mas.com:3000

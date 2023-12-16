@@ -81,7 +81,7 @@ export default class InferController {
         getSignedUrl(s3Client, new GetObjectCommand({
           Bucket: String(process.env.S3_BUCKET_NAME),
           Key: `pets-mas/${image.filePath}`
-        }), { expiresIn: 180 })
+        }), { expiresIn: 604800 })
       ));
   
       // 이미지 ID와 URL을 매핑
