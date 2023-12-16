@@ -3799,7 +3799,7 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     name: string | null
-    email: string
+    email: string | null
     emailVerified: Date | null
     image: string | null
     userType: $Enums.UserType
@@ -3879,7 +3879,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
-      email: string
+      email: string | null
       emailVerified: Date | null
       image: string | null
       userType: $Enums.UserType
@@ -10683,7 +10683,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
-    email?: StringFilter<"User"> | string
+    email?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
@@ -10700,7 +10700,7 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     userType?: SortOrder
@@ -10737,7 +10737,7 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     userType?: SortOrder
@@ -10758,7 +10758,7 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    email?: StringWithAggregatesFilter<"User"> | string
+    email?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
@@ -11250,7 +11250,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -11266,7 +11266,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -11282,7 +11282,7 @@ export namespace Prisma {
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -11298,7 +11298,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -11314,7 +11314,7 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -11327,7 +11327,7 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -11339,7 +11339,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -12839,7 +12839,7 @@ export namespace Prisma {
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -12854,7 +12854,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -12885,7 +12885,7 @@ export namespace Prisma {
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -12900,7 +12900,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -12915,7 +12915,7 @@ export namespace Prisma {
   export type UserCreateWithoutSessionsInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -12930,7 +12930,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -12961,7 +12961,7 @@ export namespace Prisma {
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -12976,7 +12976,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -13213,7 +13213,7 @@ export namespace Prisma {
   export type UserCreateWithoutCurrentJobInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -13228,7 +13228,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutCurrentJobInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -13259,7 +13259,7 @@ export namespace Prisma {
   export type UserUpdateWithoutCurrentJobInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -13274,7 +13274,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutCurrentJobInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -13289,7 +13289,7 @@ export namespace Prisma {
   export type UserCreateWithoutTrainImageSetInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -13304,7 +13304,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutTrainImageSetInput = {
     id?: string
     name?: string | null
-    email: string
+    email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
@@ -13374,7 +13374,7 @@ export namespace Prisma {
   export type UserUpdateWithoutTrainImageSetInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
@@ -13389,7 +13389,7 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutTrainImageSetInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType

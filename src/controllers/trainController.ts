@@ -2,13 +2,14 @@ import { Request, Response } from "express";
 import multer from 'multer';
 import {PrismaClient, TrainImage } from '../../prisma/generated/client'
 
-import { RunpodClient } from "../runpod/client";
+import { RunpodClient, RunpodResponse } from "../runpod/client";
 import {s3Client, uploadTrainImageSet, uploadZip, generateSignedUrls} from "../s3/client"
 
 require('dotenv').config();
 
 const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 const prisma:PrismaClient = new PrismaClient();
+
 
 export default class TrainController {
 
@@ -27,7 +28,7 @@ export default class TrainController {
 
       await uploadTrainImageSet(files, userId, petClass, petName, zipPath);
 
-      const response = await runpodClient.train(
+      const runpodResponse:RunpodResponse = await runpodClient.train(
         `lora_${Date.now()}`,
         petClass,
         zipPath, 
@@ -41,14 +42,13 @@ export default class TrainController {
           },
           data: {
             userStatus: 1,
+            currentJobId: runpodResponse.id
           }
         })
 
-        console.log(response)
-
       res.status(200).json({
         message: "Train images uploaded, training in process.",
-        runpodResponse: response
+        runpodResponse: JSON.stringify(runpodResponse)
       });
     } catch (error) {
       console.error(error);

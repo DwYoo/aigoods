@@ -4,6 +4,11 @@ import R from 'ramda';
 import {inferenceRequestData, trainRequestData, } from './config';
 import {DefaultPrompt} from './prompts'
 
+interface RunpodResponse {
+  id: string,
+  status: string
+}
+
 class RunpodClient {
     inferEndpoint: string;
     trainEndpoint: string;
@@ -17,15 +22,15 @@ class RunpodClient {
         this.apiKey = apiKey;        
     }
 
-    async train(projectName: string, petClass:string, zipPath: string, outputPath: string, webhookUrl:string): Promise<string> {
+    async train(projectName: string, petClass:string, zipPath: string, outputPath: string, webhookUrl:string): Promise<RunpodResponse> {
       return this.sendTrainRequest('run', projectName, petClass, zipPath, outputPath, webhookUrl)
     }
 
-    async trainsync(projectName: string, petClass:string, zipPath: string, outputPath: string): Promise<string> {
+    async trainsync(projectName: string, petClass:string, zipPath: string, outputPath: string): Promise<RunpodResponse> {
       return this.sendTrainRequest('runsync', projectName, petClass, zipPath, outputPath)
     }
 
-    private async sendTrainRequest(urlSuffix:string, projectName:string, petClass:string, zipPath:string, outputPath:string, webhookUrl: string|null = null) : Promise<string> {
+    private async sendTrainRequest(urlSuffix:string, projectName:string, petClass:string, zipPath:string, outputPath:string, webhookUrl: string|null = null) : Promise<RunpodResponse> {
       let requestData = R.clone(this.trainRequestData)
       requestData["input"]["zipfile_path"] = zipPath
       requestData["input"]["output_path"] = outputPath
@@ -54,21 +59,21 @@ class RunpodClient {
       }
     }
 
-    async infer(petClass: string, loraPath: string, outputPath:string, webhookUrl:string): Promise<any> {
+    async infer(petClass: string, loraPath: string, outputPath:string, webhookUrl:string): Promise<RunpodResponse> {
         return this.sendInferRequest('run', petClass, loraPath, outputPath, webhookUrl);
     }
 
-    async infersync(petClass: string, loraPath: string, outputPath:string): Promise<string> {
+    async infersync(petClass: string, loraPath: string, outputPath:string): Promise<RunpodResponse> {
         return this.sendInferRequest('runsync',petClass, loraPath, outputPath);
     }
 
-    private async sendInferRequest(urlSuffix: string,petClass: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<any> {
+    private async sendInferRequest(urlSuffix: string,petClass: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<RunpodResponse> {
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
-        requestData["input"]["prompt"]["6"]["text"] = new DefaultPrompt(petClass).prompt
-        requestData["input"]["prompt"]["3"]["seed"] = Date.now()
-        console.log(requestData)
+        requestData["input"]["prompt"]["6"]["inputs"]["text"] = new DefaultPrompt(petClass).prompt
+        requestData["input"]["prompt"]["3"]["inputs"]["seed"] = Date.now()
+        console.log(JSON.stringify(requestData))
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }
@@ -135,4 +140,4 @@ interface InferenceRequestData {
   }
   
 
-export {RunpodClient};
+export {RunpodClient, RunpodResponse};

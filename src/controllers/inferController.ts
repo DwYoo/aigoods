@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
-import { RunpodClient } from "../runpod/client";
+import { RunpodClient, RunpodResponse } from "../runpod/client";
 import {PrismaClient } from '../../prisma/generated/client'
 import {s3Client} from "../s3/client"
 
@@ -33,7 +33,7 @@ export default class InferController {
         });
       }
 
-      const response = await runpodClient.infer(
+      const runpodResponse:RunpodResponse = await runpodClient.infer(
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
@@ -46,14 +46,15 @@ export default class InferController {
         },
         data: {
           userStatus: 1,
+          currentJobId: runpodResponse.id
         }
       })
 
-      console.log(response)
+      console.log(runpodResponse)
   
       res.status(200).json({
         message: "Successfully sent request to runpod",
-        runpodResponse: response
+        runpodResponse: runpodResponse
       });
     } catch (err) {
       res.status(500).json({
