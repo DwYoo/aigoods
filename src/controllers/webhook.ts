@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import {PrismaClient, User } from '../../prisma/generated/client';
 import { sendMail } from "../utils/sendMail";
+require('dotenv').config();
+
 
 const prisma:PrismaClient = new PrismaClient();
 
@@ -49,7 +51,7 @@ class WebhookController {
           }
         });
       }
-      axios.post(`http://api.pets-mas.com:3000/users/${userId}/gen-images`)
+      axios.post(`${process.env.BASE_ENDPOINT}/users/${userId}/gen-images`)
       res.status(200).send("Webhook processed");
     }
 

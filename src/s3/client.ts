@@ -134,7 +134,7 @@ return await Promise.all(
     getSignedUrl(s3Client, new GetObjectCommand({
         Bucket: String(process.env.S3_BUCKET_NAME),
         Key: image.filePath
-    }), { expiresIn: 300 })
+    }), { expiresIn: 604800 })
     )
 );
 }
