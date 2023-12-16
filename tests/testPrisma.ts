@@ -4,7 +4,7 @@ import { uploadTrainImageSet } from '../src/s3/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    const users = await prisma.user.findMany();
+    const users = await prisma.genImage.findMany();
     console.log('All users:', users);
 
     // await prisma.user.update({

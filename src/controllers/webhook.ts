@@ -62,7 +62,7 @@ class WebhookController {
         });
       }
 
-      const runpodResponse:any = await runpodClient.infer(
+      const runpodResponse:any = await runpodClient.inferBatch(
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
@@ -89,37 +89,37 @@ class WebhookController {
 
       if (req.body.status === 'FAILED' && req.body.error === "Max retries reached while waiting for image generation") {
         console.error('Infer operation did not complete successfully. Retrying...');
-        const lora = await prisma.lora.findFirst({
-          where: {
-            trainImageSet: {
-              userId: userId
-            }
-          },
-          include: {
-            trainImageSet: true // 이 부분을 추가합니다.
-          }
-        });
+//         const lora = await prisma.lora.findFirst({
+//           where: {
+//             trainImageSet: {
+//               userId: userId
+//             }
+//           },
+//           include: {
+//             trainImageSet: true // 이 부분을 추가합니다.
+//           }
+//         });
     
-        if (!lora) {
--            console.error("Lora object not found for the user.")
-            return;
-          };
-        const runpodResponse:any = await runpodClient.infer(
-          lora.trainImageSet.petClass,
-          lora.path, 
-          `users/${userId}/gen_images`,
-           `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
-           )
+//         if (!lora) {
+// -            console.error("Lora object not found for the user.")
+//             return;
+//           };
+//         const runpodResponse:any = await runpodClient.infer(
+//           lora.trainImageSet.petClass,
+//           lora.path, 
+//           `users/${userId}/gen_images`,
+//            `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
+//            )
   
-          await prisma.user.update({
-          where: {
-            id: userId
-          },
-          data: {
-            userStatus: 1,
-            currentJobId: runpodResponse.id
-          }
-        })
+//           await prisma.user.update({
+//           where: {
+//             id: userId
+//           },
+//           data: {
+//             userStatus: 1,
+//             currentJobId: runpodResponse.id
+//           }
+//         })
       }
 
       else if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
@@ -141,7 +141,9 @@ class WebhookController {
             id: userId
           },
           data: {
-            userStatus: 2,
+            inferSuccess: {
+              increment: 1
+            }          
           }
         })
     
@@ -172,15 +174,25 @@ class WebhookController {
           });
         }
 
-        const userEmail:string|null = user.email;
-        console.log(user)
-        if (userEmail) {
-          console.log(`sending email to ${userEmail}`)
-          await sendMail(userEmail, "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
-        } else {
-          console.log(`sending email to ${process.env.TEST_MAIL}`)
-          await sendMail(String(process.env.TEST_MAIL), "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
-        }
+        if (user.inferSuccess ===9) {
+          await prisma.user.update({
+            where: {
+              id: userId
+            },
+            data: {
+              userStatus: 2
+            }
+          });
+          const userEmail:string|null = user.email;
+          console.log(user)
+          if (userEmail) {
+            console.log(`sending email to ${userEmail}`)
+            await sendMail(userEmail, "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
+          } else {
+            console.log(`sending email to ${process.env.TEST_MAIL}`)
+            await sendMail(String(process.env.TEST_MAIL), "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
+          }
+       }
 
         res.status(200).send("Infer Webhook processed");
       } catch (error) {

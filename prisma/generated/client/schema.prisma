@@ -14,15 +14,15 @@ model Account {
   type                     String
   provider                 String
   providerAccountId        String
-  refresh_token            String? @db.Text
+  scope                    String?
   access_token             String? @db.Text
   expires_at               Int?
-  token_type               String?
-  scope                    String?
   id_token                 String? @db.Text
-  session_state            String?
+  refresh_token            String? @db.Text
   refresh_token_expires_in Int?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session_state            String?
+  token_type               String?
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@index([userId])
@@ -35,65 +35,68 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-
   @@index([userId])
 }
 
 model User {
   id            String    @id @default(uuid())
   name          String?
-  email         String?    @unique
-  emailVerified DateTime?
+  email         String?   @unique
   image         String?
   userType      UserType  @default(User)
-  userStatus    Int       @default(0)
-  currentJobId  String?   @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+  emailVerified DateTime?
+  userStatus    Int       @default(0)
+  currentJobId  String?   @unique
+  playCount     Int       @default(0)
+  inferSuccess   Int?     @default(0)
   trainImageSet TrainImageSet[]
   sessions       Session[]
   accounts       Account[]
-
 }
 
 model TrainImageSet {
-  id         Int          @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   userId     String
-  folderPath String       @unique
-  zipPath    String       @unique
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  user       User         @relation(fields: [userId], references: [id])
+  folderPath String   @unique
+  zipPath    String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
   petClass   String
   petName    String
   trainImages TrainImage[]
   lora       Lora?  
+  user       User         @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "TrainImageSet_userId_fkey")
 }
 
 model TrainImage {
-  id           Int            @id @default(autoincrement())
-  setId        Int
-  filePath     String
+  id       Int    @id @default(autoincrement())
+  setId    Int
+  filePath String
   trainImageSet TrainImageSet @relation(fields: [setId], references: [id])
+  @@index([setId], map: "TrainImage_setId_fkey")
 }
 
-
 model Lora {
-  id              Int            @id @default(autoincrement())
-  trainImageSetId Int            @unique
+  id              Int      @id @default(autoincrement())
+  trainImageSetId Int      @unique
   path            String
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
   trainImageSet   TrainImageSet  @relation(fields: [trainImageSetId], references: [id])
   genImages       GenImage[]
 }
 
 model GenImage {
-  id         Int      @id @default(autoincrement())
-  loraId     Int
-  filePath   String
-  createdAt  DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  loraId    Int
+  filePath  String
+  createdAt DateTime @default(now())
   lora       Lora     @relation(fields: [loraId], references: [id])
+  @@index([loraId], map: "GenImage_loraId_fkey")
 }
 
 model VerificationToken {
@@ -104,8 +107,18 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model Card {
+  id         String   @id
+  imageUrl   String   @db.Text
+  inviteCode String   @unique
+  userId     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime
+
+  @@index([userId])
+}
+
 enum UserType {
   User
   Admin
 }
-

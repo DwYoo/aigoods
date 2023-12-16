@@ -113,14 +113,14 @@ exports.Prisma.AccountScalarFieldEnum = {
   type: 'type',
   provider: 'provider',
   providerAccountId: 'providerAccountId',
-  refresh_token: 'refresh_token',
+  scope: 'scope',
   access_token: 'access_token',
   expires_at: 'expires_at',
-  token_type: 'token_type',
-  scope: 'scope',
   id_token: 'id_token',
+  refresh_token: 'refresh_token',
+  refresh_token_expires_in: 'refresh_token_expires_in',
   session_state: 'session_state',
-  refresh_token_expires_in: 'refresh_token_expires_in'
+  token_type: 'token_type'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -134,13 +134,15 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  emailVerified: 'emailVerified',
   image: 'image',
   userType: 'userType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  emailVerified: 'emailVerified',
   userStatus: 'userStatus',
   currentJobId: 'currentJobId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  playCount: 'playCount',
+  inferSuccess: 'inferSuccess'
 };
 
 exports.Prisma.TrainImageSetScalarFieldEnum = {
@@ -181,6 +183,15 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expires: 'expires'
 };
 
+exports.Prisma.CardScalarFieldEnum = {
+  id: 'id',
+  imageUrl: 'imageUrl',
+  inviteCode: 'inviteCode',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -203,7 +214,8 @@ exports.Prisma.ModelName = {
   TrainImage: 'TrainImage',
   Lora: 'Lora',
   GenImage: 'GenImage',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Card: 'Card'
 };
 
 /**

@@ -3,10 +3,12 @@ import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 
 import { RunpodClient, RunpodResponse } from "../runpod/client";
-import {PrismaClient } from '../../prisma/generated/client'
+import {PrismaClient, User } from '../../prisma/generated/client'
 import {s3Client} from "../s3/client"
 
 require('dotenv').config();
+
+const IMAGE_PER_COUNT:number = 3
 
 const prisma:PrismaClient = new PrismaClient()
 
@@ -33,26 +35,29 @@ export default class InferController {
         });
       }
 
-      const runpodResponse:any = await runpodClient.infer(
+      const runpodJobs = await runpodClient.inferBatch(
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
-         `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
-         )
+        `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`,
+        3
+        )
 
-        await prisma.user.update({
+      console.log(runpodJobs)
+
+      await prisma.user.update({
         where: {
           id: userId
         },
         data: {
           userStatus: 1,
-          currentJobId: runpodResponse.id
+          currentJobId: runpodJobs[runpodJobs.length-1].id
         }
       })
   
       res.status(200).json({
         message: "Successfully sent request to runpod",
-        runpodResponse: runpodResponse
+        runpodJobs: runpodJobs
       });
     } catch (err) {
       console.log(err)
@@ -65,6 +70,22 @@ export default class InferController {
   async getGenImages(req: Request, res: Response) {
     try {
       const userId: string = req.params.user_id;
+      const user = await prisma.user.findFirst({
+        where: {
+          id: userId
+        },
+        select: {
+          playCount: true
+        }
+      });
+      let playCount: number = 0; 
+
+      if (user) {
+        playCount = user.playCount;
+      } else {
+        console.log("User not found");
+      }
+
       const genImages = await prisma.genImage.findMany({
         where: {
           lora: {
@@ -72,8 +93,14 @@ export default class InferController {
               userId: userId
             }
           }
-        }
-      });  
+        },
+        orderBy: {
+          createdAt: 'desc' // 최신순으로 정렬
+        },
+        skip: IMAGE_PER_COUNT * playCount,
+        take: IMAGE_PER_COUNT 
+      });
+
       // gen_image에 대한 URL 생성
       const imageUrls = await Promise.all(genImages.map(image =>
         getSignedUrl(s3Client, new GetObjectCommand({
@@ -89,7 +116,19 @@ export default class InferController {
       }, {});
       console.log(`response: ${JSON.stringify(imageUrlsMap)}`)
   
-      res.status(200).json(JSON.stringify(imageUrlsMap));
+      res.status(200).json(JSON.stringify(imageUrlsMap))
+      
+      await prisma.user.update({
+        where: {
+          id: userId
+        },
+        data: {
+          playCount: {
+            increment: 1
+          }          
+        }
+      })
+
     } catch (err) {
       console.error(err);
       res.status(500).json({

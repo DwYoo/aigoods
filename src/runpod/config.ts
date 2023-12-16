@@ -41,7 +41,7 @@ export let inferenceRequestData= {
                 "inputs": {
                 "width": 1024,
                 "height": 1024,
-                "batch_size": 3
+                "batch_size": 1
                 },
                 "class_type": "EmptyLatentImage"
             },

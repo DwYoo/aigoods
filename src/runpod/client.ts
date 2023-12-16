@@ -3,6 +3,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import R from 'ramda';
 import {inferenceRequestData, trainRequestData, } from './config';
 import {DefaultPrompt} from './prompts'
+import { AnyMxRecord } from 'dns';
 
 interface RunpodResponse {
   id: string,
@@ -59,6 +60,15 @@ class RunpodClient {
       }
     }
 
+    async inferBatch(petClass: string, loraPath: string, outputPath:string, webhookUrl:string, num:number=9, batchSize:number=1): Promise<RunpodResponse[]> {
+      let result;
+      const results = []
+      for (let i = 0;i<num; i++) {
+        result = await this.sendInferRequest('run', petClass, loraPath, outputPath, webhookUrl);
+        results.push(result)
+      }
+      return results
+  }
     async infer(petClass: string, loraPath: string, outputPath:string, webhookUrl:string): Promise<RunpodResponse> {
         return this.sendInferRequest('run', petClass, loraPath, outputPath, webhookUrl);
     }
@@ -126,6 +136,30 @@ class RunpodClient {
           console.error('An error occurred:', error);
         }
       };
+
+    async purgeQueue(jobType:string): Promise<void> {
+        let url;
+        if (jobType === 'infer') {
+          url = `${this.inferEndpoint}purge-queue`;
+        } else if (jobType === 'train') {
+          url = `${this.trainEndpoint}purge-queue`;
+        } else {
+          throw Error("jobType must be either infer or train")
+        }
+        const requestConfig:  AxiosRequestConfig = {
+          method: 'post',
+          url: url,
+          headers: {
+              Authorization: `Bearer ${this.apiKey}`,
+          },
+        };
+          try {
+              const response:AxiosResponse = await axios.request(requestConfig);
+              return response.data
+          } catch (error) {
+            console.error('An error occurred:', error);
+          }
+        };
 }
 
 interface InferenceRequestData {

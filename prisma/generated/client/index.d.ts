@@ -53,6 +53,11 @@ export type GenImage = $Result.DefaultSelection<Prisma.$GenImagePayload>
  * 
  */
 export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTokenPayload>
+/**
+ * Model Card
+ * 
+ */
+export type Card = $Result.DefaultSelection<Prisma.$CardPayload>
 
 /**
  * Enums
@@ -272,6 +277,16 @@ export class PrismaClient<
     * ```
     */
   get verificationToken(): Prisma.VerificationTokenDelegate<ExtArgs>;
+
+  /**
+   * `prisma.card`: Exposes CRUD operations for the **Card** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Cards
+    * const cards = await prisma.card.findMany()
+    * ```
+    */
+  get card(): Prisma.CardDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -749,7 +764,8 @@ export namespace Prisma {
     TrainImage: 'TrainImage',
     Lora: 'Lora',
     GenImage: 'GenImage',
-    VerificationToken: 'VerificationToken'
+    VerificationToken: 'VerificationToken',
+    Card: 'Card'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -766,7 +782,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'account' | 'session' | 'user' | 'trainImageSet' | 'trainImage' | 'lora' | 'genImage' | 'verificationToken'
+      modelProps: 'account' | 'session' | 'user' | 'trainImageSet' | 'trainImage' | 'lora' | 'genImage' | 'verificationToken' | 'card'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1298,6 +1314,72 @@ export namespace Prisma {
           }
         }
       }
+      Card: {
+        payload: Prisma.$CardPayload<ExtArgs>
+        fields: Prisma.CardFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CardFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CardFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          findFirst: {
+            args: Prisma.CardFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CardFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          findMany: {
+            args: Prisma.CardFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>[]
+          }
+          create: {
+            args: Prisma.CardCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          createMany: {
+            args: Prisma.CardCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.CardDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          update: {
+            args: Prisma.CardUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          deleteMany: {
+            args: Prisma.CardDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CardUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.CardUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CardPayload>
+          }
+          aggregate: {
+            args: Prisma.CardAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCard>
+          }
+          groupBy: {
+            args: Prisma.CardGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CardGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CardCountArgs<ExtArgs>,
+            result: $Utils.Optional<CardCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1596,14 +1678,14 @@ export namespace Prisma {
     type: string | null
     provider: string | null
     providerAccountId: string | null
-    refresh_token: string | null
+    scope: string | null
     access_token: string | null
     expires_at: number | null
-    token_type: string | null
-    scope: string | null
     id_token: string | null
-    session_state: string | null
+    refresh_token: string | null
     refresh_token_expires_in: number | null
+    session_state: string | null
+    token_type: string | null
   }
 
   export type AccountMaxAggregateOutputType = {
@@ -1612,14 +1694,14 @@ export namespace Prisma {
     type: string | null
     provider: string | null
     providerAccountId: string | null
-    refresh_token: string | null
+    scope: string | null
     access_token: string | null
     expires_at: number | null
-    token_type: string | null
-    scope: string | null
     id_token: string | null
-    session_state: string | null
+    refresh_token: string | null
     refresh_token_expires_in: number | null
+    session_state: string | null
+    token_type: string | null
   }
 
   export type AccountCountAggregateOutputType = {
@@ -1628,14 +1710,14 @@ export namespace Prisma {
     type: number
     provider: number
     providerAccountId: number
-    refresh_token: number
+    scope: number
     access_token: number
     expires_at: number
-    token_type: number
-    scope: number
     id_token: number
-    session_state: number
+    refresh_token: number
     refresh_token_expires_in: number
+    session_state: number
+    token_type: number
     _all: number
   }
 
@@ -1656,14 +1738,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
+    scope?: true
     access_token?: true
     expires_at?: true
-    token_type?: true
-    scope?: true
     id_token?: true
-    session_state?: true
+    refresh_token?: true
     refresh_token_expires_in?: true
+    session_state?: true
+    token_type?: true
   }
 
   export type AccountMaxAggregateInputType = {
@@ -1672,14 +1754,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
+    scope?: true
     access_token?: true
     expires_at?: true
-    token_type?: true
-    scope?: true
     id_token?: true
-    session_state?: true
+    refresh_token?: true
     refresh_token_expires_in?: true
+    session_state?: true
+    token_type?: true
   }
 
   export type AccountCountAggregateInputType = {
@@ -1688,14 +1770,14 @@ export namespace Prisma {
     type?: true
     provider?: true
     providerAccountId?: true
-    refresh_token?: true
+    scope?: true
     access_token?: true
     expires_at?: true
-    token_type?: true
-    scope?: true
     id_token?: true
-    session_state?: true
+    refresh_token?: true
     refresh_token_expires_in?: true
+    session_state?: true
+    token_type?: true
     _all?: true
   }
 
@@ -1791,14 +1873,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token: string | null
+    scope: string | null
     access_token: string | null
     expires_at: number | null
-    token_type: string | null
-    scope: string | null
     id_token: string | null
-    session_state: string | null
+    refresh_token: string | null
     refresh_token_expires_in: number | null
+    session_state: string | null
+    token_type: string | null
     _count: AccountCountAggregateOutputType | null
     _avg: AccountAvgAggregateOutputType | null
     _sum: AccountSumAggregateOutputType | null
@@ -1826,14 +1908,14 @@ export namespace Prisma {
     type?: boolean
     provider?: boolean
     providerAccountId?: boolean
-    refresh_token?: boolean
+    scope?: boolean
     access_token?: boolean
     expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
     id_token?: boolean
-    session_state?: boolean
+    refresh_token?: boolean
     refresh_token_expires_in?: boolean
+    session_state?: boolean
+    token_type?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
@@ -1843,14 +1925,14 @@ export namespace Prisma {
     type?: boolean
     provider?: boolean
     providerAccountId?: boolean
-    refresh_token?: boolean
+    scope?: boolean
     access_token?: boolean
     expires_at?: boolean
-    token_type?: boolean
-    scope?: boolean
     id_token?: boolean
-    session_state?: boolean
+    refresh_token?: boolean
     refresh_token_expires_in?: boolean
+    session_state?: boolean
+    token_type?: boolean
   }
 
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1869,14 +1951,14 @@ export namespace Prisma {
       type: string
       provider: string
       providerAccountId: string
-      refresh_token: string | null
+      scope: string | null
       access_token: string | null
       expires_at: number | null
-      token_type: string | null
-      scope: string | null
       id_token: string | null
-      session_state: string | null
+      refresh_token: string | null
       refresh_token_expires_in: number | null
+      session_state: string | null
+      token_type: string | null
     }, ExtArgs["result"]["account"]>
     composites: {}
   }
@@ -2277,14 +2359,14 @@ export namespace Prisma {
     readonly type: FieldRef<"Account", 'String'>
     readonly provider: FieldRef<"Account", 'String'>
     readonly providerAccountId: FieldRef<"Account", 'String'>
-    readonly refresh_token: FieldRef<"Account", 'String'>
+    readonly scope: FieldRef<"Account", 'String'>
     readonly access_token: FieldRef<"Account", 'String'>
     readonly expires_at: FieldRef<"Account", 'Int'>
-    readonly token_type: FieldRef<"Account", 'String'>
-    readonly scope: FieldRef<"Account", 'String'>
     readonly id_token: FieldRef<"Account", 'String'>
-    readonly session_state: FieldRef<"Account", 'String'>
+    readonly refresh_token: FieldRef<"Account", 'String'>
     readonly refresh_token_expires_in: FieldRef<"Account", 'Int'>
+    readonly session_state: FieldRef<"Account", 'String'>
+    readonly token_type: FieldRef<"Account", 'String'>
   }
     
 
@@ -3533,98 +3615,118 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     userStatus: number | null
+    playCount: number | null
+    inferSuccess: number | null
   }
 
   export type UserSumAggregateOutputType = {
     userStatus: number | null
+    playCount: number | null
+    inferSuccess: number | null
   }
 
   export type UserMinAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    emailVerified: Date | null
     image: string | null
     userType: $Enums.UserType | null
-    userStatus: number | null
-    currentJobId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    emailVerified: Date | null
+    userStatus: number | null
+    currentJobId: string | null
+    playCount: number | null
+    inferSuccess: number | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
     email: string | null
-    emailVerified: Date | null
     image: string | null
     userType: $Enums.UserType | null
-    userStatus: number | null
-    currentJobId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    emailVerified: Date | null
+    userStatus: number | null
+    currentJobId: string | null
+    playCount: number | null
+    inferSuccess: number | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
     email: number
-    emailVerified: number
     image: number
     userType: number
-    userStatus: number
-    currentJobId: number
     createdAt: number
     updatedAt: number
+    emailVerified: number
+    userStatus: number
+    currentJobId: number
+    playCount: number
+    inferSuccess: number
     _all: number
   }
 
 
   export type UserAvgAggregateInputType = {
     userStatus?: true
+    playCount?: true
+    inferSuccess?: true
   }
 
   export type UserSumAggregateInputType = {
     userStatus?: true
+    playCount?: true
+    inferSuccess?: true
   }
 
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    emailVerified?: true
     image?: true
     userType?: true
-    userStatus?: true
-    currentJobId?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    userStatus?: true
+    currentJobId?: true
+    playCount?: true
+    inferSuccess?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    emailVerified?: true
     image?: true
     userType?: true
-    userStatus?: true
-    currentJobId?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    userStatus?: true
+    currentJobId?: true
+    playCount?: true
+    inferSuccess?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
     email?: true
-    emailVerified?: true
     image?: true
     userType?: true
-    userStatus?: true
-    currentJobId?: true
     createdAt?: true
     updatedAt?: true
+    emailVerified?: true
+    userStatus?: true
+    currentJobId?: true
+    playCount?: true
+    inferSuccess?: true
     _all?: true
   }
 
@@ -3718,13 +3820,15 @@ export namespace Prisma {
     id: string
     name: string | null
     email: string | null
-    emailVerified: Date | null
     image: string | null
     userType: $Enums.UserType
-    userStatus: number
-    currentJobId: string | null
     createdAt: Date
     updatedAt: Date
+    emailVerified: Date | null
+    userStatus: number
+    currentJobId: string | null
+    playCount: number
+    inferSuccess: number | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -3750,13 +3854,15 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    emailVerified?: boolean
     image?: boolean
     userType?: boolean
-    userStatus?: boolean
-    currentJobId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    emailVerified?: boolean
+    userStatus?: boolean
+    currentJobId?: boolean
+    playCount?: boolean
+    inferSuccess?: boolean
     trainImageSet?: boolean | User$trainImageSetArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -3767,13 +3873,15 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    emailVerified?: boolean
     image?: boolean
     userType?: boolean
-    userStatus?: boolean
-    currentJobId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    emailVerified?: boolean
+    userStatus?: boolean
+    currentJobId?: boolean
+    playCount?: boolean
+    inferSuccess?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3795,13 +3903,15 @@ export namespace Prisma {
       id: string
       name: string | null
       email: string | null
-      emailVerified: Date | null
       image: string | null
       userType: $Enums.UserType
-      userStatus: number
-      currentJobId: string | null
       createdAt: Date
       updatedAt: Date
+      emailVerified: Date | null
+      userStatus: number
+      currentJobId: string | null
+      playCount: number
+      inferSuccess: number | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -4204,13 +4314,15 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
     readonly userType: FieldRef<"User", 'UserType'>
-    readonly userStatus: FieldRef<"User", 'Int'>
-    readonly currentJobId: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly emailVerified: FieldRef<"User", 'DateTime'>
+    readonly userStatus: FieldRef<"User", 'Int'>
+    readonly currentJobId: FieldRef<"User", 'String'>
+    readonly playCount: FieldRef<"User", 'Int'>
+    readonly inferSuccess: FieldRef<"User", 'Int'>
   }
     
 
@@ -4823,9 +4935,9 @@ export namespace Prisma {
     updatedAt?: boolean
     petClass?: boolean
     petName?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trainImages?: boolean | TrainImageSet$trainImagesArgs<ExtArgs>
     lora?: boolean | TrainImageSet$loraArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | TrainImageSetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["trainImageSet"]>
 
@@ -4841,9 +4953,9 @@ export namespace Prisma {
   }
 
   export type TrainImageSetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     trainImages?: boolean | TrainImageSet$trainImagesArgs<ExtArgs>
     lora?: boolean | TrainImageSet$loraArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | TrainImageSetCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4851,9 +4963,9 @@ export namespace Prisma {
   export type $TrainImageSetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "TrainImageSet"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       trainImages: Prisma.$TrainImagePayload<ExtArgs>[]
       lora: Prisma.$LoraPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5229,11 +5341,11 @@ export namespace Prisma {
   export interface Prisma__TrainImageSetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     trainImages<T extends TrainImageSet$trainImagesArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$trainImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImagePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     lora<T extends TrainImageSet$loraArgs<ExtArgs> = {}>(args?: Subset<T, TrainImageSet$loraArgs<ExtArgs>>): Prisma__LoraClient<$Result.GetResult<Prisma.$LoraPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9347,6 +9459,887 @@ export namespace Prisma {
 
 
   /**
+   * Model Card
+   */
+
+  export type AggregateCard = {
+    _count: CardCountAggregateOutputType | null
+    _min: CardMinAggregateOutputType | null
+    _max: CardMaxAggregateOutputType | null
+  }
+
+  export type CardMinAggregateOutputType = {
+    id: string | null
+    imageUrl: string | null
+    inviteCode: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CardMaxAggregateOutputType = {
+    id: string | null
+    imageUrl: string | null
+    inviteCode: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CardCountAggregateOutputType = {
+    id: number
+    imageUrl: number
+    inviteCode: number
+    userId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CardMinAggregateInputType = {
+    id?: true
+    imageUrl?: true
+    inviteCode?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CardMaxAggregateInputType = {
+    id?: true
+    imageUrl?: true
+    inviteCode?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CardCountAggregateInputType = {
+    id?: true
+    imageUrl?: true
+    inviteCode?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CardAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Card to aggregate.
+     */
+    where?: CardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cards to fetch.
+     */
+    orderBy?: CardOrderByWithRelationInput | CardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Cards
+    **/
+    _count?: true | CardCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CardMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CardMaxAggregateInputType
+  }
+
+  export type GetCardAggregateType<T extends CardAggregateArgs> = {
+        [P in keyof T & keyof AggregateCard]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCard[P]>
+      : GetScalarType<T[P], AggregateCard[P]>
+  }
+
+
+
+
+  export type CardGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CardWhereInput
+    orderBy?: CardOrderByWithAggregationInput | CardOrderByWithAggregationInput[]
+    by: CardScalarFieldEnum[] | CardScalarFieldEnum
+    having?: CardScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CardCountAggregateInputType | true
+    _min?: CardMinAggregateInputType
+    _max?: CardMaxAggregateInputType
+  }
+
+  export type CardGroupByOutputType = {
+    id: string
+    imageUrl: string
+    inviteCode: string
+    userId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CardCountAggregateOutputType | null
+    _min: CardMinAggregateOutputType | null
+    _max: CardMaxAggregateOutputType | null
+  }
+
+  type GetCardGroupByPayload<T extends CardGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CardGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CardGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CardGroupByOutputType[P]>
+            : GetScalarType<T[P], CardGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    imageUrl?: boolean
+    inviteCode?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["card"]>
+
+  export type CardSelectScalar = {
+    id?: boolean
+    imageUrl?: boolean
+    inviteCode?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $CardPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Card"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      imageUrl: string
+      inviteCode: string
+      userId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["card"]>
+    composites: {}
+  }
+
+
+  type CardGetPayload<S extends boolean | null | undefined | CardDefaultArgs> = $Result.GetResult<Prisma.$CardPayload, S>
+
+  type CardCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CardFindManyArgs, 'select' | 'include' | 'distinct' > & {
+      select?: CardCountAggregateInputType | true
+    }
+
+  export interface CardDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Card'], meta: { name: 'Card' } }
+    /**
+     * Find zero or one Card that matches the filter.
+     * @param {CardFindUniqueArgs} args - Arguments to find a Card
+     * @example
+     * // Get one Card
+     * const card = await prisma.card.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends CardFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CardFindUniqueArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Card that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {CardFindUniqueOrThrowArgs} args - Arguments to find a Card
+     * @example
+     * // Get one Card
+     * const card = await prisma.card.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends CardFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Card that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardFindFirstArgs} args - Arguments to find a Card
+     * @example
+     * // Get one Card
+     * const card = await prisma.card.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends CardFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardFindFirstArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Card that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardFindFirstOrThrowArgs} args - Arguments to find a Card
+     * @example
+     * // Get one Card
+     * const card = await prisma.card.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends CardFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Cards that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Cards
+     * const cards = await prisma.card.findMany()
+     * 
+     * // Get first 10 Cards
+     * const cards = await prisma.card.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cardWithIdOnly = await prisma.card.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends CardFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Card.
+     * @param {CardCreateArgs} args - Arguments to create a Card.
+     * @example
+     * // Create one Card
+     * const Card = await prisma.card.create({
+     *   data: {
+     *     // ... data to create a Card
+     *   }
+     * })
+     * 
+    **/
+    create<T extends CardCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CardCreateArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Cards.
+     *     @param {CardCreateManyArgs} args - Arguments to create many Cards.
+     *     @example
+     *     // Create many Cards
+     *     const card = await prisma.card.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends CardCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Card.
+     * @param {CardDeleteArgs} args - Arguments to delete one Card.
+     * @example
+     * // Delete one Card
+     * const Card = await prisma.card.delete({
+     *   where: {
+     *     // ... filter to delete one Card
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends CardDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CardDeleteArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Card.
+     * @param {CardUpdateArgs} args - Arguments to update one Card.
+     * @example
+     * // Update one Card
+     * const card = await prisma.card.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends CardUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CardUpdateArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Cards.
+     * @param {CardDeleteManyArgs} args - Arguments to filter Cards to delete.
+     * @example
+     * // Delete a few Cards
+     * const { count } = await prisma.card.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends CardDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CardDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Cards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Cards
+     * const card = await prisma.card.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends CardUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CardUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Card.
+     * @param {CardUpsertArgs} args - Arguments to update or create a Card.
+     * @example
+     * // Update or create a Card
+     * const card = await prisma.card.upsert({
+     *   create: {
+     *     // ... data to create a Card
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Card we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends CardUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CardUpsertArgs<ExtArgs>>
+    ): Prisma__CardClient<$Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Cards.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardCountArgs} args - Arguments to filter Cards to count.
+     * @example
+     * // Count the number of Cards
+     * const count = await prisma.card.count({
+     *   where: {
+     *     // ... the filter for the Cards we want to count
+     *   }
+     * })
+    **/
+    count<T extends CardCountArgs>(
+      args?: Subset<T, CardCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CardCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Card.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CardAggregateArgs>(args: Subset<T, CardAggregateArgs>): Prisma.PrismaPromise<GetCardAggregateType<T>>
+
+    /**
+     * Group by Card.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CardGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CardGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CardGroupByArgs['orderBy'] }
+        : { orderBy?: CardGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CardGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCardGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Card model
+   */
+  readonly fields: CardFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Card.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CardClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Card model
+   */ 
+  interface CardFieldRefs {
+    readonly id: FieldRef<"Card", 'String'>
+    readonly imageUrl: FieldRef<"Card", 'String'>
+    readonly inviteCode: FieldRef<"Card", 'String'>
+    readonly userId: FieldRef<"Card", 'String'>
+    readonly createdAt: FieldRef<"Card", 'DateTime'>
+    readonly updatedAt: FieldRef<"Card", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Card findUnique
+   */
+  export type CardFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter, which Card to fetch.
+     */
+    where: CardWhereUniqueInput
+  }
+
+
+  /**
+   * Card findUniqueOrThrow
+   */
+  export type CardFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter, which Card to fetch.
+     */
+    where: CardWhereUniqueInput
+  }
+
+
+  /**
+   * Card findFirst
+   */
+  export type CardFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter, which Card to fetch.
+     */
+    where?: CardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cards to fetch.
+     */
+    orderBy?: CardOrderByWithRelationInput | CardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cards.
+     */
+    cursor?: CardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cards.
+     */
+    distinct?: CardScalarFieldEnum | CardScalarFieldEnum[]
+  }
+
+
+  /**
+   * Card findFirstOrThrow
+   */
+  export type CardFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter, which Card to fetch.
+     */
+    where?: CardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cards to fetch.
+     */
+    orderBy?: CardOrderByWithRelationInput | CardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cards.
+     */
+    cursor?: CardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cards.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cards.
+     */
+    distinct?: CardScalarFieldEnum | CardScalarFieldEnum[]
+  }
+
+
+  /**
+   * Card findMany
+   */
+  export type CardFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter, which Cards to fetch.
+     */
+    where?: CardWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cards to fetch.
+     */
+    orderBy?: CardOrderByWithRelationInput | CardOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Cards.
+     */
+    cursor?: CardWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cards from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cards.
+     */
+    skip?: number
+    distinct?: CardScalarFieldEnum | CardScalarFieldEnum[]
+  }
+
+
+  /**
+   * Card create
+   */
+  export type CardCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Card.
+     */
+    data: XOR<CardCreateInput, CardUncheckedCreateInput>
+  }
+
+
+  /**
+   * Card createMany
+   */
+  export type CardCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Cards.
+     */
+    data: CardCreateManyInput | CardCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Card update
+   */
+  export type CardUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Card.
+     */
+    data: XOR<CardUpdateInput, CardUncheckedUpdateInput>
+    /**
+     * Choose, which Card to update.
+     */
+    where: CardWhereUniqueInput
+  }
+
+
+  /**
+   * Card updateMany
+   */
+  export type CardUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Cards.
+     */
+    data: XOR<CardUpdateManyMutationInput, CardUncheckedUpdateManyInput>
+    /**
+     * Filter which Cards to update
+     */
+    where?: CardWhereInput
+  }
+
+
+  /**
+   * Card upsert
+   */
+  export type CardUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Card to update in case it exists.
+     */
+    where: CardWhereUniqueInput
+    /**
+     * In case the Card found by the `where` argument doesn't exist, create a new Card with this data.
+     */
+    create: XOR<CardCreateInput, CardUncheckedCreateInput>
+    /**
+     * In case the Card was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CardUpdateInput, CardUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Card delete
+   */
+  export type CardDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+    /**
+     * Filter which Card to delete.
+     */
+    where: CardWhereUniqueInput
+  }
+
+
+  /**
+   * Card deleteMany
+   */
+  export type CardDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Cards to delete
+     */
+    where?: CardWhereInput
+  }
+
+
+  /**
+   * Card without action
+   */
+  export type CardDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: CardSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -9366,14 +10359,14 @@ export namespace Prisma {
     type: 'type',
     provider: 'provider',
     providerAccountId: 'providerAccountId',
-    refresh_token: 'refresh_token',
+    scope: 'scope',
     access_token: 'access_token',
     expires_at: 'expires_at',
-    token_type: 'token_type',
-    scope: 'scope',
     id_token: 'id_token',
+    refresh_token: 'refresh_token',
+    refresh_token_expires_in: 'refresh_token_expires_in',
     session_state: 'session_state',
-    refresh_token_expires_in: 'refresh_token_expires_in'
+    token_type: 'token_type'
   };
 
   export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum]
@@ -9393,13 +10386,15 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    emailVerified: 'emailVerified',
     image: 'image',
     userType: 'userType',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    emailVerified: 'emailVerified',
     userStatus: 'userStatus',
     currentJobId: 'currentJobId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    playCount: 'playCount',
+    inferSuccess: 'inferSuccess'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9456,6 +10451,18 @@ export namespace Prisma {
   };
 
   export type VerificationTokenScalarFieldEnum = (typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum]
+
+
+  export const CardScalarFieldEnum: {
+    id: 'id',
+    imageUrl: 'imageUrl',
+    inviteCode: 'inviteCode',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CardScalarFieldEnum = (typeof CardScalarFieldEnum)[keyof typeof CardScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9526,14 +10533,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
+    scope?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token?: StringNullableFilter<"Account"> | string | null
     refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    session_state?: StringNullableFilter<"Account"> | string | null
+    token_type?: StringNullableFilter<"Account"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -9543,14 +10550,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
+    scope?: SortOrderInput | SortOrder
     access_token?: SortOrderInput | SortOrder
     expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
-    scope?: SortOrderInput | SortOrder
     id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
+    refresh_token?: SortOrderInput | SortOrder
     refresh_token_expires_in?: SortOrderInput | SortOrder
+    session_state?: SortOrderInput | SortOrder
+    token_type?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -9564,14 +10571,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
+    scope?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token?: StringNullableFilter<"Account"> | string | null
     refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
+    session_state?: StringNullableFilter<"Account"> | string | null
+    token_type?: StringNullableFilter<"Account"> | string | null
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "provider_providerAccountId">
 
@@ -9581,14 +10588,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrderInput | SortOrder
+    scope?: SortOrderInput | SortOrder
     access_token?: SortOrderInput | SortOrder
     expires_at?: SortOrderInput | SortOrder
-    token_type?: SortOrderInput | SortOrder
-    scope?: SortOrderInput | SortOrder
     id_token?: SortOrderInput | SortOrder
-    session_state?: SortOrderInput | SortOrder
+    refresh_token?: SortOrderInput | SortOrder
     refresh_token_expires_in?: SortOrderInput | SortOrder
+    session_state?: SortOrderInput | SortOrder
+    token_type?: SortOrderInput | SortOrder
     _count?: AccountCountOrderByAggregateInput
     _avg?: AccountAvgOrderByAggregateInput
     _max?: AccountMaxOrderByAggregateInput
@@ -9605,14 +10612,14 @@ export namespace Prisma {
     type?: StringWithAggregatesFilter<"Account"> | string
     provider?: StringWithAggregatesFilter<"Account"> | string
     providerAccountId?: StringWithAggregatesFilter<"Account"> | string
-    refresh_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
     access_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
     expires_at?: IntNullableWithAggregatesFilter<"Account"> | number | null
-    token_type?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
     id_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
-    session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    refresh_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
     refresh_token_expires_in?: IntNullableWithAggregatesFilter<"Account"> | number | null
+    session_state?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    token_type?: StringNullableWithAggregatesFilter<"Account"> | string | null
   }
 
   export type SessionWhereInput = {
@@ -9672,13 +10679,15 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
-    userStatus?: IntFilter<"User"> | number
-    currentJobId?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    userStatus?: IntFilter<"User"> | number
+    currentJobId?: StringNullableFilter<"User"> | string | null
+    playCount?: IntFilter<"User"> | number
+    inferSuccess?: IntNullableFilter<"User"> | number | null
     trainImageSet?: TrainImageSetListRelationFilter
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
@@ -9688,13 +10697,15 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     userType?: SortOrder
-    userStatus?: SortOrder
-    currentJobId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    userStatus?: SortOrder
+    currentJobId?: SortOrderInput | SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrderInput | SortOrder
     trainImageSet?: TrainImageSetOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
@@ -9708,12 +10719,14 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
-    userStatus?: IntFilter<"User"> | number
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    userStatus?: IntFilter<"User"> | number
+    playCount?: IntFilter<"User"> | number
+    inferSuccess?: IntNullableFilter<"User"> | number | null
     trainImageSet?: TrainImageSetListRelationFilter
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
@@ -9723,13 +10736,15 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
     userType?: SortOrder
-    userStatus?: SortOrder
-    currentJobId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    userStatus?: SortOrder
+    currentJobId?: SortOrderInput | SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -9744,13 +10759,15 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
-    userStatus?: IntWithAggregatesFilter<"User"> | number
-    currentJobId?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    userStatus?: IntWithAggregatesFilter<"User"> | number
+    currentJobId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    playCount?: IntWithAggregatesFilter<"User"> | number
+    inferSuccess?: IntNullableWithAggregatesFilter<"User"> | number | null
   }
 
   export type TrainImageSetWhereInput = {
@@ -9765,9 +10782,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     petClass?: StringFilter<"TrainImageSet"> | string
     petName?: StringFilter<"TrainImageSet"> | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type TrainImageSetOrderByWithRelationInput = {
@@ -9779,9 +10796,9 @@ export namespace Prisma {
     updatedAt?: SortOrder
     petClass?: SortOrder
     petName?: SortOrder
-    user?: UserOrderByWithRelationInput
     trainImages?: TrainImageOrderByRelationAggregateInput
     lora?: LoraOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type TrainImageSetWhereUniqueInput = Prisma.AtLeast<{
@@ -9796,9 +10813,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     petClass?: StringFilter<"TrainImageSet"> | string
     petName?: StringFilter<"TrainImageSet"> | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "folderPath" | "zipPath">
 
   export type TrainImageSetOrderByWithAggregationInput = {
@@ -10033,19 +11050,76 @@ export namespace Prisma {
     expires?: DateTimeWithAggregatesFilter<"VerificationToken"> | Date | string
   }
 
+  export type CardWhereInput = {
+    AND?: CardWhereInput | CardWhereInput[]
+    OR?: CardWhereInput[]
+    NOT?: CardWhereInput | CardWhereInput[]
+    id?: StringFilter<"Card"> | string
+    imageUrl?: StringFilter<"Card"> | string
+    inviteCode?: StringFilter<"Card"> | string
+    userId?: StringFilter<"Card"> | string
+    createdAt?: DateTimeFilter<"Card"> | Date | string
+    updatedAt?: DateTimeFilter<"Card"> | Date | string
+  }
+
+  export type CardOrderByWithRelationInput = {
+    id?: SortOrder
+    imageUrl?: SortOrder
+    inviteCode?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CardWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    inviteCode?: string
+    AND?: CardWhereInput | CardWhereInput[]
+    OR?: CardWhereInput[]
+    NOT?: CardWhereInput | CardWhereInput[]
+    imageUrl?: StringFilter<"Card"> | string
+    userId?: StringFilter<"Card"> | string
+    createdAt?: DateTimeFilter<"Card"> | Date | string
+    updatedAt?: DateTimeFilter<"Card"> | Date | string
+  }, "id" | "inviteCode">
+
+  export type CardOrderByWithAggregationInput = {
+    id?: SortOrder
+    imageUrl?: SortOrder
+    inviteCode?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CardCountOrderByAggregateInput
+    _max?: CardMaxOrderByAggregateInput
+    _min?: CardMinOrderByAggregateInput
+  }
+
+  export type CardScalarWhereWithAggregatesInput = {
+    AND?: CardScalarWhereWithAggregatesInput | CardScalarWhereWithAggregatesInput[]
+    OR?: CardScalarWhereWithAggregatesInput[]
+    NOT?: CardScalarWhereWithAggregatesInput | CardScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Card"> | string
+    imageUrl?: StringWithAggregatesFilter<"Card"> | string
+    inviteCode?: StringWithAggregatesFilter<"Card"> | string
+    userId?: StringWithAggregatesFilter<"Card"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
+  }
+
   export type AccountCreateInput = {
     id?: string
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
     user: UserCreateNestedOneWithoutAccountsInput
   }
 
@@ -10055,14 +11129,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
   }
 
   export type AccountUpdateInput = {
@@ -10070,14 +11144,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutAccountsNestedInput
   }
 
@@ -10087,14 +11161,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateManyInput = {
@@ -10103,14 +11177,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
   }
 
   export type AccountUpdateManyMutationInput = {
@@ -10118,14 +11192,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountUncheckedUpdateManyInput = {
@@ -10134,14 +11208,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SessionCreateInput = {
@@ -10196,13 +11270,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
@@ -10212,13 +11288,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
@@ -10228,13 +11306,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
@@ -10244,13 +11324,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
@@ -10260,39 +11342,45 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type TrainImageSetCreateInput = {
@@ -10302,9 +11390,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     petClass: string
     petName: string
-    user: UserCreateNestedOneWithoutTrainImageSetInput
     trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
     lora?: LoraCreateNestedOneWithoutTrainImageSetInput
+    user: UserCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateInput = {
@@ -10327,9 +11415,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     petClass?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
     trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
     lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
+    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateInput = {
@@ -10557,6 +11645,69 @@ export namespace Prisma {
     expires?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CardCreateInput = {
+    id: string
+    imageUrl: string
+    inviteCode: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type CardUncheckedCreateInput = {
+    id: string
+    imageUrl: string
+    inviteCode: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type CardUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    inviteCode?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CardUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    inviteCode?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CardCreateManyInput = {
+    id: string
+    imageUrl: string
+    inviteCode: string
+    userId: string
+    createdAt?: Date | string
+    updatedAt: Date | string
+  }
+
+  export type CardUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    inviteCode?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CardUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    inviteCode?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -10617,14 +11768,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
+    scope?: SortOrder
     access_token?: SortOrder
     expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
     id_token?: SortOrder
-    session_state?: SortOrder
+    refresh_token?: SortOrder
     refresh_token_expires_in?: SortOrder
+    session_state?: SortOrder
+    token_type?: SortOrder
   }
 
   export type AccountAvgOrderByAggregateInput = {
@@ -10638,14 +11789,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
+    scope?: SortOrder
     access_token?: SortOrder
     expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
     id_token?: SortOrder
-    session_state?: SortOrder
+    refresh_token?: SortOrder
     refresh_token_expires_in?: SortOrder
+    session_state?: SortOrder
+    token_type?: SortOrder
   }
 
   export type AccountMinOrderByAggregateInput = {
@@ -10654,14 +11805,14 @@ export namespace Prisma {
     type?: SortOrder
     provider?: SortOrder
     providerAccountId?: SortOrder
-    refresh_token?: SortOrder
+    scope?: SortOrder
     access_token?: SortOrder
     expires_at?: SortOrder
-    token_type?: SortOrder
-    scope?: SortOrder
     id_token?: SortOrder
-    session_state?: SortOrder
+    refresh_token?: SortOrder
     refresh_token_expires_in?: SortOrder
+    session_state?: SortOrder
+    token_type?: SortOrder
   }
 
   export type AccountSumOrderByAggregateInput = {
@@ -10765,6 +11916,13 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type EnumUserTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
+    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -10774,13 +11932,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type EnumUserTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[]
-    notIn?: $Enums.UserType[]
-    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -10828,47 +11979,67 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emailVerified?: SortOrder
     image?: SortOrder
     userType?: SortOrder
-    userStatus?: SortOrder
-    currentJobId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    userStatus?: SortOrder
+    currentJobId?: SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
     userStatus?: SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emailVerified?: SortOrder
     image?: SortOrder
     userType?: SortOrder
-    userStatus?: SortOrder
-    currentJobId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    userStatus?: SortOrder
+    currentJobId?: SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    emailVerified?: SortOrder
     image?: SortOrder
     userType?: SortOrder
-    userStatus?: SortOrder
-    currentJobId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    emailVerified?: SortOrder
+    userStatus?: SortOrder
+    currentJobId?: SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
     userStatus?: SortOrder
+    playCount?: SortOrder
+    inferSuccess?: SortOrder
+  }
+
+  export type EnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
+    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserTypeFilter<$PrismaModel>
+    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10883,16 +12054,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type EnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[]
-    notIn?: $Enums.UserType[]
-    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserTypeFilter<$PrismaModel>
-    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -11103,6 +12264,33 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type CardCountOrderByAggregateInput = {
+    id?: SortOrder
+    imageUrl?: SortOrder
+    inviteCode?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CardMaxOrderByAggregateInput = {
+    id?: SortOrder
+    imageUrl?: SortOrder
+    inviteCode?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CardMinOrderByAggregateInput = {
+    id?: SortOrder
+    imageUrl?: SortOrder
+    inviteCode?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type UserCreateNestedOneWithoutAccountsInput = {
     create?: XOR<UserCreateWithoutAccountsInput, UserUncheckedCreateWithoutAccountsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAccountsInput
@@ -11193,12 +12381,12 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
   export type EnumUserTypeFieldUpdateOperationsInput = {
     set?: $Enums.UserType
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -11293,12 +12481,6 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutTrainImageSetInput = {
-    create?: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTrainImageSetInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type TrainImageCreateNestedManyWithoutTrainImageSetInput = {
     create?: XOR<TrainImageCreateWithoutTrainImageSetInput, TrainImageUncheckedCreateWithoutTrainImageSetInput> | TrainImageCreateWithoutTrainImageSetInput[] | TrainImageUncheckedCreateWithoutTrainImageSetInput[]
     connectOrCreate?: TrainImageCreateOrConnectWithoutTrainImageSetInput | TrainImageCreateOrConnectWithoutTrainImageSetInput[]
@@ -11312,6 +12494,12 @@ export namespace Prisma {
     connect?: LoraWhereUniqueInput
   }
 
+  export type UserCreateNestedOneWithoutTrainImageSetInput = {
+    create?: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrainImageSetInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type TrainImageUncheckedCreateNestedManyWithoutTrainImageSetInput = {
     create?: XOR<TrainImageCreateWithoutTrainImageSetInput, TrainImageUncheckedCreateWithoutTrainImageSetInput> | TrainImageCreateWithoutTrainImageSetInput[] | TrainImageUncheckedCreateWithoutTrainImageSetInput[]
     connectOrCreate?: TrainImageCreateOrConnectWithoutTrainImageSetInput | TrainImageCreateOrConnectWithoutTrainImageSetInput[]
@@ -11323,14 +12511,6 @@ export namespace Prisma {
     create?: XOR<LoraCreateWithoutTrainImageSetInput, LoraUncheckedCreateWithoutTrainImageSetInput>
     connectOrCreate?: LoraCreateOrConnectWithoutTrainImageSetInput
     connect?: LoraWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutTrainImageSetNestedInput = {
-    create?: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTrainImageSetInput
-    upsert?: UserUpsertWithoutTrainImageSetInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrainImageSetInput, UserUpdateWithoutTrainImageSetInput>, UserUncheckedUpdateWithoutTrainImageSetInput>
   }
 
   export type TrainImageUpdateManyWithoutTrainImageSetNestedInput = {
@@ -11355,6 +12535,14 @@ export namespace Prisma {
     delete?: LoraWhereInput | boolean
     connect?: LoraWhereUniqueInput
     update?: XOR<XOR<LoraUpdateToOneWithWhereWithoutTrainImageSetInput, LoraUpdateWithoutTrainImageSetInput>, LoraUncheckedUpdateWithoutTrainImageSetInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutTrainImageSetNestedInput = {
+    create?: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTrainImageSetInput
+    upsert?: UserUpsertWithoutTrainImageSetInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTrainImageSetInput, UserUpdateWithoutTrainImageSetInput>, UserUncheckedUpdateWithoutTrainImageSetInput>
   }
 
   export type TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput = {
@@ -11601,6 +12789,13 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumUserTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[]
+    notIn?: $Enums.UserType[]
+    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | null
@@ -11612,11 +12807,14 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type NestedEnumUserTypeFilter<$PrismaModel = never> = {
+  export type NestedEnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
     in?: $Enums.UserType[]
     notIn?: $Enums.UserType[]
-    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserTypeFilter<$PrismaModel>
+    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -11631,16 +12829,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedEnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.UserType[]
-    notIn?: $Enums.UserType[]
-    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserTypeFilter<$PrismaModel>
-    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -11674,13 +12862,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
@@ -11689,13 +12879,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11720,13 +12912,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
@@ -11735,13 +12929,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11750,13 +12946,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
   }
@@ -11765,13 +12963,15 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    emailVerified?: Date | string | null
     image?: string | null
     userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
     trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11796,13 +12996,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
   }
@@ -11811,13 +13013,15 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
     trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11882,14 +13086,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
   }
 
   export type AccountUncheckedCreateWithoutUserInput = {
@@ -11897,14 +13101,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
   }
 
   export type AccountCreateOrConnectWithoutUserInput = {
@@ -11998,49 +13202,14 @@ export namespace Prisma {
     type?: StringFilter<"Account"> | string
     provider?: StringFilter<"Account"> | string
     providerAccountId?: StringFilter<"Account"> | string
-    refresh_token?: StringNullableFilter<"Account"> | string | null
+    scope?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
-    token_type?: StringNullableFilter<"Account"> | string | null
-    scope?: StringNullableFilter<"Account"> | string | null
     id_token?: StringNullableFilter<"Account"> | string | null
-    session_state?: StringNullableFilter<"Account"> | string | null
+    refresh_token?: StringNullableFilter<"Account"> | string | null
     refresh_token_expires_in?: IntNullableFilter<"Account"> | number | null
-  }
-
-  export type UserCreateWithoutTrainImageSetInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    accounts?: AccountCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutTrainImageSetInput = {
-    id?: string
-    name?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    userType?: $Enums.UserType
-    userStatus?: number
-    currentJobId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutTrainImageSetInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
+    session_state?: StringNullableFilter<"Account"> | string | null
+    token_type?: StringNullableFilter<"Account"> | string | null
   }
 
   export type TrainImageCreateWithoutTrainImageSetInput = {
@@ -12082,45 +13251,43 @@ export namespace Prisma {
     create: XOR<LoraCreateWithoutTrainImageSetInput, LoraUncheckedCreateWithoutTrainImageSetInput>
   }
 
-  export type UserUpsertWithoutTrainImageSetInput = {
-    update: XOR<UserUpdateWithoutTrainImageSetInput, UserUncheckedUpdateWithoutTrainImageSetInput>
+  export type UserCreateWithoutTrainImageSetInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    userType?: $Enums.UserType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutTrainImageSetInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    image?: string | null
+    userType?: $Enums.UserType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    emailVerified?: Date | string | null
+    userStatus?: number
+    currentJobId?: string | null
+    playCount?: number
+    inferSuccess?: number | null
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutTrainImageSetInput = {
+    where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTrainImageSetInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTrainImageSetInput, UserUncheckedUpdateWithoutTrainImageSetInput>
-  }
-
-  export type UserUpdateWithoutTrainImageSetInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTrainImageSetInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
-    userStatus?: IntFieldUpdateOperationsInput | number
-    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type TrainImageUpsertWithWhereUniqueWithoutTrainImageSetInput = {
@@ -12174,6 +13341,51 @@ export namespace Prisma {
     genImages?: GenImageUncheckedUpdateManyWithoutLoraNestedInput
   }
 
+  export type UserUpsertWithoutTrainImageSetInput = {
+    update: XOR<UserUpdateWithoutTrainImageSetInput, UserUncheckedUpdateWithoutTrainImageSetInput>
+    create: XOR<UserCreateWithoutTrainImageSetInput, UserUncheckedCreateWithoutTrainImageSetInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutTrainImageSetInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutTrainImageSetInput, UserUncheckedUpdateWithoutTrainImageSetInput>
+  }
+
+  export type UserUpdateWithoutTrainImageSetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutTrainImageSetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userStatus?: IntFieldUpdateOperationsInput | number
+    currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
+    playCount?: IntFieldUpdateOperationsInput | number
+    inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type TrainImageSetCreateWithoutTrainImagesInput = {
     folderPath: string
     zipPath: string
@@ -12181,8 +13393,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     petClass: string
     petName: string
-    user: UserCreateNestedOneWithoutTrainImageSetInput
     lora?: LoraCreateNestedOneWithoutTrainImageSetInput
+    user: UserCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateWithoutTrainImagesInput = {
@@ -12220,8 +13432,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     petClass?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
     lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
+    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateWithoutTrainImagesInput = {
@@ -12243,8 +13455,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     petClass: string
     petName: string
-    user: UserCreateNestedOneWithoutTrainImageSetInput
     trainImages?: TrainImageCreateNestedManyWithoutTrainImageSetInput
+    user: UserCreateNestedOneWithoutTrainImageSetInput
   }
 
   export type TrainImageSetUncheckedCreateWithoutLoraInput = {
@@ -12303,8 +13515,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     petClass?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
-    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
     trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
+    user?: UserUpdateOneRequiredWithoutTrainImageSetNestedInput
   }
 
   export type TrainImageSetUncheckedUpdateWithoutLoraInput = {
@@ -12412,14 +13624,14 @@ export namespace Prisma {
     type: string
     provider: string
     providerAccountId: string
-    refresh_token?: string | null
+    scope?: string | null
     access_token?: string | null
     expires_at?: number | null
-    token_type?: string | null
-    scope?: string | null
     id_token?: string | null
-    session_state?: string | null
+    refresh_token?: string | null
     refresh_token_expires_in?: number | null
+    session_state?: string | null
+    token_type?: string | null
   }
 
   export type TrainImageSetUpdateWithoutUserInput = {
@@ -12478,14 +13690,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountUncheckedUpdateWithoutUserInput = {
@@ -12493,14 +13705,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountUncheckedUpdateManyWithoutUserInput = {
@@ -12508,14 +13720,14 @@ export namespace Prisma {
     type?: StringFieldUpdateOperationsInput | string
     provider?: StringFieldUpdateOperationsInput | string
     providerAccountId?: StringFieldUpdateOperationsInput | string
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
-    token_type?: NullableStringFieldUpdateOperationsInput | string | null
-    scope?: NullableStringFieldUpdateOperationsInput | string | null
     id_token?: NullableStringFieldUpdateOperationsInput | string | null
-    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_expires_in?: NullableIntFieldUpdateOperationsInput | number | null
+    session_state?: NullableStringFieldUpdateOperationsInput | string | null
+    token_type?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type TrainImageCreateManyTrainImageSetInput = {
@@ -12609,6 +13821,10 @@ export namespace Prisma {
      * @deprecated Use VerificationTokenDefaultArgs instead
      */
     export type VerificationTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = VerificationTokenDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CardDefaultArgs instead
+     */
+    export type CardArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CardDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
