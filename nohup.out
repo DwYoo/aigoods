@@ -1,0 +1,72 @@
+
+> start
+> ts-node src/server.ts
+
+Server is running on https://api.pets-mas.com:3000
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=449fd8e2b138716bb723af4a92332513bb3a5b2fc82f6ab31deec0d1a110c3cb&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=a3c3cd3df86f81581345c01944c6170c59a92df26135ea7342135811620f0441&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=8516cc687460101461b6c78a3e6268cfcfa967075b3d371a065c59dca882fe00&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=449fd8e2b138716bb723af4a92332513bb3a5b2fc82f6ab31deec0d1a110c3cb&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=a3c3cd3df86f81581345c01944c6170c59a92df26135ea7342135811620f0441&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=8516cc687460101461b6c78a3e6268cfcfa967075b3d371a065c59dca882fe00&X-Amz-SignedHeaders=host&x-id=GetObject"}
+[
+  {
+    id: 1,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png',
+    createdAt: 2023-12-15T18:06:27.160Z
+  },
+  {
+    id: 2,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png',
+    createdAt: 2023-12-15T18:06:27.166Z
+  },
+  {
+    id: 3,
+    loraId: 1,
+    filePath: 'users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png',
+    createdAt: 2023-12-15T18:06:27.172Z
+  }
+]
+response: {"1":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/993278dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=449fd8e2b138716bb723af4a92332513bb3a5b2fc82f6ab31deec0d1a110c3cb&X-Amz-SignedHeaders=host&x-id=GetObject","2":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/76609e70.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=a3c3cd3df86f81581345c01944c6170c59a92df26135ea7342135811620f0441&X-Amz-SignedHeaders=host&x-id=GetObject","3":"https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/users/clq6wxm900000jod17n1xnzsa/gen_images/ab55c14c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIATDH435ZVT72SINMT%2F20231216%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20231216T034836Z&X-Amz-Expires=180&X-Amz-Signature=8516cc687460101461b6c78a3e6268cfcfa967075b3d371a065c59dca882fe00&X-Amz-SignedHeaders=host&x-id=GetObject"}
+
+> start
+> ts-node src/server.ts
+

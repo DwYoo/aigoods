@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import axios from 'axios';
 
-import {PrismaClient } from '../../prisma/generated/client';
+import {PrismaClient, User } from '../../prisma/generated/client';
 import { sendMail } from "../utils/sendMail";
 
 const prisma:PrismaClient = new PrismaClient();
@@ -71,7 +71,7 @@ class WebhookController {
         return;
       }
 
-      await prisma.user.update({
+      const user = await prisma.user.update({
         where: {
           id: userId
         },
@@ -110,6 +110,12 @@ class WebhookController {
               filePath: filePath // 추출한 파일 이름 사용
             }
           });
+
+        const userEmail:string = String(user.email);
+        if (userEmail) {
+          sendMail(userEmail, "크리스마스 선물이 도착했어요!", "링크")
+        }
+
         }
         res.status(200).send("Infer Webhook processed");
       } catch (error) {
