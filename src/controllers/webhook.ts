@@ -88,7 +88,7 @@ class WebhookController {
       console.log(`Infer webhook received for user ${userId}:`, req.body);
 
       if (req.body.status === 'FAILED' && req.body.error === "Max retries reached while waiting for image generation") {
-        console.error('Infer operation did not complete successfully');
+        console.error('Infer operation did not complete successfully. Retrying...');
         const lora = await prisma.lora.findFirst({
           where: {
             trainImageSet: {
@@ -121,7 +121,7 @@ class WebhookController {
           }
         })
       }
-      
+
       else if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
         console.error('Infer operation did not complete successfully');
         await prisma.user.update({
