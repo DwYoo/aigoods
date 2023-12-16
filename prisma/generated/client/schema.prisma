@@ -42,17 +42,25 @@ model Session {
 model User {
   id            String    @id @default(uuid())
   name          String?
-  email         String?   @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   userType      UserType  @default(User)
   userStatus    Int       @default(0)
+  currentJobId  String?   @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  trainImageSets TrainImageSet[]
+  currentJob     Job?      @relation(fields: [currentJobId], references: [id])
+  trainImageSet TrainImageSet[]
   sessions       Session[]
   accounts       Account[]
 
+}
+
+model Job {
+  id        String @id
+  status    String
+  user      User?                  
 }
 
 model TrainImageSet {

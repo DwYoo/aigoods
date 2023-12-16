@@ -138,8 +138,14 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image',
   userType: 'userType',
   userStatus: 'userStatus',
+  currentJobId: 'currentJobId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.JobScalarFieldEnum = {
+  id: 'id',
+  status: 'status'
 };
 
 exports.Prisma.TrainImageSetScalarFieldEnum = {
@@ -198,6 +204,7 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   Session: 'Session',
   User: 'User',
+  Job: 'Job',
   TrainImageSet: 'TrainImageSet',
   TrainImage: 'TrainImage',
   Lora: 'Lora',

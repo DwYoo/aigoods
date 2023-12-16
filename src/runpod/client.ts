@@ -2,7 +2,7 @@ require('dotenv').config();
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import R from 'ramda';
 import {inferenceRequestData, trainRequestData, } from './config';
-import {InferPrompt} from './prompts'
+import {DefaultPrompt} from './prompts'
 
 class RunpodClient {
     inferEndpoint: string;
@@ -66,8 +66,9 @@ class RunpodClient {
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
-        requestData["input"]["prompt"]["6"]["text"] = new InferPrompt(petClass).default
+        requestData["input"]["prompt"]["6"]["text"] = new DefaultPrompt(petClass).prompt
         requestData["input"]["prompt"]["3"]["seed"] = Date.now()
+        console.log(requestData)
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }

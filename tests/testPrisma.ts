@@ -1,4 +1,4 @@
-import { PrismaClient } from '../prisma/generated/client'
+import { PrismaClient, User } from '../prisma/generated/client'
 import { uploadTrainImageSet } from '../src/s3/client';
 
 const prisma = new PrismaClient();
@@ -23,7 +23,13 @@ async function deleteAllGenImages() {
     // } catch (error) {
     //   console.error('Error deleting genImage records:', error);
     // }
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      include: {
+        trainImageSet: true // Lora 객체를 포함하여 가져옵니다.
+      }
+    }
+    );
+    const admin:User = users[0]
     console.log(users)
   }
 

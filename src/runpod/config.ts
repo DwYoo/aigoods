@@ -6,7 +6,7 @@ export let inferenceRequestData= {
         "prompt": {
             "3": {
                 "inputs": {
-                "seed": 157691551724910,
+                "seed": 1,
                 "steps": 20,
                 "cfg": 8,
                 "sampler_name": "euler",

@@ -47,11 +47,11 @@ model User {
   image         String?
   userType      UserType  @default(User)
   userStatus    Int       @default(0)
-  currentJobId  String?   
+  currentJobId  String?   @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  currentJob     Job
-  trainImageSets TrainImageSet[]
+  currentJob     Job?      @relation(fields: [currentJobId], references: [id])
+  trainImageSet TrainImageSet[]
   sessions       Session[]
   accounts       Account[]
 
@@ -60,6 +60,7 @@ model User {
 model Job {
   id        String @id
   status    String
+  user      User?                  
 }
 
 model TrainImageSet {

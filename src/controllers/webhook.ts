@@ -119,6 +119,8 @@ class WebhookController {
         if (userEmail) {
           await sendMail(userEmail, "크리스마스 선물이 도착했어요!", "링크")
 
+        } else {
+          await sendMail(String(process.env.GMAIL_ID), "크리스마스 선물이 도착했어요!", "www.pets-mas.com")
         }
 
         }
