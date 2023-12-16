@@ -1,2 +1,2 @@
 # aigoods
-express server for ai goods project
+express server for www.pets-mas.com
