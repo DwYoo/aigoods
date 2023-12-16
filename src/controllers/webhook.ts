@@ -66,7 +66,8 @@ class WebhookController {
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
-         `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
+         `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`,
+         12
          )
 
         await prisma.user.update({

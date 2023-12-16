@@ -50,7 +50,6 @@ export default class InferController {
           id: userId
         },
         data: {
-          userStatus: 1,
           currentJobId: runpodJobs[runpodJobs.length-1].id
         }
       })
