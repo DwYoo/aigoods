@@ -17,12 +17,14 @@ async function main() {
     // })
   }
 async function deleteAllGenImages() {
-    try {
-      const deleteResult = await prisma.genImage.deleteMany({});
-      console.log(`Deleted ${deleteResult.count} genImage records.`);
-    } catch (error) {
-      console.error('Error deleting genImage records:', error);
-    }
+    // try {
+    //   const deleteResult = await prisma.genImage.deleteMany({});
+    //   console.log(`Deleted ${deleteResult.count} genImage records.`);
+    // } catch (error) {
+    //   console.error('Error deleting genImage records:', error);
+    // }
+    const users = await prisma.user.findMany();
+    console.log(users)
   }
 
 async function findtrainImageSet(zipfilePath:string) {
