@@ -33,7 +33,7 @@ export default class TrainController {
         petClass,
         zipPath, 
         `users/${userId}/lora`,
-        `${process.env.BASE_ENDPOINT}/webhook/train/${userId}`
+        `${process.env.WEBHOOK_ENDPOINT}/webhook/train/${userId}`
         )
       
       await prisma.user.update({

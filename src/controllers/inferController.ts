@@ -33,14 +33,14 @@ export default class InferController {
         });
       }
 
-      const runpodResponse:RunpodResponse = await runpodClient.infer(
+      const runpodResponse:any = await runpodClient.infer(
         lora.trainImageSet.petClass,
         lora.path, 
         `users/${userId}/gen_images`,
-         `${process.env.BASE_ENDPOINT}/webhook/infer/${userId}`
+         `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
          )
-        
-      await prisma.user.update({
+
+        await prisma.user.update({
         where: {
           id: userId
         },
@@ -49,16 +49,15 @@ export default class InferController {
           currentJobId: runpodResponse.id
         }
       })
-
-      console.log(runpodResponse)
   
       res.status(200).json({
         message: "Successfully sent request to runpod",
         runpodResponse: runpodResponse
       });
     } catch (err) {
+      console.log(err)
       res.status(500).json({
-        message: "Internal Server Error!"
+        message: `Internal Server Error!: ${err}`
       });
     }
   }
@@ -74,9 +73,7 @@ export default class InferController {
             }
           }
         }
-      });
-      console.log(genImages)
-  
+      });  
       // gen_image에 대한 URL 생성
       const imageUrls = await Promise.all(genImages.map(image =>
         getSignedUrl(s3Client, new GetObjectCommand({

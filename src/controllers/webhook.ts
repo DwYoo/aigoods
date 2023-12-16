@@ -1,17 +1,20 @@
 import { Request, Response } from "express";
 import axios from 'axios';
 
+import { RunpodClient } from "../runpod/client";
+
 import {PrismaClient, User } from '../../prisma/generated/client';
 import { sendMail } from "../utils/sendMail";
 require('dotenv').config();
 
 
 const prisma:PrismaClient = new PrismaClient();
+const runpodClient:RunpodClient = new RunpodClient(String(process.env.INFER_ENDPOINT), String(process.env.TRAIN_ENDPOINT), process.env.RUNPOD_SECRET);
 
 class WebhookController {
     public async handleTrainComplete(req: Request, res: Response): Promise<any> {
       const userId:string = req.params.user_id;
-      console.log(`Train Webhook received for user ${userId}:`, req.body);
+      console.log(`Train Webhook received for user ${userId}:`, JSON.stringify(req.body));
       try {console.log(req.body.status)
         if (req.body.status !== 'COMPLETED') {
           console.log("Error while training in runpod")
@@ -31,6 +34,7 @@ class WebhookController {
       if (!trainImageSet) {
         throw Error(`No TrainImageSet found for userId: ${userId}`)
       }
+      
       let lora;
       if (trainImageSet.lora) {
         // Lora 객체가 이미 존재하는 경우, 업데이트
@@ -40,6 +44,9 @@ class WebhookController {
           },
           data: {
             path: loraPath
+          },
+          include: {
+            trainImageSet: true
           }
         });
       } else {
@@ -48,18 +55,74 @@ class WebhookController {
           data: {
             trainImageSetId: trainImageSet.id,
             path: loraPath
+          },
+          include: {
+            trainImageSet: true
           }
         });
       }
-      axios.post(`${process.env.BASE_ENDPOINT}/users/${userId}/gen-images`)
+
+      const runpodResponse:any = await runpodClient.infer(
+        lora.trainImageSet.petClass,
+        lora.path, 
+        `users/${userId}/gen_images`,
+         `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
+         )
+
+        await prisma.user.update({
+        where: {
+          id: userId
+        },
+        data: {
+          userStatus: 1,
+          currentJobId: runpodResponse.id
+        }
+      }
+      )
+
       res.status(200).send("Webhook processed");
     }
 
     public async handleInferComplete(req: Request, res: Response): Promise<void> {
       const userId: string = req.params.user_id;
       console.log(`Infer webhook received for user ${userId}:`, req.body);
+
+      if (req.body.status === 'FAILED' && req.body.error === "Max retries reached while waiting for image generation") {
+        console.error('Infer operation did not complete successfully');
+        const lora = await prisma.lora.findFirst({
+          where: {
+            trainImageSet: {
+              userId: userId
+            }
+          },
+          include: {
+            trainImageSet: true // 이 부분을 추가합니다.
+          }
+        });
+    
+        if (!lora) {
+-            console.error("Lora object not found for the user.")
+            return;
+          };
+        const runpodResponse:any = await runpodClient.infer(
+          lora.trainImageSet.petClass,
+          lora.path, 
+          `users/${userId}/gen_images`,
+           `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
+           )
   
-      if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
+          await prisma.user.update({
+          where: {
+            id: userId
+          },
+          data: {
+            userStatus: 1,
+            currentJobId: runpodResponse.id
+          }
+        })
+      }
+      
+      else if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
         console.error('Infer operation did not complete successfully');
         await prisma.user.update({
           where: {
@@ -72,19 +135,17 @@ class WebhookController {
         res.status(500).send('Infer operation failed');
         return;
       }
-
-      const user = await prisma.user.update({
-        where: {
-          id: userId
-        },
-        data: {
-          userStatus: 2,
-        }
-      })
-  
-      const imageUrls: string[] = req.body.output.message;
-  
       try {
+        const user = await prisma.user.update({
+          where: {
+            id: userId
+          },
+          data: {
+            userStatus: 2,
+          }
+        })
+    
+        const imageUrls: string[] = req.body.output.message;
         // 사용자의 Lora 객체와 연결된 TrainImageSet 찾기
         const trainImageSet = await prisma.trainImageSet.findFirst({
           where: { userId: userId },
@@ -95,13 +156,10 @@ class WebhookController {
           throw new Error(`No Lora information found for user: ${userId}`);
         }
   
-        // GenImage 객체들을 데이터베이스에 저장
         for (const imageUrl of imageUrls) {
-          // URL 객체를 사용하여 전체 경로 추출
           const pngIndex = imageUrl.indexOf('.png');
-          const endOfPng = pngIndex + 4; // '.png'를 포함하기 위해 +4
+          const endOfPng = pngIndex + 4; 
           
-          // 필요한 부분만 잘라내기
           const partialUrl = imageUrl.substring(0, endOfPng);
           const basePath = 'https://pets-mas.s3.ap-northeast-2.amazonaws.com/pets-mas/';
           const filePath = partialUrl.replace(basePath, '');
@@ -112,18 +170,18 @@ class WebhookController {
               filePath: filePath // 추출한 파일 이름 사용
             }
           });
+        }
 
-        const userEmail:string = String(user.email);
-
+        const userEmail:string|null = user.email;
         console.log(user)
         if (userEmail) {
-          await sendMail(userEmail, "크리스마스 선물이 도착했어요!", "링크")
-
+          console.log(`sending email to ${userEmail}`)
+          await sendMail(userEmail, "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
         } else {
-          await sendMail(String(process.env.GMAIL_ID), "크리스마스 선물이 도착했어요!", "www.pets-mas.com")
+          console.log(`sending email to ${process.env.TEST_MAIL}`)
+          await sendMail(String(process.env.TEST_MAIL), "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
         }
 
-        }
         res.status(200).send("Infer Webhook processed");
       } catch (error) {
         console.error(`Error while processing infer webhook: ${error}`);

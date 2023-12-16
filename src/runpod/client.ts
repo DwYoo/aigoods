@@ -73,10 +73,10 @@ class RunpodClient {
         requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
         requestData["input"]["prompt"]["6"]["inputs"]["text"] = new DefaultPrompt(petClass).prompt
         requestData["input"]["prompt"]["3"]["inputs"]["seed"] = Date.now()
-        console.log(JSON.stringify(requestData))
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }
+        console.log(JSON.stringify(requestData))
 
         const requestConfig: AxiosRequestConfig = {
             method: 'post',

@@ -50,17 +50,10 @@ model User {
   currentJobId  String?   @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  currentJob     Job?      @relation(fields: [currentJobId], references: [id])
   trainImageSet TrainImageSet[]
   sessions       Session[]
   accounts       Account[]
 
-}
-
-model Job {
-  id        String @id
-  status    String
-  user      User?                  
 }
 
 model TrainImageSet {
