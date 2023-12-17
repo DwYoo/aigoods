@@ -60,10 +60,10 @@ class RunpodClient {
       }
     }
 
-    async inferBatch(petClass: string, loraPath: string, outputPath:string, webhookUrl:string, num:number=9, batchSize:number=1): Promise<RunpodResponse[]> {
+    async inferBatch(petClass: string, loraPath: string, outputPath:string, webhookUrl:string, num:number=9, batchSize:number=3): Promise<RunpodResponse[]> {
       let result;
       const results = []
-      for (let i = 0;i<num; i++) {
+      for (let i = 0;i<Math.floor(num/batchSize)+1; i++) {
         result = await this.sendInferRequest('run', petClass, loraPath, outputPath, webhookUrl);
         results.push(result)
       }
@@ -80,9 +80,9 @@ class RunpodClient {
     private async sendInferRequest(urlSuffix: string,petClass: string, loraPath: string, outputPath:string, webhookUrl: string|null = null): Promise<RunpodResponse> {
         let requestData = R.clone(this.inferRequestData) 
         requestData["input"]["output_path"]= outputPath;
-        requestData["input"]["prompt"]["11"]["inputs"]["lora_name"] = loraPath;
-        requestData["input"]["prompt"]["6"]["inputs"]["text"] = new DefaultPrompt(petClass).prompt
-        requestData["input"]["prompt"]["3"]["inputs"]["seed"] = Date.now()
+        requestData["input"]["comfy_input"]["prompt"]["11"]["inputs"]["remote_lora_path_or_url"] = loraPath;
+        requestData["input"]["comfy_input"]["prompt"]["41"]["inputs"]["text"] = new DefaultPrompt(petClass).prompt
+        requestData["input"]["comfy_input"]["prompt"]["3"]["inputs"]["seed"] = Date.now()
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }

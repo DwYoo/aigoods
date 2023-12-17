@@ -137,15 +137,10 @@ class WebhookController {
         return;
       }
       try {
-        const user = await prisma.user.update({
+        let user = await prisma.user.findFirst({
           where: {
             id: userId
           },
-          data: {
-            inferSuccess: {
-              increment: 1
-            }          
-          }
         })
     
         const imageUrls: string[] = req.body.output.message;
@@ -173,9 +168,20 @@ class WebhookController {
               filePath: filePath // 추출한 파일 이름 사용
             }
           });
+
+          user = await prisma.user.update({
+            where: {
+              id: userId
+            },
+            data: {
+              inferSuccess: {
+                increment: 1
+              }          
+            }
+          })
         }
 
-        if (user.inferSuccess ===9) {
+        if (user?.inferSuccess ===9) {
           await prisma.user.update({
             where: {
               id: userId
