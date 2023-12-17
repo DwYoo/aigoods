@@ -83,6 +83,10 @@ export default class InferController {
         playCount = user.playCount;
       } else {
         console.log("User not found");
+        res.status(404).json({
+          message: "User not found"
+        })
+        return;
       }
 
       const genImages = await prisma.genImage.findMany({

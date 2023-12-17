@@ -12,8 +12,9 @@ async function main() {
         id: users[0].id
       },
       data: {
-        userStatus: 2,
-      }
+        userStatus: 0,
+        playCount: 0,
+      },
     })
   }
 async function deleteAllGenImages() {

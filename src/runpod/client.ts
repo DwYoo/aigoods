@@ -14,7 +14,7 @@ class RunpodClient {
     inferEndpoint: string;
     trainEndpoint: string;
     apiKey?: string;
-    inferRequestData: InferenceRequestData = inferenceRequestData;
+    inferRequestData: any = inferenceRequestData;
     trainRequestData: any = trainRequestData;
     
     constructor(inferEndpoint:string, trainEndpoint:string, apiKey?:string) {

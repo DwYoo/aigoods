@@ -2,110 +2,131 @@ require('dotenv').config(); // Load environment variables from .env file
 
 export let inferenceRequestData= {
     "input": {
+        "polling_max_retries": 3000,
         "output_path": "",
-        "prompt": {
+        "comfy_input": {
+          "prompt": {
             "3": {
-                "inputs": {
-                "seed": 1,
+              "inputs": {
+                "seed": 643562270128725,
                 "steps": 20,
                 "cfg": 8,
                 "sampler_name": "euler",
                 "scheduler": "normal",
                 "denoise": 1,
                 "model": [
-                    "11",
-                    0
+                  "11",
+                  0
                 ],
                 "positive": [
-                    "6",
-                    0
+                  "6",
+                  0
                 ],
                 "negative": [
-                    "7",
-                    0
+                  "7",
+                  0
                 ],
                 "latent_image": [
-                    "5",
-                    0
+                  "5",
+                  0
                 ]
-                },
-                "class_type": "KSampler"
+              },
+              "class_type": "KSampler"
             },
             "4": {
-                "inputs": {
+              "inputs": {
                 "ckpt_name": "sd_xl_base_1.0.safetensors"
-                },
-                "class_type": "CheckpointLoaderSimple"
+              },
+              "class_type": "CheckpointLoaderSimple"
             },
             "5": {
-                "inputs": {
+              "inputs": {
                 "width": 1024,
                 "height": 1024,
-                "batch_size": 1
-                },
-                "class_type": "EmptyLatentImage"
+                "batch_size": 9
+              },
+              "class_type": "EmptyLatentImage"
             },
             "6": {
-                "inputs": {
-                "text": "artistic photo of zwc cat wearing Santa costume, small cute santa hat, Christmas tree, Christmas style, Christmas concept, (Christmas:1.3), presents, (zwc cat:1.4), (midnight:1.5), (fancy:1.5), twinkle, colorful background, fancy wallpaper, a professional photo, 4k",
+              "inputs": {
+                "text": [
+                  "41",
+                  0
+                ],
                 "clip": [
-                    "11",
-                    1
+                  "11",
+                  1
                 ]
-                },
-                "class_type": "CLIPTextEncode"
+              },
+              "class_type": "CLIPTextEncode"
             },
             "7": {
-                "inputs": {
-                "text": "text, watermark, low quality, day, bad body, monotone background, white wall, white background, bad hat, bad costume, 2, double hat",
+              "inputs": {
+                "text": "text, watermark, low quality, day, bad body, monotone background, white wall, white background, bad hat, bad costume, 2, double hat, nsfw, bad hands",
                 "clip": [
-                    "11",
-                    1
+                  "11",
+                  1
                 ]
-                },
-                "class_type": "CLIPTextEncode"
+              },
+              "class_type": "CLIPTextEncode"
             },
             "8": {
-                "inputs": {
+              "inputs": {
                 "samples": [
-                    "3",
-                    0
+                  "3",
+                  0
                 ],
                 "vae": [
-                    "4",
-                    2
+                  "4",
+                  2
                 ]
-                },
-                "class_type": "VAEDecode"
+              },
+              "class_type": "VAEDecode"
             },
             "11": {
-                "inputs": {
-                "lora_name": "test/models/ms_zwc_cat_v11.safetensors",
+              "inputs": {
+                "remote_lora_path_or_url": "test/models/jinwook_dog_v1.safetensors",
                 "strength_model": 1,
                 "strength_clip": 1,
+                "BUCKET_ENDPOINT_URL": "",
+                "BUCKET_ACCESS_KEY_ID": "",
+                "BUCKET_SECRET_ACCESS_KEY": "",
+                "BUCKET_NAME": "",
                 "model": [
-                    "4",
-                    0
+                  "4",
+                  0
                 ],
                 "clip": [
-                    "4",
-                    1
+                  "4",
+                  1
                 ]
-                },
-                "class_type": "S3Bucket_Load_LoRA"
+              },
+              "class_type": "S3Bucket_Load_LoRA"
             },
-            "25": {
-                "inputs": {
+            "41": {
+              "inputs": {
+                "text": "artistic photo of 1 var_1 var_2 wearing Santa costume, small cute santa hat, Christmas tree, Christmas style, Christmas concept, (Christmas:1.2), presents, (var_1 var_2:1.3), (midnight:1.5), (fancy:1.5), twinkle, colorful background, fancy wallpaper, professional photo, 4k, profile, Christmas socks, socks",
+                "var_1": "zwc",
+                "var_2": "dog",
+                "var_3": "",
+                "var_4": "",
+                "var_5": ""
+              },
+              "class_type": "PromptWithTemplate"
+            },
+            "46": {
+              "inputs": {
                 "filename_prefix": "ComfyUI",
                 "images": [
-                    "8",
-                    0
+                  "8",
+                  0
                 ]
-                },
-                "class_type": "SaveImage"
+              },
+              "class_type": "SaveImage"
             }
+          }
         }
-    }
+      }    
 };
 
 export let trainRequestData={
