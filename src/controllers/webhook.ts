@@ -179,27 +179,27 @@ class WebhookController {
               }          
             }
           })
-        }
 
-        if (user?.inferSuccess ===9) {
-          await prisma.user.update({
-            where: {
-              id: userId
-            },
-            data: {
-              userStatus: 2
+          if (user?.inferSuccess ===9) {
+            await prisma.user.update({
+              where: {
+                id: userId
+              },
+              data: {
+                userStatus: 2
+              }
+            });
+            const userEmail:string|null = user.email;
+            console.log(user)
+            if (userEmail) {
+              console.log(`sending email to ${userEmail}`)
+              await sendMail(userEmail, "메리 댕냥스마스!", `선물이 도착했어요! \n\n www.pets-mas.com/${userId}`)
+            } else {
+              console.log(`sending email to ${process.env.TEST_MAIL}`)
+              await sendMail(String(process.env.TEST_MAIL), "메리 댕냥스마스!", `선물이 도착했어요! \n\n www.pets-mas.com/${userId}`)
             }
-          });
-          const userEmail:string|null = user.email;
-          console.log(user)
-          if (userEmail) {
-            console.log(`sending email to ${userEmail}`)
-            await sendMail(userEmail, "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
-          } else {
-            console.log(`sending email to ${process.env.TEST_MAIL}`)
-            await sendMail(String(process.env.TEST_MAIL), "메리 댕냥스마스!", "선물이 도착했어요! \n\n www.pets-mas.com")
-          }
-       }
+         }
+        }
 
         res.status(200).send("Infer Webhook processed");
       } catch (error) {

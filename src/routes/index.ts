@@ -20,6 +20,8 @@ router.post("/users/:user_id/train-images", upload.array('images', 9), trainCont
 
 router.get("/users/:user_id/gen-images", inferController.getGenImages);
 
+router.get("/users/:user_id/all-gen-images", inferController.getAllGenImages);
+
 router.post("/users/:user_id/gen-images", inferController.infer);
 
 router.get("/test", function(req, res, next) {
