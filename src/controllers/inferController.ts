@@ -137,6 +137,16 @@ export default class InferController {
       jsonResponse['petName'] = petName;
       res.json(jsonResponse);
       console.log(jsonResponse)
+      await prisma.user.update({
+        where: {
+          id: userId,
+        },
+        data: {
+          playCount: {
+            increment: 1,
+          },
+        }
+      })
     
   } catch (err) {
       console.error(err);
