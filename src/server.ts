@@ -24,8 +24,13 @@ app.use('/', router);
 
 const privateKey = fs.readFileSync(String(process.env.PATH_TO_KEY), 'utf8');
 const certificate = fs.readFileSync(String(process.env.PATH_TO_CERT), 'utf8');
-const credentials = { key: privateKey, cert: certificate };
+const caBundle = fs.readFileSync(String(process.env.PATH_TO_CA_BUNDLE), 'utf8');
 
+const credentials = { 
+  key: privateKey, 
+  cert: certificate,
+  ca: caBundle // 중간 인증서 추가
+};
 const httpsServer = https.createServer(credentials, app);
 
 const PORT = process.env.PORT || 3000;

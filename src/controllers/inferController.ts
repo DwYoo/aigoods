@@ -156,84 +156,80 @@ export default class InferController {
   }
 }
 
-  async getAllGenImages(req: Request, res: Response) {
-    try {
-      const userId: string = req.params.user_id;
-      const user = await prisma.user.findFirst({
-        where: {
-          id: userId
-        },
-        select: {
-          playCount: true,
-          trainImageSet: true
-        },
-      });
-      let playCount: number = 0; 
-      let petName: string = "";
-
-      if (user && user.trainImageSet) {
-        playCount = user.playCount;
-        petName = user.trainImageSet.petName
-      } else {
-        console.log("User not found");
-        res.status(404).json({
-          message: "User not found"
-        })
-        return;
+async getAllGenImages(req: Request, res: Response) {
+  try {
+    const userId: string = req.params.user_id;
+    const user = await prisma.user.findFirst({
+      where: {
+        id: userId
+      },
+      select: {
+        playCount: true,
+        trainImageSet: true
       }
+    });
+    let playCount: number = 0; 
+    let petName: string = "";
 
-      if (playCount >= MAX_PLAY_COUNT) {
-        res.status(429).json({
-          message: "User play count exceeded"
-        })
-      }
 
-      const genImages = await prisma.genImage.findMany({
-        where: {
-          lora: {
-            trainImageSet: {
-              userId: userId
-            }
+    if (user && user.trainImageSet) {
+      playCount = user.playCount;
+      petName = user.trainImageSet.petName
+    } else {
+      console.log("User not found");
+      res.status(404).json({
+        message: "User not found"
+      })
+      return;
+    }
+
+    const genImages = await prisma.genImage.findMany({
+      where: {
+        lora: {
+          trainImageSet: {
+            userId: userId
           }
-        },
-        orderBy: {
-          createdAt: 'asc' // 최신순으로 정렬
-        },
-        take: IMAGE_PER_COUNT * playCount
-      });
+        }
+      },
+      orderBy: {
+        createdAt: 'asc' // 최신순으로 정렬
+      },
+      take: IMAGE_PER_COUNT * playCount
+    });
 
-      const imageUrls = await Promise.all(
-        genImages.map(async (image:any) => {
-          const command = new GetObjectCommand({
-            Bucket: String(process.env.S3_BUCKET_NAME),
-            Key: `pets-mas/${image.filePath}`
-          });
+    const imageUrls = await Promise.all(
+      genImages.map(async (image:any) => {
+        const command = new GetObjectCommand({
+          Bucket: String(process.env.S3_BUCKET_NAME),
+          Key: `pets-mas/${image.filePath}`
+        });
+
+        const { Body } = await s3Client.send(command);
+
+        const imageUrl = await uploadToCloudinary(Body as Readable);
+        return {
+          id: image.id,
+          url: imageUrl
+        };
+      })
+    );
+
+    let jsonResponse: { [key: string]: string } = {};
+    imageUrls.forEach(image => {
+      jsonResponse[image.id] = image.url;
+    });
+
+    jsonResponse['petName'] = petName;
+    res.json(jsonResponse);
+    console.log(jsonResponse)
   
-          const { Body } = await s3Client.send(command);
-  
-          const imageUrl = await uploadToCloudinary(Body as Readable);
-          return {
-            id: image.id,
-            url: imageUrl
-          };
-        })
-      );
-  
-      let jsonResponse: { [key: string]: string } = {};
-      imageUrls.forEach(image => {
-        jsonResponse[image.id] = image.url;
-      });
-      jsonResponse['petName'] = petName
-      
-      res.json(jsonResponse);
-      console.log(jsonResponse)
-  } catch (err) {
-      console.error(err);
-      res.status(500).json({
-          message: "Internal Server Error"
-      });
-  }
-  }
+} catch (err) {
+    console.error(err);
+    res.status(500).json({
+        message: "Internal Server Error"
+    });
+}
+}
 }
 
 async function uploadToCloudinary(stream: Readable): Promise<string> {

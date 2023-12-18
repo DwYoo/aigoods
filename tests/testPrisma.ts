@@ -7,14 +7,14 @@ async function main() {
     const users = await prisma.user.findMany();
     console.log('All users:', users);
 
-    await prisma.user.update({
-      where: {
-        id: users[0].id
-      },
-      data: {
-        playCount: 0,
-      },
-    })
+    // await prisma.user.update({
+    //   where: {
+    //     id: users[0].id
+    //   },
+    //   data: {
+    //     playCount: 0,
+    //   },
+    // })
   }
 async function deleteAllGenImages() {
     // try {
