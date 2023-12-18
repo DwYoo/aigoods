@@ -12,6 +12,7 @@ import { UploadApiResponse } from "cloudinary";
 require('dotenv').config();
 
 const IMAGE_PER_COUNT:number = 3
+const MAX_PLAY_COUNT: number = 3
 
 const prisma:PrismaClient = new PrismaClient()
 
@@ -130,6 +131,7 @@ export default class InferController {
       });
   
       res.json(jsonResponse);
+      console.log(jsonResponse)
     
   } catch (err) {
       console.error(err);
@@ -160,6 +162,12 @@ export default class InferController {
           message: "User not found"
         })
         return;
+      }
+
+      if (playCount >= 3) {
+        res.status(429).json({
+          message: "User play count exceeded"
+        })
       }
 
       const genImages = await prisma.genImage.findMany({
@@ -199,8 +207,7 @@ export default class InferController {
       });
   
       res.json(jsonResponse);
-
-
+      console.log(jsonResponse)
   } catch (err) {
       console.error(err);
       res.status(500).json({

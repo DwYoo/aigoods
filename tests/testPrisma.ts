@@ -9,7 +9,7 @@ async function main() {
 
     await prisma.user.update({
       where: {
-        id: users[2].id
+        id: users[0].id
       },
       data: {
         userStatus: 0,

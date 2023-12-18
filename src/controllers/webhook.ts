@@ -70,17 +70,6 @@ class WebhookController {
          12
          )
 
-        await prisma.user.update({
-        where: {
-          id: userId
-        },
-        data: {
-          userStatus: 1,
-          currentJobId: runpodResponse.id
-        }
-      }
-      )
-
       res.status(200).send("Webhook processed");
     }
 
