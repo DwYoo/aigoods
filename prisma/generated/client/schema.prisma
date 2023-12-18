@@ -51,14 +51,14 @@ model User {
   currentJobId  String?   @unique
   playCount     Int       @default(0)
   inferSuccess   Int?     @default(0)
-  trainImageSet TrainImageSet[]
+  trainImageSet TrainImageSet?
   sessions       Session[]
   accounts       Account[]
 }
 
 model TrainImageSet {
   id         Int      @id @default(autoincrement())
-  userId     String
+  userId     String   @unique
   folderPath String   @unique
   zipPath    String   @unique
   createdAt  DateTime @default(now())

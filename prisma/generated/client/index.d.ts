@@ -1529,13 +1529,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    trainImageSet: number
     sessions: number
     accounts: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    trainImageSet?: boolean | UserCountOutputTypeCountTrainImageSetArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   }
@@ -1550,14 +1548,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountTrainImageSetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TrainImageSetWhereInput
   }
 
 
@@ -3895,7 +3885,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      trainImageSet: Prisma.$TrainImageSetPayload<ExtArgs>[]
+      trainImageSet: Prisma.$TrainImageSetPayload<ExtArgs> | null
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
     }
@@ -4277,7 +4267,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    trainImageSet<T extends User$trainImageSetArgs<ExtArgs> = {}>(args?: Subset<T, User$trainImageSetArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainImageSetPayload<ExtArgs>, T, 'findMany'> | Null>;
+    trainImageSet<T extends User$trainImageSetArgs<ExtArgs> = {}>(args?: Subset<T, User$trainImageSetArgs<ExtArgs>>): Prisma__TrainImageSetClient<$Result.GetResult<Prisma.$TrainImageSetPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -4647,11 +4637,6 @@ export namespace Prisma {
      */
     include?: TrainImageSetInclude<ExtArgs> | null
     where?: TrainImageSetWhereInput
-    orderBy?: TrainImageSetOrderByWithRelationInput | TrainImageSetOrderByWithRelationInput[]
-    cursor?: TrainImageSetWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TrainImageSetScalarFieldEnum | TrainImageSetScalarFieldEnum[]
   }
 
 
@@ -10688,7 +10673,7 @@ export namespace Prisma {
     currentJobId?: StringNullableFilter<"User"> | string | null
     playCount?: IntFilter<"User"> | number
     inferSuccess?: IntNullableFilter<"User"> | number | null
-    trainImageSet?: TrainImageSetListRelationFilter
+    trainImageSet?: XOR<TrainImageSetNullableRelationFilter, TrainImageSetWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
   }
@@ -10706,7 +10691,7 @@ export namespace Prisma {
     currentJobId?: SortOrderInput | SortOrder
     playCount?: SortOrder
     inferSuccess?: SortOrderInput | SortOrder
-    trainImageSet?: TrainImageSetOrderByRelationAggregateInput
+    trainImageSet?: TrainImageSetOrderByWithRelationInput
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
   }
@@ -10727,7 +10712,7 @@ export namespace Prisma {
     userStatus?: IntFilter<"User"> | number
     playCount?: IntFilter<"User"> | number
     inferSuccess?: IntNullableFilter<"User"> | number | null
-    trainImageSet?: TrainImageSetListRelationFilter
+    trainImageSet?: XOR<TrainImageSetNullableRelationFilter, TrainImageSetWhereInput> | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
   }, "id" | "email" | "currentJobId">
@@ -10803,12 +10788,12 @@ export namespace Prisma {
 
   export type TrainImageSetWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    userId?: string
     folderPath?: string
     zipPath?: string
     AND?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
     OR?: TrainImageSetWhereInput[]
     NOT?: TrainImageSetWhereInput | TrainImageSetWhereInput[]
-    userId?: StringFilter<"TrainImageSet"> | string
     createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
     petClass?: StringFilter<"TrainImageSet"> | string
@@ -10816,7 +10801,7 @@ export namespace Prisma {
     trainImages?: TrainImageListRelationFilter
     lora?: XOR<LoraNullableRelationFilter, LoraWhereInput> | null
     user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id" | "folderPath" | "zipPath">
+  }, "id" | "userId" | "folderPath" | "zipPath">
 
   export type TrainImageSetOrderByWithAggregationInput = {
     id?: SortOrder
@@ -11279,7 +11264,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetCreateNestedOneWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
   }
@@ -11297,7 +11282,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetUncheckedCreateNestedOneWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
@@ -11315,7 +11300,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUpdateOneWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
   }
@@ -11333,7 +11318,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUncheckedUpdateOneWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -11945,10 +11930,9 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type TrainImageSetListRelationFilter = {
-    every?: TrainImageSetWhereInput
-    some?: TrainImageSetWhereInput
-    none?: TrainImageSetWhereInput
+  export type TrainImageSetNullableRelationFilter = {
+    is?: TrainImageSetWhereInput | null
+    isNot?: TrainImageSetWhereInput | null
   }
 
   export type SessionListRelationFilter = {
@@ -11961,10 +11945,6 @@ export namespace Prisma {
     every?: AccountWhereInput
     some?: AccountWhereInput
     none?: AccountWhereInput
-  }
-
-  export type TrainImageSetOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type SessionOrderByRelationAggregateInput = {
@@ -12339,11 +12319,10 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type TrainImageSetCreateNestedManyWithoutUserInput = {
-    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput> | TrainImageSetCreateWithoutUserInput[] | TrainImageSetUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput | TrainImageSetCreateOrConnectWithoutUserInput[]
-    createMany?: TrainImageSetCreateManyUserInputEnvelope
-    connect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
+  export type TrainImageSetCreateNestedOneWithoutUserInput = {
+    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput
+    connect?: TrainImageSetWhereUniqueInput
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -12360,11 +12339,10 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type TrainImageSetUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput> | TrainImageSetCreateWithoutUserInput[] | TrainImageSetUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput | TrainImageSetCreateOrConnectWithoutUserInput[]
-    createMany?: TrainImageSetCreateManyUserInputEnvelope
-    connect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
+  export type TrainImageSetUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput
+    connect?: TrainImageSetWhereUniqueInput
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -12397,18 +12375,14 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type TrainImageSetUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput> | TrainImageSetCreateWithoutUserInput[] | TrainImageSetUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput | TrainImageSetCreateOrConnectWithoutUserInput[]
-    upsert?: TrainImageSetUpsertWithWhereUniqueWithoutUserInput | TrainImageSetUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TrainImageSetCreateManyUserInputEnvelope
-    set?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    disconnect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    delete?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    connect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    update?: TrainImageSetUpdateWithWhereUniqueWithoutUserInput | TrainImageSetUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TrainImageSetUpdateManyWithWhereWithoutUserInput | TrainImageSetUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TrainImageSetScalarWhereInput | TrainImageSetScalarWhereInput[]
+  export type TrainImageSetUpdateOneWithoutUserNestedInput = {
+    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput
+    upsert?: TrainImageSetUpsertWithoutUserInput
+    disconnect?: TrainImageSetWhereInput | boolean
+    delete?: TrainImageSetWhereInput | boolean
+    connect?: TrainImageSetWhereUniqueInput
+    update?: XOR<XOR<TrainImageSetUpdateToOneWithWhereWithoutUserInput, TrainImageSetUpdateWithoutUserInput>, TrainImageSetUncheckedUpdateWithoutUserInput>
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -12439,18 +12413,14 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type TrainImageSetUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput> | TrainImageSetCreateWithoutUserInput[] | TrainImageSetUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput | TrainImageSetCreateOrConnectWithoutUserInput[]
-    upsert?: TrainImageSetUpsertWithWhereUniqueWithoutUserInput | TrainImageSetUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TrainImageSetCreateManyUserInputEnvelope
-    set?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    disconnect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    delete?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    connect?: TrainImageSetWhereUniqueInput | TrainImageSetWhereUniqueInput[]
-    update?: TrainImageSetUpdateWithWhereUniqueWithoutUserInput | TrainImageSetUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TrainImageSetUpdateManyWithWhereWithoutUserInput | TrainImageSetUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TrainImageSetScalarWhereInput | TrainImageSetScalarWhereInput[]
+  export type TrainImageSetUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
+    connectOrCreate?: TrainImageSetCreateOrConnectWithoutUserInput
+    upsert?: TrainImageSetUpsertWithoutUserInput
+    disconnect?: TrainImageSetWhereInput | boolean
+    delete?: TrainImageSetWhereInput | boolean
+    connect?: TrainImageSetWhereUniqueInput
+    update?: XOR<XOR<TrainImageSetUpdateToOneWithWhereWithoutUserInput, TrainImageSetUpdateWithoutUserInput>, TrainImageSetUncheckedUpdateWithoutUserInput>
   }
 
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -12871,7 +12841,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetCreateNestedOneWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
@@ -12888,7 +12858,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetUncheckedCreateNestedOneWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -12921,7 +12891,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUpdateOneWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
@@ -12938,7 +12908,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUncheckedUpdateOneWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -12955,7 +12925,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetCreateNestedOneWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
   }
 
@@ -12972,7 +12942,7 @@ export namespace Prisma {
     currentJobId?: string | null
     playCount?: number
     inferSuccess?: number | null
-    trainImageSet?: TrainImageSetUncheckedCreateNestedManyWithoutUserInput
+    trainImageSet?: TrainImageSetUncheckedCreateNestedOneWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -13005,7 +12975,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUpdateOneWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
   }
 
@@ -13022,7 +12992,7 @@ export namespace Prisma {
     currentJobId?: NullableStringFieldUpdateOperationsInput | string | null
     playCount?: IntFieldUpdateOperationsInput | number
     inferSuccess?: NullableIntFieldUpdateOperationsInput | number | null
-    trainImageSet?: TrainImageSetUncheckedUpdateManyWithoutUserNestedInput
+    trainImageSet?: TrainImageSetUncheckedUpdateOneWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -13052,11 +13022,6 @@ export namespace Prisma {
   export type TrainImageSetCreateOrConnectWithoutUserInput = {
     where: TrainImageSetWhereUniqueInput
     create: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
-  }
-
-  export type TrainImageSetCreateManyUserInputEnvelope = {
-    data: TrainImageSetCreateManyUserInput | TrainImageSetCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type SessionCreateWithoutUserInput = {
@@ -13121,34 +13086,38 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TrainImageSetUpsertWithWhereUniqueWithoutUserInput = {
-    where: TrainImageSetWhereUniqueInput
+  export type TrainImageSetUpsertWithoutUserInput = {
     update: XOR<TrainImageSetUpdateWithoutUserInput, TrainImageSetUncheckedUpdateWithoutUserInput>
     create: XOR<TrainImageSetCreateWithoutUserInput, TrainImageSetUncheckedCreateWithoutUserInput>
+    where?: TrainImageSetWhereInput
   }
 
-  export type TrainImageSetUpdateWithWhereUniqueWithoutUserInput = {
-    where: TrainImageSetWhereUniqueInput
+  export type TrainImageSetUpdateToOneWithWhereWithoutUserInput = {
+    where?: TrainImageSetWhereInput
     data: XOR<TrainImageSetUpdateWithoutUserInput, TrainImageSetUncheckedUpdateWithoutUserInput>
   }
 
-  export type TrainImageSetUpdateManyWithWhereWithoutUserInput = {
-    where: TrainImageSetScalarWhereInput
-    data: XOR<TrainImageSetUpdateManyMutationInput, TrainImageSetUncheckedUpdateManyWithoutUserInput>
+  export type TrainImageSetUpdateWithoutUserInput = {
+    folderPath?: StringFieldUpdateOperationsInput | string
+    zipPath?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
+    petName?: StringFieldUpdateOperationsInput | string
+    trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
   }
 
-  export type TrainImageSetScalarWhereInput = {
-    AND?: TrainImageSetScalarWhereInput | TrainImageSetScalarWhereInput[]
-    OR?: TrainImageSetScalarWhereInput[]
-    NOT?: TrainImageSetScalarWhereInput | TrainImageSetScalarWhereInput[]
-    id?: IntFilter<"TrainImageSet"> | number
-    userId?: StringFilter<"TrainImageSet"> | string
-    folderPath?: StringFilter<"TrainImageSet"> | string
-    zipPath?: StringFilter<"TrainImageSet"> | string
-    createdAt?: DateTimeFilter<"TrainImageSet"> | Date | string
-    updatedAt?: DateTimeFilter<"TrainImageSet"> | Date | string
-    petClass?: StringFilter<"TrainImageSet"> | string
-    petName?: StringFilter<"TrainImageSet"> | string
+  export type TrainImageSetUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    folderPath?: StringFieldUpdateOperationsInput | string
+    zipPath?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    petClass?: StringFieldUpdateOperationsInput | string
+    petName?: StringFieldUpdateOperationsInput | string
+    trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
+    lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
   }
 
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -13603,16 +13572,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TrainImageSetCreateManyUserInput = {
-    id?: number
-    folderPath: string
-    zipPath: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    petClass: string
-    petName: string
-  }
-
   export type SessionCreateManyUserInput = {
     id?: string
     sessionToken: string
@@ -13632,39 +13591,6 @@ export namespace Prisma {
     refresh_token_expires_in?: number | null
     session_state?: string | null
     token_type?: string | null
-  }
-
-  export type TrainImageSetUpdateWithoutUserInput = {
-    folderPath?: StringFieldUpdateOperationsInput | string
-    zipPath?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    petClass?: StringFieldUpdateOperationsInput | string
-    petName?: StringFieldUpdateOperationsInput | string
-    trainImages?: TrainImageUpdateManyWithoutTrainImageSetNestedInput
-    lora?: LoraUpdateOneWithoutTrainImageSetNestedInput
-  }
-
-  export type TrainImageSetUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    folderPath?: StringFieldUpdateOperationsInput | string
-    zipPath?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    petClass?: StringFieldUpdateOperationsInput | string
-    petName?: StringFieldUpdateOperationsInput | string
-    trainImages?: TrainImageUncheckedUpdateManyWithoutTrainImageSetNestedInput
-    lora?: LoraUncheckedUpdateOneWithoutTrainImageSetNestedInput
-  }
-
-  export type TrainImageSetUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    folderPath?: StringFieldUpdateOperationsInput | string
-    zipPath?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    petClass?: StringFieldUpdateOperationsInput | string
-    petName?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUpdateWithoutUserInput = {

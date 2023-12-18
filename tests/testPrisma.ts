@@ -4,19 +4,19 @@ import { uploadTrainImageSet } from '../src/s3/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    const users = await prisma.user.findMany();
+    const users = await prisma.trainImageSet.findMany();
     console.log('All users:', users);
 
-    await prisma.user.update({
-      where: {
-        id: users[0].id
-      },
-      data: {
-        userStatus: 0,
-        playCount: 0,
-        inferSuccess: 0
-      },
-    })
+    // await prisma.user.update({
+    //   where: {
+    //     id: users[0].id
+    //   },
+    //   data: {
+    //     userStatus: 0,
+    //     playCount: 2,
+    //     inferSuccess: 0
+    //   },
+    // })
   }
 async function deleteAllGenImages() {
     // try {

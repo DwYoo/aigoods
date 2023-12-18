@@ -78,38 +78,7 @@ class WebhookController {
       console.log(`Infer webhook received for user ${userId}:`, req.body);
 
       if (req.body.status === 'FAILED' && req.body.error === "Max retries reached while waiting for image generation") {
-        console.error('Infer operation did not complete successfully. Retrying...');
-//         const lora = await prisma.lora.findFirst({
-//           where: {
-//             trainImageSet: {
-//               userId: userId
-//             }
-//           },
-//           include: {
-//             trainImageSet: true // 이 부분을 추가합니다.
-//           }
-//         });
-    
-//         if (!lora) {
-// -            console.error("Lora object not found for the user.")
-//             return;
-//           };
-//         const runpodResponse:any = await runpodClient.infer(
-//           lora.trainImageSet.petClass,
-//           lora.path, 
-//           `users/${userId}/gen_images`,
-//            `${process.env.WEBHOOK_ENDPOINT}/webhook/infer/${userId}`
-//            )
-  
-//           await prisma.user.update({
-//           where: {
-//             id: userId
-//           },
-//           data: {
-//             userStatus: 1,
-//             currentJobId: runpodResponse.id
-//           }
-//         })
+        console.error('Infer operation did not complete successfully.');
       }
 
       else if (req.body.status !== 'COMPLETED' || req.body.output.status !== 'success') {
