@@ -1,11 +1,13 @@
 import { Request, Response } from "express";
 import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 
-import { RunpodClient, RunpodResponse } from "../runpod/client";
+import { RunpodClient } from "../runpod/client";
+import cloudinary from '../cloudinary/config'; // Import the Cloudinary configuration
 import {PrismaClient, User } from '../../prisma/generated/client'
 import {s3Client,} from "../s3/client"
 import FormData from 'form-data';
 import { Readable } from 'stream';
+import { UploadApiResponse } from "cloudinary";
 
 require('dotenv').config();
 
@@ -105,39 +107,37 @@ export default class InferController {
         take: IMAGE_PER_COUNT 
       });
 
-      const imageBuffers: { id: number; buffer: Buffer; contentType: string }[] = await Promise.all(
-        genImages.map(async (image) => {
-            const command = new GetObjectCommand({
-                Bucket: String(process.env.S3_BUCKET_NAME),
-                Key: `pets-mas/${image.filePath}`
-            });
-            const { Body } = await s3Client.send(command);
-            return {
-                id: image.id,
-                buffer: await streamToBuffer(Body as Readable),
-                contentType: 'image/jpeg' // 실제 타입은 파일에 따라 다를 수 있습니다.
-            };
+      const imageUrls = await Promise.all(
+        genImages.map(async (image:any) => {
+          const command = new GetObjectCommand({
+            Bucket: String(process.env.S3_BUCKET_NAME),
+            Key: `pets-mas/${image.filePath}`
+          });
+  
+          const { Body } = await s3Client.send(command);
+  
+          const imageUrl = await uploadToCloudinary(Body as Readable);
+          return {
+            id: image.id,
+            url: imageUrl
+          };
         })
-    );
-
-    const formData = new FormData();
-    imageBuffers.forEach((image, index) => {
-        formData.append(`image${index}`, image.buffer, {
-            filename: `image${index}.jpeg`,
-            contentType: image.contentType
-        });
-    });
-
-    res.setHeader('Content-Type', `multipart/form-data; boundary=${formData.getBoundary()}`);
-    formData.pipe(res);
-
+      );
+  
+      let jsonResponse: { [key: string]: string } = {};
+      imageUrls.forEach(image => {
+        jsonResponse[image.id] = image.url;
+      });
+  
+      res.json(jsonResponse);
+    
   } catch (err) {
       console.error(err);
       res.status(500).json({
           message: "Internal Server Error"
       });
   }
-  }
+}
 
   async getAllGenImages(req: Request, res: Response) {
     try {
@@ -176,31 +176,30 @@ export default class InferController {
         take: IMAGE_PER_COUNT * (playCount +1)
       });
 
-      const imageBuffers: { id: number; buffer: Buffer; contentType: string }[] = await Promise.all(
-        genImages.map(async (image) => {
-            const command = new GetObjectCommand({
-                Bucket: String(process.env.S3_BUCKET_NAME),
-                Key: `pets-mas/${image.filePath}`
-            });
-            const { Body } = await s3Client.send(command);
-            return {
-                id: image.id,
-                buffer: await streamToBuffer(Body as Readable),
-                contentType: 'image/jpeg' // 실제 타입은 파일에 따라 다를 수 있습니다.
-            };
+      const imageUrls = await Promise.all(
+        genImages.map(async (image:any) => {
+          const command = new GetObjectCommand({
+            Bucket: String(process.env.S3_BUCKET_NAME),
+            Key: `pets-mas/${image.filePath}`
+          });
+  
+          const { Body } = await s3Client.send(command);
+  
+          const imageUrl = await uploadToCloudinary(Body as Readable);
+          return {
+            id: image.id,
+            url: imageUrl
+          };
         })
-    );
+      );
+  
+      let jsonResponse: { [key: string]: string } = {};
+      imageUrls.forEach(image => {
+        jsonResponse[image.id] = image.url;
+      });
+  
+      res.json(jsonResponse);
 
-    const formData = new FormData();
-    imageBuffers.forEach((image, index) => {
-        formData.append(`image${index}`, image.buffer, {
-            filename: `image${index}.jpeg`,
-            contentType: image.contentType
-        });
-    });
-
-    res.setHeader('Content-Type', `multipart/form-data; boundary=${formData.getBoundary()}`);
-    formData.pipe(res);
 
   } catch (err) {
       console.error(err);
@@ -219,4 +218,18 @@ export default class InferController {
       stream.on('end', () => resolve(Buffer.concat(chunks)));
       stream.on('error', reject);
   });
+  }
+
+  async function uploadToCloudinary(stream: Readable): Promise<string> {
+    return new Promise((resolve, reject) => {
+      let cloudStream = cloudinary.uploader.upload_stream((error, result:UploadApiResponse) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        resolve(result.url);
+      });
+  
+      stream.pipe(cloudStream);
+    });
   }

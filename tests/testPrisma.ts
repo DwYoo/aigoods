@@ -7,16 +7,16 @@ async function main() {
     const users = await prisma.user.findMany();
     console.log('All users:', users);
 
-    // await prisma.user.update({
-    //   where: {
-    //     id: users[2].id
-    //   },
-    //   data: {
-    //     userStatus: 0,
-    //     playCount: 0,
-    //     inferSuccess: 0
-    //   },
-    // })
+    await prisma.user.update({
+      where: {
+        id: users[2].id
+      },
+      data: {
+        userStatus: 0,
+        playCount: 0,
+        inferSuccess: 0
+      },
+    })
   }
 async function deleteAllGenImages() {
     // try {
