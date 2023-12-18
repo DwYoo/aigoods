@@ -210,26 +210,16 @@ export default class InferController {
   }
 }
 
-  // Stream을 Buffer로 변환하는 함수
-  function streamToBuffer(stream: Readable): Promise<Buffer> {
+async function uploadToCloudinary(stream: Readable): Promise<string> {
   return new Promise((resolve, reject) => {
-      const chunks: Buffer[] = [];
-      stream.on('data', (chunk) => chunks.push(chunk));
-      stream.on('end', () => resolve(Buffer.concat(chunks)));
-      stream.on('error', reject);
-  });
-  }
-
-  async function uploadToCloudinary(stream: Readable): Promise<string> {
-    return new Promise((resolve, reject) => {
-      let cloudStream = cloudinary.uploader.upload_stream((error, result:UploadApiResponse) => {
-        if (error) {
-          reject(error);
-          return;
-        }
-        resolve(result.url);
-      });
-  
-      stream.pipe(cloudStream);
+    let cloudStream = cloudinary.uploader.upload_stream((error, result:UploadApiResponse) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(result.url);
     });
-  }
+
+    stream.pipe(cloudStream);
+  });
+}
