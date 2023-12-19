@@ -101,7 +101,7 @@ export default class InferController {
         where: {
           lora: {
             trainImageSet: {
-              userId: userId
+              id: user.trainImageSet.id
             }
           }
         },
@@ -187,7 +187,7 @@ async getAllGenImages(req: Request, res: Response) {
       where: {
         lora: {
           trainImageSet: {
-            userId: userId
+            id: user.trainImageSet.id
           }
         }
       },
