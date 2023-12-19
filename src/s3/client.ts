@@ -52,6 +52,8 @@ async function uploadTrainImageSet(files: Express.Multer.File[], userId: string,
             id: trainImageSet.id
           },
           data: {
+            petClass: petClass,
+            petName: petName,
             folderPath: folderPath,
             zipPath: zipPath 
           }
