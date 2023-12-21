@@ -6,7 +6,7 @@ async function main() {
     sendMail(
         "chjcgw1@naver.com",
         "메리 댕냥스마스!",
-        "www.pets-mas.com/clqcfvorf0004tr6pqajn8bhc",
+        "https://www.pets-mas.com/clqcfvorf0004tr6pqajn8bhc",
         )
 
 }

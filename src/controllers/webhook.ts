@@ -150,7 +150,7 @@ class WebhookController {
               const userEmail:string|null = user.email;
               if (userEmail) {
                 console.log(`sending email to ${userEmail}`)
-                await sendMail(userEmail, "메리 댕냥스마스!", `www.pets-mas.com/${userId}`)
+                await sendMail(userEmail, "메리 댕냥스마스!", `https://www.pets-mas.com/${userId}`)
               } else {
                 console.log("User email does not exist")
               }
