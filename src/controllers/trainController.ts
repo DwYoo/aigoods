@@ -3,7 +3,7 @@ import multer from 'multer';
 import {PrismaClient, TrainImage } from '../../prisma/generated/client'
 
 import { RunpodClient, RunpodResponse } from "../runpod/client";
-import {s3Client, uploadTrainImageSet, uploadZip, generateSignedUrls} from "../s3/client"
+import {s3Client, uploadTrainImageSet, uploadZip, generateSignedUrls} from "../utils/s3/client"
 
 require('dotenv').config();
 
@@ -42,6 +42,8 @@ export default class TrainController {
           },
           data: {
             userStatus: 1,
+            playCount: 0,
+            inferSuccess: 0,
             currentJobId: runpodResponse.id
           }
         })

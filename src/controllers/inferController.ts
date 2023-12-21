@@ -2,12 +2,11 @@ import { Request, Response } from "express";
 import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 
 import { RunpodClient } from "../runpod/client";
-import cloudinary from '../cloudinary/config'; // Import the Cloudinary configuration
 import {PrismaClient, User } from '../../prisma/generated/client'
-import {s3Client,} from "../s3/client"
-import FormData from 'form-data';
+import {s3Client,} from "../utils/s3/client"
 import { Readable } from 'stream';
-import { UploadApiResponse } from "cloudinary";
+import {uploadToCloudinary} from '../utils/cloudinary/upload'
+
 
 require('dotenv').config();
 
@@ -230,18 +229,4 @@ async getAllGenImages(req: Request, res: Response) {
     });
 }
 }
-}
-
-async function uploadToCloudinary(stream: Readable): Promise<string> {
-  return new Promise((resolve, reject) => {
-    let cloudStream = cloudinary.uploader.upload_stream((error, result:UploadApiResponse) => {
-      if (error) {
-        reject(error);
-        return;
-      }
-      resolve(result.url);
-    });
-
-    stream.pipe(cloudStream);
-  });
 }

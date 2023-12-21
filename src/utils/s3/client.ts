@@ -4,8 +4,8 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
 import Archiver from 'archiver';
 import fs from 'fs';
 
-import {TrainImage } from '../../prisma/generated/client'
-import {PrismaClient } from '../../prisma/generated/client'
+import {TrainImage } from '../../../prisma/generated/client'
+import {PrismaClient } from '../../../prisma/generated/client'
 
 const prisma:PrismaClient = new PrismaClient()
 
