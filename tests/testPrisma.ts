@@ -29,9 +29,9 @@ async function initializeUser(userId: string) {
       id: userId
     },
     data: {
-      userStatus: 0,
+      userStatus: 2,
       playCount: 0,
-      inferSuccess:0,
+      inferSuccess:12,
       currentJobId: null
     },
   })
