@@ -109,7 +109,7 @@ export default class InferController {
           }
         },
         orderBy: {
-          createdAt: 'asc' // 최신순으로 정렬
+          createdAt: 'desc' // 최신순으로 정렬
         },
         skip: IMAGE_PER_COUNT * playCount,
         take: IMAGE_PER_COUNT 
@@ -175,6 +175,7 @@ async getAllGenImages(req: Request, res: Response) {
     let petName: string = "";
 
 
+
     if (user) {
       playCount = user.playCount;
       petName = user.trainImageSet?.petName!
@@ -186,19 +187,27 @@ async getAllGenImages(req: Request, res: Response) {
       return;
     }
 
+    const trainImageSet = await prisma.trainImageSet.findFirst({
+      where: {
+        userId: userId
+      },
+      include: {
+        lora:true
+      }
+    })
+
+    const lora = trainImageSet?.lora!
+
     const genImages = await prisma.genImage.findMany({
       where: {
-        lora: {
-          trainImageSet: {
-            id: user.trainImageSet?.id
-          }
-        }
+        loraId: lora.id
       },
       orderBy: {
-        createdAt: 'asc' // 최신순으로 정렬
+        createdAt: 'desc' // 최신순으로 정렬
       },
       take: IMAGE_PER_COUNT * playCount
     });
+
 
     const imageUrls = await Promise.all(
       genImages.map(async (image:any) => {
