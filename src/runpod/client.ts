@@ -37,6 +37,7 @@ class RunpodClient {
       requestData["input"]["output_path"] = outputPath
       requestData["input"]["train"]["project_name"] = projectName
       requestData["input"]["train"]["class_word"] = petClass
+      console.log(requestData)
 
       if (webhookUrl != null) {
         requestData["webhook"] = webhookUrl
@@ -82,7 +83,9 @@ class RunpodClient {
         requestData["input"]["output_path"]= outputPath;
         requestData["input"]["comfy_input"]["prompt"]["11"]["inputs"]["remote_lora_path_or_url"] = loraPath;
         requestData["input"]["comfy_input"]["prompt"]["41"]["inputs"]["text"] = new DefaultPrompt(petClass).prompt
+        requestData["input"]["comfy_input"]["prompt"]["41"]["inputs"]["var_2"] = petClass
         requestData["input"]["comfy_input"]["prompt"]["3"]["inputs"]["seed"] = Date.now()
+        console.log(requestData["input"]["comfy_input"]["prompt"])
         if (webhookUrl !== null) {
             requestData["webhook"] = webhookUrl
         }

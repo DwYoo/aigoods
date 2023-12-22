@@ -18,8 +18,10 @@ async function main() {
     // })
     // await sendMail(String(user.email), "메리 댕냥스마스!", `선물이 도착했어요! \n\n www.pets-mas.com/clqcfvorf0004tr6pqajn8bhc`)
     console.log('All users:', users);
-
-    // initializeUser("clqcdvp7e0000xs2esm70qsqb")
+    
+    for (const user of users) {
+      initializeUser(user.id)
+    }
   }
 
 
@@ -30,6 +32,8 @@ async function initializeUser(userId: string) {
     },
     data: {
       playCount: 0,
+      inferSuccess:0, 
+      userStatus:0 
     }, 
   })
   console.log(user)

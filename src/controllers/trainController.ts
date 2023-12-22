@@ -36,6 +36,11 @@ export default class TrainController {
         `${process.env.WEBHOOK_ENDPOINT}/webhook/train/${userId}`
         )
       
+      res.status(200).json({
+        message: "Train images uploaded, training in process.",
+        runpodResponse: JSON.stringify(runpodResponse)
+      });
+    
       await prisma.user.update({
           where: {
             id: userId
@@ -48,10 +53,7 @@ export default class TrainController {
           }
         })
 
-      res.status(200).json({
-        message: "Train images uploaded, training in process.",
-        runpodResponse: JSON.stringify(runpodResponse)
-      });
+
     } catch (error) {
       console.error(error);
       res.status(500).send("Error processing request");
