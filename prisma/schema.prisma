@@ -109,7 +109,8 @@ model VerificationToken {
 
 model Card {
   id         String   @id
-  imageUrl   String   @db.Text
+  imageUrl   String   @db.Text 
+  desc       String   @db.Text
   inviteCode String   @unique
   userId     String
   createdAt  DateTime @default(now())

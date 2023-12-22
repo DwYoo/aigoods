@@ -84,10 +84,14 @@ export default class InferController {
       let playCount: number = 0; 
       let petName: string = "";
 
+      console.log(userId)
+      console.log(user)
 
-      if (user && user.trainImageSet) {
+      
+
+      if (user) {
         playCount = user.playCount;
-        petName = user.trainImageSet.petName
+        petName = user.trainImageSet?.petName!
       } else {
         console.log("User not found");
         res.status(404).json({
@@ -100,7 +104,7 @@ export default class InferController {
         where: {
           lora: {
             trainImageSet: {
-              id: user.trainImageSet.id
+              id: user.trainImageSet?.id
             }
           }
         },
@@ -171,9 +175,9 @@ async getAllGenImages(req: Request, res: Response) {
     let petName: string = "";
 
 
-    if (user && user.trainImageSet) {
+    if (user) {
       playCount = user.playCount;
-      petName = user.trainImageSet.petName
+      petName = user.trainImageSet?.petName!
     } else {
       console.log("User not found");
       res.status(404).json({
@@ -186,7 +190,7 @@ async getAllGenImages(req: Request, res: Response) {
       where: {
         lora: {
           trainImageSet: {
-            id: user.trainImageSet.id
+            id: user.trainImageSet?.id
           }
         }
       },

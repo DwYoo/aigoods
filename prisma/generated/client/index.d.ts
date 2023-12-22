@@ -9456,6 +9456,7 @@ export namespace Prisma {
   export type CardMinAggregateOutputType = {
     id: string | null
     imageUrl: string | null
+    desc: string | null
     inviteCode: string | null
     userId: string | null
     createdAt: Date | null
@@ -9465,6 +9466,7 @@ export namespace Prisma {
   export type CardMaxAggregateOutputType = {
     id: string | null
     imageUrl: string | null
+    desc: string | null
     inviteCode: string | null
     userId: string | null
     createdAt: Date | null
@@ -9474,6 +9476,7 @@ export namespace Prisma {
   export type CardCountAggregateOutputType = {
     id: number
     imageUrl: number
+    desc: number
     inviteCode: number
     userId: number
     createdAt: number
@@ -9485,6 +9488,7 @@ export namespace Prisma {
   export type CardMinAggregateInputType = {
     id?: true
     imageUrl?: true
+    desc?: true
     inviteCode?: true
     userId?: true
     createdAt?: true
@@ -9494,6 +9498,7 @@ export namespace Prisma {
   export type CardMaxAggregateInputType = {
     id?: true
     imageUrl?: true
+    desc?: true
     inviteCode?: true
     userId?: true
     createdAt?: true
@@ -9503,6 +9508,7 @@ export namespace Prisma {
   export type CardCountAggregateInputType = {
     id?: true
     imageUrl?: true
+    desc?: true
     inviteCode?: true
     userId?: true
     createdAt?: true
@@ -9585,6 +9591,7 @@ export namespace Prisma {
   export type CardGroupByOutputType = {
     id: string
     imageUrl: string
+    desc: string
     inviteCode: string
     userId: string
     createdAt: Date
@@ -9611,6 +9618,7 @@ export namespace Prisma {
   export type CardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     imageUrl?: boolean
+    desc?: boolean
     inviteCode?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -9620,6 +9628,7 @@ export namespace Prisma {
   export type CardSelectScalar = {
     id?: boolean
     imageUrl?: boolean
+    desc?: boolean
     inviteCode?: boolean
     userId?: boolean
     createdAt?: boolean
@@ -9633,6 +9642,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       imageUrl: string
+      desc: string
       inviteCode: string
       userId: string
       createdAt: Date
@@ -10033,6 +10043,7 @@ export namespace Prisma {
   interface CardFieldRefs {
     readonly id: FieldRef<"Card", 'String'>
     readonly imageUrl: FieldRef<"Card", 'String'>
+    readonly desc: FieldRef<"Card", 'String'>
     readonly inviteCode: FieldRef<"Card", 'String'>
     readonly userId: FieldRef<"Card", 'String'>
     readonly createdAt: FieldRef<"Card", 'DateTime'>
@@ -10441,6 +10452,7 @@ export namespace Prisma {
   export const CardScalarFieldEnum: {
     id: 'id',
     imageUrl: 'imageUrl',
+    desc: 'desc',
     inviteCode: 'inviteCode',
     userId: 'userId',
     createdAt: 'createdAt',
@@ -11041,6 +11053,7 @@ export namespace Prisma {
     NOT?: CardWhereInput | CardWhereInput[]
     id?: StringFilter<"Card"> | string
     imageUrl?: StringFilter<"Card"> | string
+    desc?: StringFilter<"Card"> | string
     inviteCode?: StringFilter<"Card"> | string
     userId?: StringFilter<"Card"> | string
     createdAt?: DateTimeFilter<"Card"> | Date | string
@@ -11050,6 +11063,7 @@ export namespace Prisma {
   export type CardOrderByWithRelationInput = {
     id?: SortOrder
     imageUrl?: SortOrder
+    desc?: SortOrder
     inviteCode?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -11063,6 +11077,7 @@ export namespace Prisma {
     OR?: CardWhereInput[]
     NOT?: CardWhereInput | CardWhereInput[]
     imageUrl?: StringFilter<"Card"> | string
+    desc?: StringFilter<"Card"> | string
     userId?: StringFilter<"Card"> | string
     createdAt?: DateTimeFilter<"Card"> | Date | string
     updatedAt?: DateTimeFilter<"Card"> | Date | string
@@ -11071,6 +11086,7 @@ export namespace Prisma {
   export type CardOrderByWithAggregationInput = {
     id?: SortOrder
     imageUrl?: SortOrder
+    desc?: SortOrder
     inviteCode?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -11086,6 +11102,7 @@ export namespace Prisma {
     NOT?: CardScalarWhereWithAggregatesInput | CardScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Card"> | string
     imageUrl?: StringWithAggregatesFilter<"Card"> | string
+    desc?: StringWithAggregatesFilter<"Card"> | string
     inviteCode?: StringWithAggregatesFilter<"Card"> | string
     userId?: StringWithAggregatesFilter<"Card"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Card"> | Date | string
@@ -11633,6 +11650,7 @@ export namespace Prisma {
   export type CardCreateInput = {
     id: string
     imageUrl: string
+    desc: string
     inviteCode: string
     userId: string
     createdAt?: Date | string
@@ -11642,6 +11660,7 @@ export namespace Prisma {
   export type CardUncheckedCreateInput = {
     id: string
     imageUrl: string
+    desc: string
     inviteCode: string
     userId: string
     createdAt?: Date | string
@@ -11651,6 +11670,7 @@ export namespace Prisma {
   export type CardUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     inviteCode?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11660,6 +11680,7 @@ export namespace Prisma {
   export type CardUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     inviteCode?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11669,6 +11690,7 @@ export namespace Prisma {
   export type CardCreateManyInput = {
     id: string
     imageUrl: string
+    desc: string
     inviteCode: string
     userId: string
     createdAt?: Date | string
@@ -11678,6 +11700,7 @@ export namespace Prisma {
   export type CardUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     inviteCode?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11687,6 +11710,7 @@ export namespace Prisma {
   export type CardUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     imageUrl?: StringFieldUpdateOperationsInput | string
+    desc?: StringFieldUpdateOperationsInput | string
     inviteCode?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12247,6 +12271,7 @@ export namespace Prisma {
   export type CardCountOrderByAggregateInput = {
     id?: SortOrder
     imageUrl?: SortOrder
+    desc?: SortOrder
     inviteCode?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -12256,6 +12281,7 @@ export namespace Prisma {
   export type CardMaxOrderByAggregateInput = {
     id?: SortOrder
     imageUrl?: SortOrder
+    desc?: SortOrder
     inviteCode?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
@@ -12265,6 +12291,7 @@ export namespace Prisma {
   export type CardMinOrderByAggregateInput = {
     id?: SortOrder
     imageUrl?: SortOrder
+    desc?: SortOrder
     inviteCode?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder

@@ -186,6 +186,7 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
 exports.Prisma.CardScalarFieldEnum = {
   id: 'id',
   imageUrl: 'imageUrl',
+  desc: 'desc',
   inviteCode: 'inviteCode',
   userId: 'userId',
   createdAt: 'createdAt',
