@@ -183,8 +183,6 @@ async getAllGenImages(req: Request, res: Response) {
     let playCount: number = 0; 
     let petName: string = "";
 
-
-
     if (user) {
       playCount = user.playCount;
       if (user.trainImageSet) {
@@ -214,7 +212,7 @@ async getAllGenImages(req: Request, res: Response) {
     })
 
     const lora = trainImageSet?.lora!
-
+    
     const genImages = await prisma.genImage.findMany({
       where: {
         loraId: lora.id
@@ -225,6 +223,12 @@ async getAllGenImages(req: Request, res: Response) {
       take: IMAGE_PER_COUNT * playCount
     });
 
+    if (genImages.length < 3) {
+      res.status(200).json({
+        message: ''
+      })
+      return;
+    }
 
     const imageUrls = await Promise.all(
       genImages.map(async (image:any) => {
