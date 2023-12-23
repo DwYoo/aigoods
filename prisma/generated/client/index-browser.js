@@ -174,6 +174,7 @@ exports.Prisma.GenImageScalarFieldEnum = {
   id: 'id',
   loraId: 'loraId',
   filePath: 'filePath',
+  imageUrl: 'imageUrl',
   createdAt: 'createdAt'
 };
 

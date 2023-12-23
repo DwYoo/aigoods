@@ -94,6 +94,7 @@ model GenImage {
   id        Int      @id @default(autoincrement())
   loraId    Int
   filePath  String
+  imageUrl  String   @default("")
   createdAt DateTime @default(now())
   lora       Lora     @relation(fields: [loraId], references: [id])
   @@index([loraId], map: "GenImage_loraId_fkey")

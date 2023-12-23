@@ -6,13 +6,15 @@ const prisma = new PrismaClient();
 
 async function main() {
     const users = await prisma.user.findMany();
+    const deleteResult = await prisma.genImage.deleteMany({});
+
 
     
     // await sendMail(String(user.email), "메리 댕냥스마스!", `선물이 도착했어요! \n\n www.pets-mas.com/clqcfvorf0004tr6pqajn8bhc`)
     console.log('All users:', users);
     
     // for (const user of users) {
-    //   initializeUser(user.id)
+    //   initializeUser('clqh6cfdg0000lif5xub84awu')
     // }
   }
 

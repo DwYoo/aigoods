@@ -7676,6 +7676,7 @@ export namespace Prisma {
     id: number | null
     loraId: number | null
     filePath: string | null
+    imageUrl: string | null
     createdAt: Date | null
   }
 
@@ -7683,6 +7684,7 @@ export namespace Prisma {
     id: number | null
     loraId: number | null
     filePath: string | null
+    imageUrl: string | null
     createdAt: Date | null
   }
 
@@ -7690,6 +7692,7 @@ export namespace Prisma {
     id: number
     loraId: number
     filePath: number
+    imageUrl: number
     createdAt: number
     _all: number
   }
@@ -7709,6 +7712,7 @@ export namespace Prisma {
     id?: true
     loraId?: true
     filePath?: true
+    imageUrl?: true
     createdAt?: true
   }
 
@@ -7716,6 +7720,7 @@ export namespace Prisma {
     id?: true
     loraId?: true
     filePath?: true
+    imageUrl?: true
     createdAt?: true
   }
 
@@ -7723,6 +7728,7 @@ export namespace Prisma {
     id?: true
     loraId?: true
     filePath?: true
+    imageUrl?: true
     createdAt?: true
     _all?: true
   }
@@ -7817,6 +7823,7 @@ export namespace Prisma {
     id: number
     loraId: number
     filePath: string
+    imageUrl: string
     createdAt: Date
     _count: GenImageCountAggregateOutputType | null
     _avg: GenImageAvgAggregateOutputType | null
@@ -7843,6 +7850,7 @@ export namespace Prisma {
     id?: boolean
     loraId?: boolean
     filePath?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
     lora?: boolean | LoraDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["genImage"]>
@@ -7851,6 +7859,7 @@ export namespace Prisma {
     id?: boolean
     loraId?: boolean
     filePath?: boolean
+    imageUrl?: boolean
     createdAt?: boolean
   }
 
@@ -7868,6 +7877,7 @@ export namespace Prisma {
       id: number
       loraId: number
       filePath: string
+      imageUrl: string
       createdAt: Date
     }, ExtArgs["result"]["genImage"]>
     composites: {}
@@ -8267,6 +8277,7 @@ export namespace Prisma {
     readonly id: FieldRef<"GenImage", 'Int'>
     readonly loraId: FieldRef<"GenImage", 'Int'>
     readonly filePath: FieldRef<"GenImage", 'String'>
+    readonly imageUrl: FieldRef<"GenImage", 'String'>
     readonly createdAt: FieldRef<"GenImage", 'DateTime'>
   }
     
@@ -10434,6 +10445,7 @@ export namespace Prisma {
     id: 'id',
     loraId: 'loraId',
     filePath: 'filePath',
+    imageUrl: 'imageUrl',
     createdAt: 'createdAt'
   };
 
@@ -10959,6 +10971,7 @@ export namespace Prisma {
     id?: IntFilter<"GenImage"> | number
     loraId?: IntFilter<"GenImage"> | number
     filePath?: StringFilter<"GenImage"> | string
+    imageUrl?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
     lora?: XOR<LoraRelationFilter, LoraWhereInput>
   }
@@ -10967,6 +10980,7 @@ export namespace Prisma {
     id?: SortOrder
     loraId?: SortOrder
     filePath?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     lora?: LoraOrderByWithRelationInput
   }
@@ -10978,6 +10992,7 @@ export namespace Prisma {
     NOT?: GenImageWhereInput | GenImageWhereInput[]
     loraId?: IntFilter<"GenImage"> | number
     filePath?: StringFilter<"GenImage"> | string
+    imageUrl?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
     lora?: XOR<LoraRelationFilter, LoraWhereInput>
   }, "id">
@@ -10986,6 +11001,7 @@ export namespace Prisma {
     id?: SortOrder
     loraId?: SortOrder
     filePath?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
     _count?: GenImageCountOrderByAggregateInput
     _avg?: GenImageAvgOrderByAggregateInput
@@ -11001,6 +11017,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"GenImage"> | number
     loraId?: IntWithAggregatesFilter<"GenImage"> | number
     filePath?: StringWithAggregatesFilter<"GenImage"> | string
+    imageUrl?: StringWithAggregatesFilter<"GenImage"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GenImage"> | Date | string
   }
 
@@ -11562,6 +11579,7 @@ export namespace Prisma {
 
   export type GenImageCreateInput = {
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
     lora: LoraCreateNestedOneWithoutGenImagesInput
   }
@@ -11570,11 +11588,13 @@ export namespace Prisma {
     id?: number
     loraId: number
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateInput = {
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     lora?: LoraUpdateOneRequiredWithoutGenImagesNestedInput
   }
@@ -11583,6 +11603,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     loraId?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11590,11 +11611,13 @@ export namespace Prisma {
     id?: number
     loraId: number
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateManyMutationInput = {
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11602,6 +11625,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     loraId?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -12218,6 +12242,7 @@ export namespace Prisma {
     id?: SortOrder
     loraId?: SortOrder
     filePath?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -12230,6 +12255,7 @@ export namespace Prisma {
     id?: SortOrder
     loraId?: SortOrder
     filePath?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -12237,6 +12263,7 @@ export namespace Prisma {
     id?: SortOrder
     loraId?: SortOrder
     filePath?: SortOrder
+    imageUrl?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -13474,12 +13501,14 @@ export namespace Prisma {
 
   export type GenImageCreateWithoutLoraInput = {
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
   }
 
   export type GenImageUncheckedCreateWithoutLoraInput = {
     id?: number
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
   }
 
@@ -13550,6 +13579,7 @@ export namespace Prisma {
     id?: IntFilter<"GenImage"> | number
     loraId?: IntFilter<"GenImage"> | number
     filePath?: StringFilter<"GenImage"> | string
+    imageUrl?: StringFilter<"GenImage"> | string
     createdAt?: DateTimeFilter<"GenImage"> | Date | string
   }
 
@@ -13705,23 +13735,27 @@ export namespace Prisma {
   export type GenImageCreateManyLoraInput = {
     id?: number
     filePath: string
+    imageUrl?: string
     createdAt?: Date | string
   }
 
   export type GenImageUpdateWithoutLoraInput = {
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageUncheckedUpdateWithoutLoraInput = {
     id?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type GenImageUncheckedUpdateManyWithoutLoraInput = {
     id?: IntFieldUpdateOperationsInput | number
     filePath?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

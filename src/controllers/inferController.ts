@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import {GetObjectCommand, PutObjectCommand} from "@aws-sdk/client-s3";
 
 import { RunpodClient } from "../runpod/client";
-import {PrismaClient, User } from '../../prisma/generated/client'
+import {GenImage, PrismaClient, User } from '../../prisma/generated/client'
 import {s3Client,} from "../utils/s3/client"
 import { Readable } from 'stream';
 import {uploadToCloudinary} from '../utils/cloudinary/upload'
@@ -125,7 +125,9 @@ export default class InferController {
       });
 
       const imageUrls = await Promise.all(
-        genImages.map(async (image:any) => {
+        genImages.map(async (image:GenImage) => {
+          let imageUrl = image.imageUrl
+          if (imageUrl === "") {
           const command = new GetObjectCommand({
             Bucket: String(process.env.S3_BUCKET_NAME),
             Key: `pets-mas/${image.filePath}`
@@ -133,7 +135,16 @@ export default class InferController {
   
           const { Body } = await s3Client.send(command);
   
-          const imageUrl = await uploadToCloudinary(Body as Readable);
+          imageUrl = await uploadToCloudinary(Body as Readable);
+          await prisma.genImage.update({
+            where: {
+              id: image.id
+            },
+            data: {
+              imageUrl: imageUrl
+            }
+          })
+        }
           return {
             id: image.id,
             url: imageUrl
@@ -232,6 +243,8 @@ async getAllGenImages(req: Request, res: Response) {
 
     const imageUrls = await Promise.all(
       genImages.map(async (image:any) => {
+        let imageUrl = image.imageUrl
+        if (imageUrl === "") {
         const command = new GetObjectCommand({
           Bucket: String(process.env.S3_BUCKET_NAME),
           Key: `pets-mas/${image.filePath}`
@@ -239,7 +252,16 @@ async getAllGenImages(req: Request, res: Response) {
 
         const { Body } = await s3Client.send(command);
 
-        const imageUrl = await uploadToCloudinary(Body as Readable);
+        imageUrl = await uploadToCloudinary(Body as Readable);
+        await prisma.genImage.update({
+          where: {
+            id: image.id
+          },
+          data: {
+            imageUrl: imageUrl
+          }
+        })
+      }
         return {
           id: image.id,
           url: imageUrl
