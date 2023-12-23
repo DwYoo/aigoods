@@ -91,8 +91,17 @@ export default class InferController {
 
       if (user) {
         playCount = user.playCount;
-        petName = user.trainImageSet?.petName!
-      } else {
+        if (user.trainImageSet) {
+          petName = user.trainImageSet.petName
+        } else {
+          console.log(`No train image set for user ${userId}`)
+          res.status(200).json({
+            message: ''
+          })
+          return;
+        }
+      } 
+       else {
         console.log("User not found");
         res.status(404).json({
           message: "User not found"
@@ -178,7 +187,15 @@ async getAllGenImages(req: Request, res: Response) {
 
     if (user) {
       playCount = user.playCount;
-      petName = user.trainImageSet?.petName!
+      if (user.trainImageSet) {
+        petName = user.trainImageSet.petName
+      } else {
+        console.log(`No train image set for user ${userId}`)
+        res.status(200).json({
+          message: ''
+        })
+        return;
+      }
     } else {
       console.log("User not found");
       res.status(404).json({
