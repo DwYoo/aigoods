@@ -22,6 +22,8 @@ class WebhookController {
       } catch (error) {
           console.log(error)
         }
+
+      try {
       const loraPath : string = req.body.output.model_path;
 
       let trainImageSet = await prisma.trainImageSet.findFirst({
@@ -72,6 +74,10 @@ class WebhookController {
 
       res.status(200).send("Webhook processed");
     }
+    catch (err) {
+    console.log(err)
+  } 
+}
 
     public async handleInferComplete(req: Request, res: Response): Promise<void> {
       const userId: string = req.params.user_id;

@@ -3,8 +3,13 @@ import { PrismaClient, User } from './prisma/generated/client'
 const prisma = new PrismaClient();
 
 async function main() {
-    const users = await prisma.user.findMany();    
-    console.log('All users:', users, users.length);
+    const trainimageset = await prisma.trainImageSet.findMany(
+        {where: {
+            userId: 'clqiwzl21000476qx3fea4l8w'
+        }
+    }
+    );    
+    console.log('All users:', trainimageset);
     }
 
 

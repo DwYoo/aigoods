@@ -9,7 +9,7 @@ async function main() {
     // await sendMail(String(user.email), "메리 댕냥스마스!", `선물이 도착했어요! \n\n www.pets-mas.com/clqcfvorf0004tr6pqajn8bhc`)
     console.log('All users:', users);
     
-    // initializeUser('clqh6cfdg0000lif5xub84awu')
+    initializeUser('clqgfebam0007ve1ysh1otpc9')
     
   }
 

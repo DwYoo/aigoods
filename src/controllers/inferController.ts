@@ -222,7 +222,14 @@ async getAllGenImages(req: Request, res: Response) {
       }
     })
 
-    const lora = trainImageSet?.lora!
+    const lora = trainImageSet?.lora
+
+    if (!lora) {
+      res.status(200).json({
+        message: ''
+      })
+      return;
+    }
     
     const genImages = await prisma.genImage.findMany({
       where: {
@@ -233,6 +240,13 @@ async getAllGenImages(req: Request, res: Response) {
       },
       take: IMAGE_PER_COUNT * playCount
     });
+
+    if (!genImages) {
+      res.status(200).json({
+        message: ''
+      })
+      return;
+    }
 
     if (genImages.length < 3) {
       res.status(200).json({
